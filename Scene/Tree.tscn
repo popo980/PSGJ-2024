@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://d15ejon0j3a1n"]
+[gd_scene load_steps=10 format=3 uid="uid://d15ejon0j3a1n"]
 
 [ext_resource type="Texture2D" uid="uid://bwdwj04n0m0st" path="res://Assets/Environement/Forest/Trees.png" id="1_0rsys"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_trk0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2fgr"]
+size = Vector2(16, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds2nh"]
 atlas = ExtResource("1_0rsys")
@@ -33,11 +36,29 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2fgr"]
-size = Vector2(16, 47)
+[sub_resource type="Curve" id="Curve_mil7j"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ms6us"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.512195)
+colors = PackedColorArray(0.807843, 0.556863, 0.34902, 1, 0.321569, 0.619608, 0.0784314, 1)
 
 [node name="Tree" type="StaticBody2D"]
 collision_layer = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 21.5)
+shape = SubResource("RectangleShape2D_q2fgr")
+
+[node name="Ressources" parent="." node_paths=PackedStringArray("sprite", "obj", "particle") instance=ExtResource("2_trk0d")]
+visible = false
+position = Vector2(0, 30)
+sprite = NodePath("../Sprite")
+obj = NodePath("..")
+particle = NodePath("../Particles")
 
 [node name="Sprite" type="Node2D" parent="."]
 
@@ -50,11 +71,18 @@ z_index = 2
 position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_exw8w")
 
-[node name="Ressources" parent="." node_paths=PackedStringArray("sprite", "obj") instance=ExtResource("2_trk0d")]
-position = Vector2(0, 30)
-sprite = NodePath("../Sprite")
-obj = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 21.5)
-shape = SubResource("RectangleShape2D_q2fgr")
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(-1, 26)
+emitting = false
+amount = 30
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.83
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 2500)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_mil7j")
+color_initial_ramp = SubResource("Gradient_ms6us")
