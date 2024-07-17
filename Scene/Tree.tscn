@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://d15ejon0j3a1n"]
+
+[ext_resource type="Texture2D" uid="uid://bwdwj04n0m0st" path="res://Assets/Environement/Forest/Trees.png" id="1_0rsys"]
+[ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_trk0d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqtnb"]
+atlas = ExtResource("1_0rsys")
+region = Rect2(0, 0, 50, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7v5pb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqtnb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2fgr"]
+size = Vector2(16, 73)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udg4g"]
+radius = 23.0
+height = 74.0
+
+[node name="Tree" type="StaticBody2D"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7v5pb")
+
+[node name="Ressources" parent="." instance=ExtResource("2_trk0d")]
+position = Vector2(0, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 8.5)
+shape = SubResource("RectangleShape2D_q2fgr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -15)
+shape = SubResource("CapsuleShape2D_udg4g")
