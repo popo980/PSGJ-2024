@@ -4,7 +4,7 @@ extends Area2D
 
 
 func Hit():
-	
+	print("Hit")
 
 
 func _on_body_entered(body):

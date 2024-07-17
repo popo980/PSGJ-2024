@@ -9,7 +9,7 @@ func _physics_process(_delta):
 	manageMov()
 	
 	if Input.get_action_raw_strength("Hit") :
-		print("Hit !!")
+		weapon.Hit()
 		#TODO (scene speciale pour les armes ?)
 	
 	if Input.get_action_raw_strength("Interact") :
@@ -39,6 +39,3 @@ func manageMov():
 		anim_sprite.animation = "Run"
 	elif !(velocity.x + velocity.y) && anim_sprite.animation == "Run":
 		anim_sprite.animation = "Idle"
-
-func Hit():
-	weapon
