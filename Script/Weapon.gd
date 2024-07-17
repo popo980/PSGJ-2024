@@ -7,7 +7,7 @@ func Hit():
 	print("Hit")
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	print("Just Hitted Something")
 
 
