@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b08utre752g6f"]
+[gd_scene load_steps=9 format=3 uid="uid://b08utre752g6f"]
 
 [ext_resource type="Texture2D" uid="uid://bwqy7ghcytgod" path="res://Assets/Player/Idle-Sheet.png" id="1_bajiw"]
+[ext_resource type="Script" path="res://Script/Player.gd" id="1_c0xhy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf30w"]
 atlas = ExtResource("1_bajiw")
@@ -38,7 +39,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0op1"]
+size = Vector2(14, 10)
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_c0xhy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_duwlh")
@@ -48,3 +54,5 @@ frame = 2
 frame_progress = 0.67243
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 11)
+shape = SubResource("RectangleShape2D_a0op1")
