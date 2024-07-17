@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Script/Player.gd" id="1_c0xhy"]
 [ext_resource type="Texture2D" uid="uid://7g2gsb0c034w" path="res://Assets/Player/Run-Sheet.png" id="3_3kb5t"]
 [ext_resource type="Script" path="res://Script/ZoneInteraction.gd" id="4_oqla3"]
-[ext_resource type="PackedScene" path="res://Scene/Weapon.tscn" id="5_mbv48"]
+[ext_resource type="PackedScene" uid="uid://1hxrcyjwv3rh" path="res://Scene/Weapon.tscn" id="5_mbv48"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf30w"]
 atlas = ExtResource("1_bajiw")
