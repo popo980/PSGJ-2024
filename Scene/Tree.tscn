@@ -1,17 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://d15ejon0j3a1n"]
+[gd_scene load_steps=8 format=3 uid="uid://d15ejon0j3a1n"]
 
 [ext_resource type="Texture2D" uid="uid://bwdwj04n0m0st" path="res://Assets/Environement/Forest/Trees.png" id="1_0rsys"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_trk0d"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vqtnb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds2nh"]
 atlas = ExtResource("1_0rsys")
-region = Rect2(0, 0, 50, 100)
+region = Rect2(0, 58, 48, 58)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7v5pb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vqtnb")
+"texture": SubResource("AtlasTexture_ds2nh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvy26"]
+atlas = ExtResource("1_0rsys")
+region = Rect2(0, 0, 48, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_exw8w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvy26")
 }],
 "loop": true,
 "name": &"default",
@@ -19,24 +34,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2fgr"]
-size = Vector2(16, 73)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udg4g"]
-radius = 23.0
-height = 74.0
+size = Vector2(16, 47)
 
 [node name="Tree" type="StaticBody2D"]
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="TruncSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 36)
 sprite_frames = SubResource("SpriteFrames_7v5pb")
+
+[node name="LeavesSprite" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -22)
+sprite_frames = SubResource("SpriteFrames_exw8w")
 
 [node name="Ressources" parent="." instance=ExtResource("2_trk0d")]
 position = Vector2(0, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 8.5)
+position = Vector2(-1, 21.5)
 shape = SubResource("RectangleShape2D_q2fgr")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -15)
-shape = SubResource("CapsuleShape2D_udg4g")
