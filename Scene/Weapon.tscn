@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://1hxrcyjwv3rh"]
+[gd_scene load_steps=8 format=3 uid="uid://1hxrcyjwv3rh"]
 
 [ext_resource type="Script" path="res://Script/Weapon.gd" id="1_0egnd"]
 [ext_resource type="Texture2D" uid="uid://dase6axlvl6jd" path="res://Assets/Weapons/Hands.png" id="1_5j1xx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejrjo"]
-size = Vector2(7, 8)
+size = Vector2(7.5, 8)
 
 [sub_resource type="Animation" id="Animation_m1oom"]
 resource_name = "Hit"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -15,10 +16,22 @@ tracks/0/path = NodePath("Area2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(20, 0)]
+"values": [Vector2(0, 0), Vector2(20, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_2jt6l"]
@@ -33,12 +46,42 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(20, 0)]
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_l5cq1"]
+resource_name = "FistIdle"
+length = 1.23
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cubco"]
 _data = {
 "FistHit": SubResource("Animation_m1oom"),
+"FistIdle": SubResource("Animation_l5cq1"),
 "RESET": SubResource("Animation_2jt6l")
 }
 
@@ -46,7 +89,6 @@ _data = {
 script = ExtResource("1_0egnd")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(20, 0)
 collision_layer = 0
 collision_mask = 8
 
@@ -57,9 +99,7 @@ region_rect = Rect2(3.89256, 4.70354, 7.43217, 7.56731)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ejrjo")
-
-[node name="HittingPoint" type="Marker2D" parent="Area2D"]
-position = Vector2(20, 0)
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -67,6 +107,8 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

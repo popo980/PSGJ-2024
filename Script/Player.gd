@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed :float = 200
 
 @onready var anim_sprite = $AnimatedSprite2D
-@onready var weapon = $Weapon
+@onready var weapon = $WeaponMark/Weapon
 
 func _physics_process(_delta):
 	manageMov()
