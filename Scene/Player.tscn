@@ -1,3 +1,50 @@
-[gd_scene format=3 uid="uid://b08utre752g6f"]
+[gd_scene load_steps=7 format=3 uid="uid://b08utre752g6f"]
+
+[ext_resource type="Texture2D" uid="uid://bwqy7ghcytgod" path="res://Assets/Player/Idle-Sheet.png" id="1_bajiw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf30w"]
+atlas = ExtResource("1_bajiw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lteu"]
+atlas = ExtResource("1_bajiw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8wa2"]
+atlas = ExtResource("1_bajiw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7b17"]
+atlas = ExtResource("1_bajiw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_duwlh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf30w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lteu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8wa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7b17")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_duwlh")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 2
+frame_progress = 0.67243
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
