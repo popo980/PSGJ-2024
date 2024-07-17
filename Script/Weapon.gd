@@ -8,6 +8,7 @@ enum ListWeapon {FIST}
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
 
 var currentWeapon = ListWeapon.FIST
+var damages = 0
 
 func _ready():
 	SwitchWeapon(ListWeapon.FIST)
@@ -28,6 +29,7 @@ func SwitchWeapon(weapon:ListWeapon):
 func SetUpWeapon():
 	match currentWeapon:
 		ListWeapon.FIST:
+			damages = 1
 			sprite_2d.set_region_rect(Rect2(3.9,4.7,7.4,7.5))
 			collision_shape_2d.set_position(Vector2(0,0))
 			collision_shape_2d.set_scale(Vector2(1,1))
@@ -42,8 +44,8 @@ func getWeaponName():
 			print("Weapon is not existant")
 			return ""
 			
-func _on_area_2d_area_entered(_area):
-	print("Hit !!!! ")
+func _on_area_2d_area_entered(area):
+	area.Hit(damages)
 
 func _on_timer_timeout():
 	animation_player.play(getWeaponName()+"Idle")
