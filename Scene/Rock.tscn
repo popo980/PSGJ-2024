@@ -29,4 +29,3 @@ polygon = PackedVector2Array(11.73, 10.385, -2.01, 12.99, -15.585, 8.055, -12.35
 
 [node name="Ressources" parent="." instance=ExtResource("2_bffn4")]
 ressource = 1
-area_radius = 40.0
