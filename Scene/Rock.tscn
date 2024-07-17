@@ -19,13 +19,18 @@ animations = [{
 }]
 
 [node name="Rock" type="StaticBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_qgnhu")
+collision_layer = 9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 1)
 polygon = PackedVector2Array(11.73, 10.385, -2.01, 12.99, -15.585, 8.055, -12.35, -4.605, -4.05, -13.88, 3.38, -14.9, 12.645, -3.085)
 
-[node name="Ressources" parent="." instance=ExtResource("2_bffn4")]
+[node name="Ressources" parent="." node_paths=PackedStringArray("sprite", "obj") instance=ExtResource("2_bffn4")]
 ressource = 1
+sprite = NodePath("../Sprite")
+obj = NodePath("..")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
+sprite_frames = SubResource("SpriteFrames_qgnhu")

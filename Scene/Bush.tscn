@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_rmw26"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_gl2sm"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1vfl"]
+radius = 22.2036
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rl73o"]
 atlas = ExtResource("1_rmw26")
 region = Rect2(0, 98, 50, 49)
@@ -18,17 +21,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t1vfl"]
-radius = 22.2036
-
 [node name="Bush" type="StaticBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_wbauh")
+collision_layer = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t1vfl")
 
-[node name="Ressources" parent="." instance=ExtResource("2_gl2sm")]
+[node name="Ressources" parent="." node_paths=PackedStringArray("sprite", "obj") instance=ExtResource("2_gl2sm")]
 ressource = 2
 area_radius = 50.0
+sprite = NodePath("../Sprite")
+obj = NodePath("..")
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
+sprite_frames = SubResource("SpriteFrames_wbauh")

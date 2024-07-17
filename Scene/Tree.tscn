@@ -37,18 +37,23 @@ animations = [{
 size = Vector2(16, 47)
 
 [node name="Tree" type="StaticBody2D"]
+collision_layer = 9
 
-[node name="TruncSprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="TruncSprite" type="AnimatedSprite2D" parent="Sprite"]
 position = Vector2(0, 36)
 sprite_frames = SubResource("SpriteFrames_7v5pb")
 
-[node name="LeavesSprite" type="AnimatedSprite2D" parent="."]
+[node name="LeavesSprite" type="AnimatedSprite2D" parent="Sprite"]
 z_index = 2
 position = Vector2(0, -22)
 sprite_frames = SubResource("SpriteFrames_exw8w")
 
-[node name="Ressources" parent="." instance=ExtResource("2_trk0d")]
+[node name="Ressources" parent="." node_paths=PackedStringArray("sprite", "obj") instance=ExtResource("2_trk0d")]
 position = Vector2(0, 30)
+sprite = NodePath("../Sprite")
+obj = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 21.5)

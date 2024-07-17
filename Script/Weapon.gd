@@ -29,7 +29,7 @@ func SwitchWeapon(weapon:ListWeapon):
 func SetUpWeapon():
 	match currentWeapon:
 		ListWeapon.FIST:
-			damages = 1
+			damages = 5
 			sprite_2d.set_region_rect(Rect2(3.9,4.7,7.4,7.5))
 			collision_shape_2d.set_position(Vector2(0,0))
 			collision_shape_2d.set_scale(Vector2(1,1))
@@ -43,9 +43,13 @@ func getWeaponName():
 		_:
 			print("Weapon is not existant")
 			return ""
-			
+
 func _on_area_2d_area_entered(area):
-	area.Hit(damages)
+	pass
 
 func _on_timer_timeout():
 	animation_player.play(getWeaponName()+"Idle")
+
+func _on_area_2d_body_entered(body):
+	if body != null:
+		body.get_node("Ressources").hit(damages)
