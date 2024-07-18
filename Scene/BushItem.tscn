@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0d7y0xtb3su3"]
+
+[ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_11qe6"]
+[ext_resource type="PackedScene" uid="uid://d1p0g4uxs81xw" path="res://Scene/Item.tscn" id="2_1330p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mlaq"]
+atlas = ExtResource("1_11qe6")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_js620"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mlaq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7l10k"]
+radius = 8.0
+
+[node name="BushItem" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_js620")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7l10k")
+
+[node name="Item" parent="." node_paths=PackedStringArray("obj") instance=ExtResource("2_1330p")]
+obj = NodePath("..")

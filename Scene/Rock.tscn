@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://plkrkvokn260"]
+[gd_scene load_steps=7 format=3 uid="uid://plkrkvokn260"]
 
 [ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_f8njo"]
+[ext_resource type="Script" path="res://Script/Rock.gd" id="1_jpusv"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_bffn4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrrwp"]
@@ -24,6 +25,7 @@ point_count = 2
 
 [node name="Rock" type="StaticBody2D"]
 collision_layer = 9
+script = ExtResource("1_jpusv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 1)
@@ -34,6 +36,7 @@ ressource = 1
 sprite = NodePath("../Sprite")
 obj = NodePath("..")
 particle = NodePath("../Particles")
+item_path = "res://Scene/RockItem.tscn"
 
 [node name="Sprite" type="Node2D" parent="."]
 

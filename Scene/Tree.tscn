@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d15ejon0j3a1n"]
+[gd_scene load_steps=11 format=3 uid="uid://d15ejon0j3a1n"]
 
 [ext_resource type="Texture2D" uid="uid://bwdwj04n0m0st" path="res://Assets/Environement/Forest/Trees.png" id="1_0rsys"]
+[ext_resource type="Script" path="res://Script/Tree.gd" id="1_d0ala"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_trk0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2fgr"]
@@ -47,18 +48,18 @@ colors = PackedColorArray(0.807843, 0.556863, 0.34902, 1, 0.321569, 0.619608, 0.
 
 [node name="Tree" type="StaticBody2D"]
 collision_layer = 9
+script = ExtResource("1_d0ala")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1, 21.5)
 shape = SubResource("RectangleShape2D_q2fgr")
 
 [node name="Ressources" parent="." node_paths=PackedStringArray("sprite", "obj", "particle") instance=ExtResource("2_trk0d")]
-visible = false
 position = Vector2(0, 30)
 sprite = NodePath("../Sprite")
 obj = NodePath("..")
 particle = NodePath("../Particles")
+item_path = "res://Scene/TreeItem.tscn"
 
 [node name="Sprite" type="Node2D" parent="."]
 

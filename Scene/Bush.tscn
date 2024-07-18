@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ijos2ojmfmcj"]
+[gd_scene load_steps=8 format=3 uid="uid://ijos2ojmfmcj"]
 
+[ext_resource type="Script" path="res://Script/Bush.gd" id="1_angtn"]
 [ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_rmw26"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_gl2sm"]
 
@@ -27,6 +28,7 @@ point_count = 2
 
 [node name="Bush" type="StaticBody2D"]
 collision_layer = 9
+script = ExtResource("1_angtn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t1vfl")
@@ -37,6 +39,7 @@ area_radius = 50.0
 sprite = NodePath("../Sprite")
 obj = NodePath("..")
 particle = NodePath("../Particles")
+item_path = "res://Scene/BushItem.tscn"
 
 [node name="Sprite" type="Node2D" parent="."]
 
