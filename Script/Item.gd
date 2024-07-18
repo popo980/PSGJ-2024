@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 enum ITEM_TYPE {TREE,ROCK,BUSH}
 
@@ -6,7 +6,6 @@ enum ITEM_TYPE {TREE,ROCK,BUSH}
 var is_held : bool
 var player_holding : CharacterBody2D
 @export var offset : Vector2
-@export var obj : Area2D
 @export var item_type : ITEM_TYPE
 var parent
 
@@ -16,15 +15,19 @@ func _ready():
 func use():
 	queue_free()
 
+func interact(player):
+	hold(player)
+
+
 func hold(player):
 	is_held = true
 	player_holding = player
-	if obj.get_parent():
-		obj.get_parent().remove_child(obj)
-	player_holding.add_child(obj)
-	obj.position = Vector2.ZERO
+	if get_parent():
+		get_parent().remove_child(self)
+	player_holding.add_child(self)
+	position = Vector2.ZERO
 	player.is_holding = true
-	player.item_held = obj
+	player.item_held = self
 
 func drop():
 	print("DROP")
@@ -36,4 +39,8 @@ func drop():
 	parent.add_child(item)
 	item.global_position = player_holding.global_position
 	
+func get_item_type():
+	return item_type
 
+func set_parent(p):
+	parent = p

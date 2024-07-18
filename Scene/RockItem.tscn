@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://drqo5r2woa5be"]
+[gd_scene load_steps=6 format=3 uid="uid://drqo5r2woa5be"]
 
+[ext_resource type="Script" path="res://Script/Item.gd" id="1_8e0at"]
 [ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_cw01g"]
-[ext_resource type="Script" path="res://Script/RockItem.gd" id="1_vuixc"]
-[ext_resource type="PackedScene" uid="uid://d1p0g4uxs81xw" path="res://Scene/Item.tscn" id="2_gn4bo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vict"]
 atlas = ExtResource("1_cw01g")
@@ -25,14 +24,11 @@ radius = 8.06226
 [node name="RockItem" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_vuixc")
+script = ExtResource("1_8e0at")
+item_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_la6ou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tyhje")
-
-[node name="Item" parent="." node_paths=PackedStringArray("obj") instance=ExtResource("2_gn4bo")]
-obj = NodePath("..")
-item_type = 1

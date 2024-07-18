@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1riuny04t6d2"]
+[gd_scene load_steps=6 format=3 uid="uid://b1riuny04t6d2"]
 
-[ext_resource type="Script" path="res://Script/TreeItem.gd" id="1_eh4j0"]
+[ext_resource type="Script" path="res://Script/Item.gd" id="1_h2tbb"]
 [ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_uwkb6"]
-[ext_resource type="PackedScene" uid="uid://d1p0g4uxs81xw" path="res://Scene/Item.tscn" id="2_m0nsf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khh80"]
 atlas = ExtResource("1_uwkb6")
@@ -25,7 +24,7 @@ size = Vector2(16, 7)
 [node name="TreeItem" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_eh4j0")
+script = ExtResource("1_h2tbb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
@@ -34,6 +33,3 @@ sprite_frames = SubResource("SpriteFrames_8bt24")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_pktc5")
-
-[node name="Item" parent="." node_paths=PackedStringArray("obj") instance=ExtResource("2_m0nsf")]
-obj = NodePath("..")
