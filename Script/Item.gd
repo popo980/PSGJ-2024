@@ -1,6 +1,6 @@
 extends Area2D
 
-enum ITEM_TYPE {TREE,ROCK,BUSH}
+enum ITEM_TYPE {TREE=0,ROCK=1,BUSH=2}
 
 
 var is_held : bool
@@ -39,8 +39,8 @@ func drop():
 	parent.add_child(item)
 	item.global_position = player_holding.global_position
 	
-func get_item_type():
-	return item_type
+func get_item_id_type():
+	return int(item_type)
 
 func set_parent(p):
 	parent = p
