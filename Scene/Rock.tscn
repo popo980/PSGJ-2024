@@ -31,12 +31,8 @@ script = ExtResource("1_jpusv")
 position = Vector2(0, 1)
 polygon = PackedVector2Array(11.73, 10.385, -2.01, 12.99, -15.585, 8.055, -12.35, -4.605, -4.05, -13.88, 3.38, -14.9, 12.645, -3.085)
 
-[node name="Ressources" parent="." node_paths=PackedStringArray("sprite", "obj", "particle") instance=ExtResource("2_bffn4")]
+[node name="Ressources" parent="." instance=ExtResource("2_bffn4")]
 ressource = 1
-sprite = NodePath("../Sprite")
-obj = NodePath("..")
-particle = NodePath("../Particles")
-item_path = "res://Scene/RockItem.tscn"
 
 [node name="Sprite" type="Node2D" parent="."]
 
@@ -58,3 +54,5 @@ initial_velocity_max = 500.0
 scale_amount_max = 7.0
 scale_amount_curve = SubResource("Curve_kbu3r")
 color = Color(0.792157, 0.792157, 0.792157, 1)
+
+[connection signal="destroy_signal" from="Ressources" to="." method="_on_ressources_destroy_signal"]

@@ -54,12 +54,8 @@ script = ExtResource("1_d0ala")
 position = Vector2(-1, 21.5)
 shape = SubResource("RectangleShape2D_q2fgr")
 
-[node name="Ressources" parent="." node_paths=PackedStringArray("sprite", "obj", "particle") instance=ExtResource("2_trk0d")]
+[node name="Ressources" parent="." instance=ExtResource("2_trk0d")]
 position = Vector2(0, 30)
-sprite = NodePath("../Sprite")
-obj = NodePath("..")
-particle = NodePath("../Particles")
-item_path = "res://Scene/TreeItem.tscn"
 
 [node name="Sprite" type="Node2D" parent="."]
 
@@ -87,3 +83,5 @@ initial_velocity_max = 500.0
 scale_amount_max = 7.0
 scale_amount_curve = SubResource("Curve_mil7j")
 color_initial_ramp = SubResource("Gradient_ms6us")
+
+[connection signal="destroy_signal" from="Ressources" to="." method="_on_ressources_destroy_signal"]

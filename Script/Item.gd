@@ -1,9 +1,13 @@
 extends Node2D
 
+enum ITEM_TYPE {TREE,ROCK,BUSH}
+
+
 var is_held : bool
 var player_holding : CharacterBody2D
 @export var offset : Vector2
 @export var obj : Area2D
+@export var item_type : ITEM_TYPE
 var parent
 
 func _ready():

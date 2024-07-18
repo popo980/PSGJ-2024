@@ -132,5 +132,5 @@ position = Vector2(-6, 9)
 
 [node name="Weapon" parent="WeaponMark" instance=ExtResource("5_mbv48")]
 
-[connection signal="area_shape_entered" from="ZoneInteraction" to="ZoneInteraction" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="ZoneInteraction" to="ZoneInteraction" method="_on_area_shape_exited"]
+[connection signal="area_entered" from="ZoneInteraction" to="ZoneInteraction" method="_on_area_entered"]
+[connection signal="area_exited" from="ZoneInteraction" to="ZoneInteraction" method="_on_area_exited"]

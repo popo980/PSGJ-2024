@@ -33,13 +33,10 @@ script = ExtResource("1_angtn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_t1vfl")
 
-[node name="Ressources" parent="." node_paths=PackedStringArray("sprite", "obj", "particle") instance=ExtResource("2_gl2sm")]
+[node name="Ressources" parent="." instance=ExtResource("2_gl2sm")]
 ressource = 2
+pv_max = 5.0
 area_radius = 50.0
-sprite = NodePath("../Sprite")
-obj = NodePath("..")
-particle = NodePath("../Particles")
-item_path = "res://Scene/BushItem.tscn"
 
 [node name="Sprite" type="Node2D" parent="."]
 
@@ -61,3 +58,5 @@ initial_velocity_max = 500.0
 scale_amount_max = 7.0
 scale_amount_curve = SubResource("Curve_kck4p")
 color = Color(0.396078, 0.592157, 0.0784314, 1)
+
+[connection signal="destroy_signal" from="Ressources" to="." method="_on_ressources_destroy_signal"]

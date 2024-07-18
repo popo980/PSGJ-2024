@@ -35,3 +35,4 @@ shape = SubResource("CircleShape2D_tyhje")
 
 [node name="Item" parent="." node_paths=PackedStringArray("obj") instance=ExtResource("2_gn4bo")]
 obj = NodePath("..")
+item_type = 1
