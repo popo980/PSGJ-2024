@@ -19,7 +19,8 @@ func _physics_process(_delta):
 	# ramasse un objet à terre si le joueur ne tient rien dans les mains et qu'il y a un objet à proximité
 	if Input.is_action_just_pressed("Interact") && not is_holding && zone_interaction.inZone.size() > 0:
 		print("Interact !!")
-		zone_interaction.inZone[0].interact(self)
+		var nearest_obj  = find_nearest(zone_interaction.inZone)
+		nearest_obj.interact(self)
 		
 	# pose un objet à terre si le joueur tient un objet dans les mains
 	elif Input.is_action_just_pressed("Interact") && is_holding && item_held != null:
@@ -48,3 +49,17 @@ func manageMov():
 		anim_sprite.animation = "Run"
 	elif !(velocity.x + velocity.y) && anim_sprite.animation == "Run":
 		anim_sprite.animation = "Idle"
+
+func distance(obj1, obj2):
+	return (obj1.global_position.x-obj2.global_position.x)**2 + (obj1.global_position.y-obj2.global_position.y)**2
+
+func find_nearest(tab):
+	var dist_min = distance(self, tab[0])
+	var nearest_obj = tab[0]
+	var dist
+	for i in range(1, tab.size()):
+		dist = distance(self, tab[i])
+		if dist < dist_min:
+			dist_min = dist
+			nearest_obj = tab[i]
+	return nearest_obj
