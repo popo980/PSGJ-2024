@@ -3,7 +3,6 @@ extends Area2D
 var inZone = []
 
 
-
 func _on_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
 	inZone.append(area)
 	print(str(inZone.size()))

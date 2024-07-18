@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0d7y0xtb3su3"]
+[gd_scene load_steps=7 format=3 uid="uid://b0d7y0xtb3su3"]
 
+[ext_resource type="Script" path="res://Script/BushItem.gd" id="1_0ltv5"]
 [ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_11qe6"]
 [ext_resource type="PackedScene" uid="uid://d1p0g4uxs81xw" path="res://Scene/Item.tscn" id="2_1330p"]
 
@@ -24,6 +25,7 @@ radius = 8.0
 [node name="BushItem" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_0ltv5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_js620")

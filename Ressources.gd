@@ -22,17 +22,18 @@ func _ready():
 func hit(damage):
 	pv -= damage
 	if pv <= 0 && !destroyed:
-		# envoyer un signal
 		emit_signal("destroy_signal")
 		summon_item()
 		destroyed = true
-		sprite.queue_free()
 		particle.emitting = true
-	print("pv: ", pv)
+		sprite.queue_free()
+	else:
+		print("pv: ", pv)
 
 
 func summon_item():
-	print("item summoned")
 	var item = load(item_path).instantiate()
-	#add_child(item)
 	call_deferred("add_child", item)
+	# a besoin d'un parent pour apparaitre dans la scène une fois l'objet laché
+	item.set_parent(self) 
+	

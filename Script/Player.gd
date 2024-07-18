@@ -4,6 +4,10 @@ extends CharacterBody2D
 
 @onready var anim_sprite = $AnimatedSprite2D
 @onready var weapon = $WeaponMark/Weapon
+@onready var zone_interaction = $ZoneInteraction
+
+var is_holding : bool
+var item_held : Area2D
 
 func _physics_process(_delta):
 	manageMov()
@@ -12,10 +16,15 @@ func _physics_process(_delta):
 		weapon.Hit()
 		#TODO (scene speciale pour les armes ?)
 	
-	if Input.get_action_raw_strength("Interact") :
+	# ramasse un objet à terre si le joueur ne tient rien dans les mains et qu'il y a un objet à proximité
+	if Input.is_action_just_pressed("Interact") && not is_holding && zone_interaction.inZone.size() > 0:
 		print("Interact !!")
-		#TODO (lancer un check dans une area2d autour pour voir si y'a une interaction a faire
-		#gerer les multiples possibilités
+		zone_interaction.inZone[0].interact(self)
+		
+	# pose un objet à terre si le joueur tient un objet dans les mains
+	elif Input.is_action_just_pressed("Interact") && is_holding && item_held != null:
+		print("drop1")
+		item_held.drop()
 		
 	move_and_slide()
 

@@ -44,9 +44,6 @@ func getWeaponName():
 			print("Weapon is not existant")
 			return ""
 
-func _on_area_2d_area_entered(area):
-	pass
-
 func _on_timer_timeout():
 	animation_player.play(getWeaponName()+"Idle")
 
