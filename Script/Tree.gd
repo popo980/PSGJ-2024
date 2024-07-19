@@ -15,3 +15,6 @@ func _on_ressources_destroy_signal():
 	collision.queue_free()
 	sprite.queue_free()
 	particles.emitting = true
+
+func _on_ressources_hit_signal():
+	$AudioStreamPlayer.play()

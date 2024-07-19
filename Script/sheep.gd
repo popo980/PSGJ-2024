@@ -79,7 +79,6 @@ func _on_ressources_destroy_signal():
 	$Timer.start()
 	dead = true
 
-
 func _on_ressources_hit_signal():
 	if not dead:
 		state = BE_HIT

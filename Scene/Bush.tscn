@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ijos2ojmfmcj"]
+[gd_scene load_steps=9 format=3 uid="uid://ijos2ojmfmcj"]
 
 [ext_resource type="Script" path="res://Script/Bush.gd" id="1_angtn"]
 [ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_rmw26"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_gl2sm"]
+[ext_resource type="AudioStream" uid="uid://b2kbpnyfss7pr" path="res://Assets/SFX/bush_hit.mp3" id="4_rpdva"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1vfl"]
 radius = 22.2036
@@ -59,4 +60,8 @@ scale_amount_max = 7.0
 scale_amount_curve = SubResource("Curve_kck4p")
 color = Color(0.396078, 0.592157, 0.0784314, 1)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rpdva")
+
 [connection signal="destroy_signal" from="Ressources" to="." method="_on_ressources_destroy_signal"]
+[connection signal="hit_signal" from="Ressources" to="." method="_on_ressources_hit_signal"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d15ejon0j3a1n"]
+[gd_scene load_steps=12 format=3 uid="uid://d15ejon0j3a1n"]
 
 [ext_resource type="Texture2D" uid="uid://bwdwj04n0m0st" path="res://Assets/Environement/Forest/Trees.png" id="1_0rsys"]
 [ext_resource type="Script" path="res://Script/Tree.gd" id="1_d0ala"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_trk0d"]
+[ext_resource type="AudioStream" uid="uid://b2kbpnyfss7pr" path="res://Assets/SFX/bush_hit.mp3" id="4_cuxom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q2fgr"]
 size = Vector2(16, 47)
@@ -85,4 +86,8 @@ scale_amount_max = 7.0
 scale_amount_curve = SubResource("Curve_mil7j")
 color_initial_ramp = SubResource("Gradient_ms6us")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cuxom")
+
 [connection signal="destroy_signal" from="Ressources" to="." method="_on_ressources_destroy_signal"]
+[connection signal="hit_signal" from="Ressources" to="." method="_on_ressources_hit_signal"]
