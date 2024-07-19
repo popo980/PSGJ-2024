@@ -187,4 +187,5 @@ wait_time = 0.25
 [connection signal="body_entered" from="ZoneContact" to="." method="_on_zone_contact_body_entered"]
 [connection signal="body_shape_entered" from="ZoneContact" to="." method="_on_zone_contact_body_shape_entered"]
 [connection signal="destroy_signal" from="Ressources" to="." method="_on_ressources_destroy_signal"]
+[connection signal="hit_signal" from="Ressources" to="." method="_on_ressources_hit_signal"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

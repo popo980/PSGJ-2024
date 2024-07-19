@@ -12,13 +12,16 @@ var pv : float
 var destroyed : bool
 
 signal destroy_signal
+signal hit_signal
 
 func _ready():
 	pv = pv_max
 	connect("destroy_signal", Callable(self, "_on_destroy_signal"))
+	connect("hit_signal", Callable(self, "_on_hit_signal"))
 
 func hit(damage):
 	pv -= damage
+	emit_signal("hit_signal")
 	if pv <= 0 && !destroyed:
 		emit_signal("destroy_signal")
 		summon_item()

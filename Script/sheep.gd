@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 enum{
 	IDLE,
-	WALK
+	WALK,
+	BE_HIT
 }
 
 const MIN_X = -230
@@ -10,6 +11,8 @@ const MAX_X = 290
 const MIN_Y = -100
 const MAX_Y = 120
 const SPEED = 2500.0
+const HIT_SPEED = 9000.0
+var speed 
 var vel : Vector2
 var rand = RandomNumberGenerator.new()
 var time : float
@@ -22,6 +25,7 @@ var dead : bool
 
 func _ready():
 	time = 1.0
+	speed = SPEED
 
 func _physics_process(delta):
 	if not dead:
@@ -38,8 +42,12 @@ func manageMov(delta):
 		WALK:
 			move(target, delta)
 			animation.animation = "walk"
+			speed = SPEED
 		IDLE:
 			animation.animation = "idle"
+		BE_HIT:
+			speed = HIT_SPEED
+			move(target, delta)
 	time -= delta
 
 func move(target, delta):
@@ -47,7 +55,7 @@ func move(target, delta):
 		print("STOP")
 		state = IDLE
 	var dir = (target - global_position).normalized()
-	velocity = (dir*SPEED - velocity) * delta
+	velocity = (dir*speed - velocity) * delta
 	move_and_slide()
 
 func find_target():
@@ -70,3 +78,11 @@ func _on_ressources_destroy_signal():
 	animation.queue_free()
 	$Timer.start()
 	dead = true
+
+
+func _on_ressources_hit_signal():
+	if not dead:
+		state = BE_HIT
+		animation.animation = "walk"
+		time = 1.0
+		target = -target
