@@ -1,6 +1,6 @@
 extends Node2D
 
-enum Ressource {TREE, ROCK, BUSH}
+enum Ressource {TREE, ROCK, BUSH, SHEEP}
 @onready var obj = $".."
 
 @export var ressource : Ressource
@@ -28,8 +28,9 @@ func hit(damage):
 
 
 func summon_item():
-	var item = obj.get_item().instantiate()
-	call_deferred("add_child", item)
-	# a besoin d'un parent pour apparaitre dans la scène une fois l'objet laché
-	item.set_parent(self) 
-	
+	var item_obj = obj.get_item()
+	if item_obj != null:
+		var item = item_obj.instantiate()
+		call_deferred("add_child", item)
+		# a besoin d'un parent pour apparaitre dans la scène une fois l'objet laché
+		item.set_parent(self)
