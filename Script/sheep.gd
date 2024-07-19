@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum{
+enum STATE{
 	IDLE,
 	WALK,
 	BE_HIT
@@ -10,13 +10,13 @@ const MIN_X = -230
 const MAX_X = 290
 const MIN_Y = -100
 const MAX_Y = 120
-const SPEED = 2500.0
-const HIT_SPEED = 9000.0
+const SPEED = 500.0
+const HIT_SPEED = 900.0
 var speed 
 var vel : Vector2
 var rand = RandomNumberGenerator.new()
 var time : float
-var state = IDLE
+var curState = STATE.IDLE
 var target : Vector2
 var threshold = 0.3
 var dead : bool
@@ -29,42 +29,42 @@ func _ready():
 
 func _physics_process(delta):
 	if not dead:
-		manageMov(delta)
+		manageMov()
+		time -= delta
 
-func manageMov(delta):
+func manageMov():
 	if time <= 0.0:
 		time = rand.randf_range(1.0, 6.0)
-		state = rand.randi_range(0,1)
+		curState = rand.randi_range(0,1)
 		target = find_target()
-		print("state: ", state)
+		print("state: ", curState)
 		
-	match state:
-		WALK:
-			move(target, delta)
+	match curState:
+		STATE.WALK:
+			move(target)
 			animation.animation = "walk"
 			speed = SPEED
-		IDLE:
+		STATE.IDLE:
 			animation.animation = "idle"
-		BE_HIT:
+		STATE.BE_HIT:
 			speed = HIT_SPEED
-			move(target, delta)
-	time -= delta
+			move(target)
 
-func move(target, delta):
+func move(_target):
 	if target.distance_to(global_position) <= threshold:
 		print("STOP")
-		state = IDLE
+		curState = STATE.IDLE
 	var dir = (target - global_position).normalized()
-	velocity = (dir*speed - velocity) * delta
+	velocity = (dir*speed - velocity)
 	move_and_slide()
 
 func find_target():
 	return Vector2(rand.randf_range(MIN_X, MAX_X), randf_range(MIN_Y, MAX_Y))
 
 
-func _on_zone_contact_body_entered(body):
+func _on_zone_contact_body_entered(_body):
 	print("CONTACT")
-	state = WALK
+	curState = STATE.WALK
 
 func get_item():
 	return null
@@ -81,7 +81,7 @@ func _on_ressources_destroy_signal():
 
 func _on_ressources_hit_signal():
 	if not dead:
-		state = BE_HIT
+		curState = STATE.BE_HIT
 		animation.animation = "walk"
 		time = 1.0
 		target = -target
