@@ -5,10 +5,15 @@ var recipes = {
 	"Workbench": [2,0,0]
 }
 
+var Gui
+
 var inZone = []
 var nbTree :int= 0
 var nbRock :int= 0
 var nbBush :int= 0
+
+func _ready():
+	Gui = get_parent().get_parent().get_node(NodePath("GUI"))
 
 func recipes_available():
 	var rslt = []
@@ -38,6 +43,7 @@ func sub_ressources(TypeId:int):
 func _on_area_entered(area):
 	inZone.append(area)
 	add_ressources(area.get_item_id_type())
+	Gui.UpdateCrafts(recipes_available())
 	print(str(recipes_available()))
 	print(str(nbTree)+" "+str(nbRock)+" "+str(nbBush))
 
@@ -45,6 +51,7 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	inZone.remove_at(inZone.find(area))
 	sub_ressources(area.get_item_id_type())
+	Gui.UpdateCrafts(recipes_available())
 	print(str(inZone.size()))
 
 func is_in_3arg(lst1,lst2):
