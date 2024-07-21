@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://057q88wo4k0r"]
+
+[ext_resource type="Texture2D" uid="uid://jd5bkfgeeuxr" path="res://Assets/Temporaire/temporaire_crafttable.png" id="1_775le"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plv3s"]
+size = Vector2(13, 9)
+
+[node name="Workbench" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_775le")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_plv3s")

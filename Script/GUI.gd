@@ -3,6 +3,8 @@ extends Control
 const GUI_CRAFTING_BUTTON = preload("res://Scene/GUI_CraftingButton.tscn")
 
 @onready var grid_container = $GridContainer
+@onready var game_manger = get_parent().get_node(NodePath("GameManager"))
+@onready var player = get_parent().get_node(NodePath("Player"))
 var craftAvailable = []
 
 func UpdateCrafts(listCraft: Array):
@@ -18,4 +20,6 @@ func UpdateCrafts(listCraft: Array):
 
 func ButtonPressed(craftName: String):
 	print("le bouton pressé est le "+ craftName)
+	game_manger.spawn(craftName)
+	player.useRessources(craftName)
 

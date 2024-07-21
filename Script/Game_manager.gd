@@ -1,11 +1,12 @@
 extends Node2D
 
+var Spawnable = {
+	"Workbench": preload("res://Scene/Workbench.tscn")
+}
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@onready var player = get_parent().get_node(NodePath("Player"))
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func spawn(spawnName:String):
+	var spawned = Spawnable[spawnName].instantiate()
+	add_child(spawned)
+	spawned.position = player.position

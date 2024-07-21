@@ -63,3 +63,6 @@ func find_nearest(tab):
 			dist_min = dist
 			nearest_obj = tab[i]
 	return nearest_obj
+
+func useRessources(craftName:String):
+	zone_interaction.useRessources(craftName)

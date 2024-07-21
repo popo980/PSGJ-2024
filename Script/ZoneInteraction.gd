@@ -59,3 +59,9 @@ func is_in_3arg(lst1,lst2):
 		if lst2[i]-lst1[i] <0:
 			return false
 	return true
+
+func useRessources(craftName:String):
+	var neededRes = recipes[craftName]
+	for i in inZone:
+		if neededRes[i.get_item_id_type()]>0:
+			i.queue_free()
