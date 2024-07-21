@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://057q88wo4k0r"]
+[gd_scene load_steps=6 format=3 uid="uid://057q88wo4k0r"]
 
 [ext_resource type="Texture2D" uid="uid://jd5bkfgeeuxr" path="res://Assets/Temporaire/temporaire_crafttable.png" id="1_775le"]
+[ext_resource type="Texture2D" uid="uid://bwk1x1yhkl117" path="res://Assets/Player/Zone.png" id="2_uk441"]
+[ext_resource type="Script" path="res://Script/ZoneInteractionWorkbench.gd" id="2_x1qv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plv3s"]
 size = Vector2(13, 9)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vj865"]
+radius = 31.0
+
 [node name="Workbench" type="StaticBody2D"]
+scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_775le")
@@ -13,3 +19,14 @@ texture = ExtResource("1_775le")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_plv3s")
+
+[node name="ZoneInteraction" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_x1qv1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneInteraction"]
+shape = SubResource("CircleShape2D_vj865")
+
+[node name="Sprite2D" type="Sprite2D" parent="ZoneInteraction"]
+texture = ExtResource("2_uk441")
