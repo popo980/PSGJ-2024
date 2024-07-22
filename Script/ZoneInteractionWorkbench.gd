@@ -12,8 +12,12 @@ var nbTree :int= 0
 var nbRock :int= 0
 var nbBush :int= 0
 
+@onready var workbench_interface = $"../WorkbenchInterface"
+var workbench_open = false
+
 func _ready():
 	Gui = get_parent().get_parent().get_parent().get_node(NodePath("GUI"))
+	workbench_interface.global_position = Vector2.ZERO
 
 func recipes_available():
 	var rslt = []
@@ -41,18 +45,22 @@ func sub_ressources(TypeId:int):
 			nbBush -=1
 
 func _on_area_entered(area):
+	print("enter")
 	inZone.append(area)
 	add_ressources(area.get_item_id_type())
 	Gui.UpdateCrafts(recipes_available())
 	print(str(recipes_available()))
 	print(str(nbTree)+" "+str(nbRock)+" "+str(nbBush))
+	workbench_interface.check_all_achievable()
 
 
 func _on_area_exited(area):
+	print("exit")
 	inZone.remove_at(inZone.find(area))
 	sub_ressources(area.get_item_id_type())
 	Gui.UpdateCrafts(recipes_available())
 	print(str(inZone.size()))
+	workbench_interface.check_all_achievable()
 
 func is_in_3arg(lst1,lst2):
 	for i in lst1.size():
@@ -71,3 +79,17 @@ func get_item_id_type():
 	
 func interact(player):
 	print("interaction workbench: ouverture de l'établi en cours...")
+	workbench_open = not workbench_open
+	workbench_interface.visible = workbench_open
+	workbench_interface.global_position = Vector2.ZERO
+
+
+func _on_body_entered(body):
+	workbench_open = true
+	workbench_interface.visible = workbench_open
+	workbench_interface.global_position = Vector2.ZERO
+
+
+func _on_body_exited(body):
+	workbench_open = false
+	workbench_interface.visible = workbench_open

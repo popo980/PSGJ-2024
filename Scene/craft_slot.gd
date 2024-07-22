@@ -1,12 +1,15 @@
 extends Control
 
 @onready var select_icon = $CraftSlot/Select
+@onready var icone_grisee = $CraftSlot/IconeGrisee
+
 var mouse = false
 var id : int
 var craft_name : String
 var description : String
 var recipe : Array
 var slots
+var disabled = true
 
 func _ready():
 	select_icon.visible = false
@@ -29,3 +32,7 @@ func select(selected):
 	select_icon.visible = selected
 	if selected:
 		slots.select(id)
+
+func griser_slot(griser: bool):
+	disabled = griser
+	icone_grisee.visible = griser

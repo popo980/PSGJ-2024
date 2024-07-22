@@ -8,11 +8,15 @@ var i = 0
 @onready var craft_name = $BoxContainer/Name
 @onready var description = $BoxContainer/Description
 @onready var recipe = $BoxContainer/HBoxContainer/Recipe
+@onready var craft_button = $BoxContainer/HBoxContainer/CraftButton
+
 
 var ressources_icons = [preload("res://Assets/Environement/Forest/wood.png"),
 			preload("res://Assets/Environement/Forest/rock.png"),
 			preload("res://Assets/Environement/Forest/leaf.png")]
 const EMPTY = preload("res://Assets/UI/Workbench/empty.png")
+
+var workbench_zone_interaction
 
 # ------------------- CRAFTS INFORMATIONS -----------------------------------------------------------------------------------------------
 var names = ["Wood Sword", "Stone Axe", "Bow", "Magic Wand", "Knife"]
@@ -31,6 +35,7 @@ var recipes = [[1,0,0], [1, 2, 0], [1,0,2], [3,1,0], [0,2,1]]
 
 
 func _ready():
+	workbench_zone_interaction = get_parent().get_node("ZoneInteractionW")
 	for i in range(names.size()):
 		add_craft(i, names[i], icons[i], descriptions[i], recipes[i])
 	
@@ -43,6 +48,7 @@ func add_craft(id: int, craft_name: String, icon: CompressedTexture2D, descripti
 	slot.description = description
 	slot.recipe = recipe
 	slots.add_child(slot)
+	check_achievable(slot)
 
 func _on_slots_craft_selected(id):
 	var craft_selected = slots.get_child(id)
@@ -60,6 +66,9 @@ func _on_slots_craft_selected(id):
 	if number < 4 :
 		for i in range(number, 4):
 			set_slot_recipe(i, EMPTY)
+	
+	# check si l'item est réalisable
+	craft_button.disabled = craft_selected.disabled
 
 func set_slot_recipe(indice, icon):
 	match indice:
@@ -71,3 +80,12 @@ func set_slot_recipe(indice, icon):
 			get_node("BoxContainer/HBoxContainer/Recipe/Row2/CraftSlot/Sprite2D").texture = icon
 		3:
 			get_node("BoxContainer/HBoxContainer/Recipe/Row2/CraftSlot2/Sprite2D").texture = icon
+
+func check_all_achievable():
+	for i in range(slots.get_child_count()):
+		check_achievable(slots.get_child(i))
+
+func check_achievable(slot):
+	var achievable = (workbench_zone_interaction.nbTree >= slot.recipe[0]) && (workbench_zone_interaction.nbRock >= slot.recipe[1]) && (workbench_zone_interaction.nbBush >= slot.recipe[2]) 
+	print(slot.craft_name, " is achievable : ", achievable)
+	slot.griser_slot(not achievable)

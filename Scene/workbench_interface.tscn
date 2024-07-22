@@ -19,6 +19,7 @@ VScrollBar/styles/grabber = SubResource("StyleBoxFlat_ed81f")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_8wyys")
 
 [node name="WorkbenchInterface" type="Control"]
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
