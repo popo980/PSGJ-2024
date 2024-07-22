@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://drwebko3cqtoq"]
+
+[ext_resource type="Texture2D" uid="uid://dfmwv7gx2r4s8" path="res://Assets/UI/Workbench/craft_slot.png" id="1_en8mt"]
+[ext_resource type="Script" path="res://Scene/craft_slot.gd" id="1_r0mn7"]
+[ext_resource type="Texture2D" uid="uid://d3q34mrwwgowp" path="res://Assets/UI/Workbench/craft_select_slot.png" id="3_nxvv0"]
+
+[node name="CraftSlot" type="Control"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 46.0
+offset_bottom = 46.0
+script = ExtResource("1_r0mn7")
+
+[node name="CraftSlot" type="Sprite2D" parent="."]
+position = Vector2(22, 22)
+texture = ExtResource("1_en8mt")
+
+[node name="Select" type="Sprite2D" parent="CraftSlot"]
+texture = ExtResource("3_nxvv0")
+
+[node name="Icon" type="Sprite2D" parent="CraftSlot"]
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

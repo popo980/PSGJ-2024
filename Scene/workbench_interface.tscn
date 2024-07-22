@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc56cffelwn4v"]
+
+[ext_resource type="Script" path="res://Script/workbench_interface.gd" id="1_1wtyk"]
+[ext_resource type="Texture2D" uid="uid://u7p24gsk2su3" path="res://Assets/UI/Workbench/craft_bg.png" id="1_5kl2y"]
+[ext_resource type="Texture2D" uid="uid://dfmwv7gx2r4s8" path="res://Assets/UI/Workbench/craft_slot.png" id="2_8r6p8"]
+[ext_resource type="Script" path="res://Script/CraftSlots.gd" id="3_vd1sy"]
+[ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="4_tugwu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ed81f"]
+bg_color = Color(0.960784, 0.847059, 0.576471, 1)
+expand_margin_left = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wyys"]
+bg_color = Color(0.713726, 0.513726, 0.298039, 1)
+expand_margin_left = 2.0
+
+[sub_resource type="Theme" id="Theme_h0dp2"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_ed81f")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_8wyys")
+
+[node name="WorkbenchInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1wtyk")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 467.0
+offset_right = 700.0
+offset_bottom = 185.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("1_5kl2y")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(50, 179)
+layout_mode = 0
+offset_left = 473.0
+offset_top = 4.0
+offset_right = 526.0
+offset_bottom = 183.0
+scale = Vector2(0.924, 1)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_h0dp2")
+horizontal_scroll_mode = 0
+
+[node name="Slots" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(53, 0)
+layout_mode = 2
+script = ExtResource("3_vd1sy")
+
+[node name="BoxContainer" type="GridContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(170, 177)
+layout_mode = 0
+offset_left = 526.0
+offset_top = 4.0
+offset_right = 696.0
+offset_bottom = 181.0
+
+[node name="Name" type="Label" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_tugwu")
+theme_override_font_sizes/font_size = 20
+text = "TITLE"
+
+[node name="Description" type="Label" parent="BoxContainer"]
+custom_minimum_size = Vector2(170, 50)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_tugwu")
+theme_override_font_sizes/font_size = 10
+text = "Description"
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="Recipe" type="VBoxContainer" parent="BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(99, 99)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+
+[node name="Row1" type="HBoxContainer" parent="BoxContainer/HBoxContainer/Recipe"]
+custom_minimum_size = Vector2(99, 48)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CraftSlot" type="Sprite2D" parent="BoxContainer/HBoxContainer/Recipe/Row1"]
+position = Vector2(25, 24)
+texture = ExtResource("2_8r6p8")
+
+[node name="Sprite2D" type="Sprite2D" parent="BoxContainer/HBoxContainer/Recipe/Row1/CraftSlot"]
+
+[node name="CraftSlot2" type="Sprite2D" parent="BoxContainer/HBoxContainer/Recipe/Row1"]
+position = Vector2(74, 24)
+texture = ExtResource("2_8r6p8")
+
+[node name="Sprite2D" type="Sprite2D" parent="BoxContainer/HBoxContainer/Recipe/Row1/CraftSlot2"]
+
+[node name="Row2" type="HBoxContainer" parent="BoxContainer/HBoxContainer/Recipe"]
+custom_minimum_size = Vector2(99, 48)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CraftSlot" type="Sprite2D" parent="BoxContainer/HBoxContainer/Recipe/Row2"]
+position = Vector2(25, 24)
+texture = ExtResource("2_8r6p8")
+
+[node name="Sprite2D" type="Sprite2D" parent="BoxContainer/HBoxContainer/Recipe/Row2/CraftSlot"]
+
+[node name="CraftSlot2" type="Sprite2D" parent="BoxContainer/HBoxContainer/Recipe/Row2"]
+position = Vector2(74, 24)
+texture = ExtResource("2_8r6p8")
+
+[node name="Sprite2D" type="Sprite2D" parent="BoxContainer/HBoxContainer/Recipe/Row2/CraftSlot2"]
+
+[node name="CraftButton" type="Button" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_tugwu")
+theme_override_font_sizes/font_size = 20
+text = "CRAFT"
+
+[connection signal="craft_selected" from="ScrollContainer/Slots" to="." method="_on_slots_craft_selected"]
