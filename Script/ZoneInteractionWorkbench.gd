@@ -13,7 +13,7 @@ var nbRock :int= 0
 var nbBush :int= 0
 
 func _ready():
-	Gui = get_parent().get_parent().get_node(NodePath("GUI"))
+	Gui = get_parent().get_parent().get_parent().get_node(NodePath("GUI"))
 
 func recipes_available():
 	var rslt = []
@@ -65,3 +65,9 @@ func useRessources(craftName:String):
 	for i in inZone:
 		if neededRes[i.get_item_id_type()]>0:
 			i.queue_free()
+
+func get_item_id_type():
+	return -1
+	
+func interact(player):
+	print("interaction workbench: ouverture de l'établi en cours...")

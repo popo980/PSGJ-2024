@@ -10,7 +10,7 @@ const MIN_X = -230
 const MAX_X = 290
 const MIN_Y = -100
 const MAX_Y = 120
-const SPEED = 500.0
+const SPEED = 200.0
 const HIT_SPEED = 900.0
 var speed 
 var vel : Vector2
@@ -29,10 +29,10 @@ func _ready():
 
 func _physics_process(delta):
 	if not dead:
-		manageMov()
+		manageMov(delta)
 		time -= delta
 
-func manageMov():
+func manageMov(delta):
 	if time <= 0.0:
 		time = rand.randf_range(1.0, 6.0)
 		curState = rand.randi_range(0,1)
@@ -41,21 +41,21 @@ func manageMov():
 		
 	match curState:
 		STATE.WALK:
-			move(target)
+			move(target, delta)
 			animation.animation = "walk"
 			speed = SPEED
 		STATE.IDLE:
 			animation.animation = "idle"
 		STATE.BE_HIT:
 			speed = HIT_SPEED
-			move(target)
+			move(target, delta)
 
-func move(_target):
+func move(_target, delta):
 	if target.distance_to(global_position) <= threshold:
 		print("STOP")
 		curState = STATE.IDLE
 	var dir = (target - global_position).normalized()
-	velocity = (dir*speed - velocity)
+	velocity = (dir*speed - velocity) * delta * 10
 	move_and_slide()
 
 func find_target():

@@ -20,6 +20,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("Interact") && not is_holding && zone_interaction.inZone.size() > 0:
 		print("Interact !!")
 		var nearest_obj  = find_nearest(zone_interaction.inZone)
+		print("nearest :",nearest_obj.name)
 		nearest_obj.interact(self)
 		
 	# pose un objet à terre si le joueur tient un objet dans les mains

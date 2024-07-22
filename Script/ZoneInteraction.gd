@@ -42,6 +42,7 @@ func sub_ressources(TypeId:int):
 
 func _on_area_entered(area):
 	inZone.append(area)
+	print(area.name)
 	add_ressources(area.get_item_id_type())
 	Gui.UpdateCrafts(recipes_available())
 	print(str(recipes_available()))
@@ -65,3 +66,6 @@ func useRessources(craftName:String):
 	for i in inZone:
 		if neededRes[i.get_item_id_type()]>0:
 			i.queue_free()
+
+func get_item_id_type():
+	return -1
