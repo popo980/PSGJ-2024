@@ -40,13 +40,13 @@ func _ready():
 		add_craft(i, names[i], icons[i], descriptions[i], recipes[i])
 	
 
-func add_craft(id: int, craft_name: String, icon: CompressedTexture2D, description: String, recipe: Array):
+func add_craft(p_id: int, p_craft_name: String, p_icon: CompressedTexture2D, p_description: String, p_recipe: Array):
 	var slot = CRAFT_SLOT.instantiate()
-	slot.get_node("CraftSlot/Icon").texture = icon
-	slot.id = id
-	slot.craft_name = craft_name
-	slot.description = description
-	slot.recipe = recipe
+	slot.get_node("CraftSlot/Icon").texture = p_icon
+	slot.id = p_id
+	slot.craft_name = p_craft_name
+	slot.description = p_description
+	slot.recipe = p_recipe
 	slots.add_child(slot)
 	check_achievable(slot)
 
@@ -67,8 +67,8 @@ func _on_slots_craft_selected(id):
 		for i in range(number, 4):
 			set_slot_recipe(i, EMPTY)
 	
-	# check si l'item est réalisable
-	craft_button.disabled = craft_selected.disabled
+	# check si l'item est réalisable et grise le bouton en fonction
+	craft_button.disabled = craft_selected.is_disabled
 
 func set_slot_recipe(indice, icon):
 	match indice:
@@ -89,3 +89,6 @@ func check_achievable(slot):
 	var achievable = (workbench_zone_interaction.nbTree >= slot.recipe[0]) && (workbench_zone_interaction.nbRock >= slot.recipe[1]) && (workbench_zone_interaction.nbBush >= slot.recipe[2]) 
 	print(slot.craft_name, " is achievable : ", achievable)
 	slot.griser_slot(not achievable)
+	# permet de dégriser le bouton
+	if slot == slots.selected:
+		craft_button.disabled = slot.is_disabled

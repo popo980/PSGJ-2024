@@ -448,7 +448,7 @@ position = Vector2(544, 142)
 position = Vector2(163, 242)
 
 [node name="Tree3" parent="Trees" instance=ExtResource("2_vjkal")]
-position = Vector2(494, 125)
+position = Vector2(210, 267)
 
 [node name="Rocks" type="Node" parent="."]
 

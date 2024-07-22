@@ -9,7 +9,7 @@ var craft_name : String
 var description : String
 var recipe : Array
 var slots
-var disabled = true
+var is_disabled = true
 
 func _ready():
 	select_icon.visible = false
@@ -29,10 +29,13 @@ func _process(_delta):
 		select(mouse)
 	
 func select(selected):
-	select_icon.visible = selected
 	if selected:
+		if slots.selected != null:
+			slots.selected.select_icon.visible = false
+		select_icon.visible = true
+		slots.selected = self
 		slots.select(id)
 
 func griser_slot(griser: bool):
-	disabled = griser
+	is_disabled = griser
 	icone_grisee.visible = griser
