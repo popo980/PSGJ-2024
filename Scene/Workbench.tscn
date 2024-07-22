@@ -29,4 +29,5 @@ script = ExtResource("2_x1qv1")
 shape = SubResource("CircleShape2D_vj865")
 
 [node name="Sprite2D" type="Sprite2D" parent="ZoneInteractionW"]
+z_index = -1
 texture = ExtResource("2_uk441")

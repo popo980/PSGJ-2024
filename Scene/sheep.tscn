@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://7g4c3tvpoc7s"]
+[gd_scene load_steps=21 format=3 uid="uid://7g4c3tvpoc7s"]
 
 [ext_resource type="Texture2D" uid="uid://7j4ntxo7b2vr" path="res://Assets/Mob/Animals/SheepIdle.png" id="1_at5a8"]
 [ext_resource type="Texture2D" uid="uid://dpjmtvxm48c4i" path="res://Assets/Mob/Animals/SheepWalk.png" id="1_ds0cx"]
 [ext_resource type="Script" path="res://Script/sheep.gd" id="1_qy8fh"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="4_sqx0u"]
+[ext_resource type="PackedScene" uid="uid://dkyhx4d2g2xt3" path="res://Scene/Shadow.tscn" id="5_5irlw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ljrxs"]
 atlas = ExtResource("1_at5a8")
@@ -183,6 +184,12 @@ color_initial_ramp = SubResource("Gradient_065sf")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Shadow" parent="." node_paths=PackedStringArray("mob_sprite") instance=ExtResource("5_5irlw")]
+position = Vector2(0, 13)
+mob_sprite = NodePath("../Sprite")
 
 [connection signal="body_entered" from="ZoneContact" to="." method="_on_zone_contact_body_entered"]
 [connection signal="body_shape_entered" from="ZoneContact" to="." method="_on_zone_contact_body_shape_entered"]

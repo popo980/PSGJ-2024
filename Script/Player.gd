@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var anim_sprite = $AnimatedSprite2D
 @onready var weapon = $WeaponMark/Weapon
 @onready var zone_interaction = $ZoneInteraction
+@onready var shadow = $Shadow
+
 
 var is_holding : bool
 var item_held : Area2D
@@ -46,10 +48,10 @@ func manageMov():
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.y = move_toward(velocity.y, 0, speed)
 	
-	if velocity.x + velocity.y && anim_sprite.animation == "Idle":
-		anim_sprite.animation = "Run"
-	elif !(velocity.x + velocity.y) && anim_sprite.animation == "Run":
-		anim_sprite.animation = "Idle"
+	if velocity.x + velocity.y && anim_sprite.animation == "idle":
+		change_animation("run")
+	elif !(velocity.x + velocity.y) && anim_sprite.animation == "run":
+		change_animation("idle")
 
 func distance(obj1, obj2):
 	return (obj1.global_position.x-obj2.global_position.x)**2 + (obj1.global_position.y-obj2.global_position.y)**2
@@ -67,3 +69,7 @@ func find_nearest(tab):
 
 func useRessources(craftName:String):
 	zone_interaction.useRessources(craftName)
+
+func change_animation(new_animation):
+	anim_sprite.animation = new_animation
+	shadow.change_animation(new_animation)

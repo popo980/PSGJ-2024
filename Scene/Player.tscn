@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b08utre752g6f"]
+[gd_scene load_steps=21 format=3 uid="uid://b08utre752g6f"]
 
 [ext_resource type="Texture2D" uid="uid://bwqy7ghcytgod" path="res://Assets/Player/Idle-Sheet.png" id="1_bajiw"]
 [ext_resource type="Script" path="res://Script/Player.gd" id="1_c0xhy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Script/ZoneInteraction.gd" id="4_oqla3"]
 [ext_resource type="Texture2D" uid="uid://olrcr0r3f31g" path="res://Assets/Player/Zone_filled.png" id="5_ihs8e"]
 [ext_resource type="PackedScene" uid="uid://1hxrcyjwv3rh" path="res://Scene/Weapon.tscn" id="5_mbv48"]
+[ext_resource type="PackedScene" uid="uid://dkyhx4d2g2xt3" path="res://Scene/Shadow.tscn" id="7_aewb8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf30w"]
 atlas = ExtResource("1_bajiw")
@@ -63,7 +64,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_e7b17")
 }],
 "loop": true,
-"name": &"Idle",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -86,7 +87,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_gcnqr")
 }],
 "loop": true,
-"name": &"Run",
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -104,8 +105,8 @@ script = ExtResource("1_c0xhy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_duwlh")
-animation = &"Idle"
-autoplay = "Idle"
+animation = &"run"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
@@ -131,6 +132,11 @@ texture = ExtResource("5_ihs8e")
 position = Vector2(-6, 9)
 
 [node name="Weapon" parent="WeaponMark" instance=ExtResource("5_mbv48")]
+
+[node name="Shadow" parent="." node_paths=PackedStringArray("mob_sprite") instance=ExtResource("7_aewb8")]
+position = Vector2(0, 33)
+collision_layer = 2
+mob_sprite = NodePath("../AnimatedSprite2D")
 
 [connection signal="area_entered" from="ZoneInteraction" to="ZoneInteraction" method="_on_area_entered"]
 [connection signal="area_exited" from="ZoneInteraction" to="ZoneInteraction" method="_on_area_exited"]

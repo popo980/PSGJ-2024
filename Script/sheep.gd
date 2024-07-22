@@ -22,6 +22,11 @@ var threshold = 0.3
 var dead : bool
 @onready var animation = $Sprite
 @onready var particles = $Particles
+@onready var audio_stream_player = $AudioStreamPlayer
+@onready var shadow = $Shadow
+
+var die_sounds = [preload("res://Assets/SFX/animal_die_1.mp3"), preload("res://Assets/SFX/animal_die_2.mp3")]
+var hit_sounds = [preload("res://Assets/SFX/animal_punch_1.mp3")]
 
 func _ready():
 	time = 1.0
@@ -42,10 +47,10 @@ func manageMov(delta):
 	match curState:
 		STATE.WALK:
 			move(target, delta)
-			animation.animation = "walk"
+			change_animation("walk")
 			speed = SPEED
 		STATE.IDLE:
-			animation.animation = "idle"
+			change_animation("idle")
 		STATE.BE_HIT:
 			speed = HIT_SPEED
 			move(target, delta)
@@ -74,14 +79,27 @@ func _on_timer_timeout():
 
 func _on_ressources_destroy_signal():
 	print("Sheep died")
+	audio_stream_player.stream = random_sound(die_sounds)
+	audio_stream_player.play()
 	particles.emitting = true
 	animation.queue_free()
+	shadow.queue_free()
 	$Timer.start()
 	dead = true
 
 func _on_ressources_hit_signal():
 	if not dead:
+		audio_stream_player.stream = random_sound(hit_sounds)
+		audio_stream_player.play()
 		curState = STATE.BE_HIT
-		animation.animation = "walk"
+		change_animation("walk")
 		time = 1.0
 		target = -target
+
+func random_sound(sound_list):
+	var i = rand.randi_range(0, sound_list.size()-1)
+	return sound_list[i]
+
+func change_animation(new_animation):
+	animation.animation = new_animation
+	shadow.change_animation(new_animation)
