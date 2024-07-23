@@ -9,7 +9,7 @@ var currentWeapon = ListWeapon.Weapons.FIST
 var damages = 0
 var weapon_slot
 var weapon_icons = { 
-	ListWeapon.Weapons.FIST: preload("res://Assets/UI/Workbench/empty.png"),
+	ListWeapon.Weapons.FIST: preload("res://Assets/Weapons/Hands.png"),
 	ListWeapon.Weapons.WOOD_SWORD: preload("res://Assets/Weapons/wooden_sword.png"), 
 	ListWeapon.Weapons.STONE_AXE: preload("res://Assets/Weapons/stone_axe.png"), 
 	ListWeapon.Weapons.BOW: preload("res://Assets/Weapons/bow.png"), 
@@ -38,6 +38,7 @@ func SwitchWeapon(weapon:ListWeapon.Weapons):
 	animation_player.play(getWeaponName()+"Idle")
 
 func SetUpWeapon():
+	sprite_2d.texture = weapon_icons[currentWeapon]
 	match currentWeapon:
 		ListWeapon.Weapons.FIST:
 			damages = 5
@@ -45,6 +46,7 @@ func SetUpWeapon():
 			collision_shape_2d.set_position(Vector2(0,0))
 			collision_shape_2d.set_scale(Vector2(1,1))
 		ListWeapon.Weapons.WOOD_SWORD:
+			sprite_2d.set_region_rect(Rect2(0,0,16,16))
 			damages = 10
 			#TODO : completer
 		_:
@@ -66,6 +68,11 @@ func DropWeapon():
 
 func set_weapon_icon(weapon):
 	weapon_slot.get_node("weapon_icon").texture = weapon_icons[weapon]
+	if weapon == ListWeapon.Weapons.FIST:
+		sprite_2d.set_region_rect(Rect2(3.9,4.7,7.4,7.5))
+	else:
+		sprite_2d.set_region_rect(Rect2(0,0,16,16))
+		
 
 func _on_timer_timeout():
 	animation_player.play(getWeaponName()+"Idle")

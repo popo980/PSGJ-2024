@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://635r7uxtfoix"]
+[gd_scene load_steps=11 format=3 uid="uid://635r7uxtfoix"]
 
 [ext_resource type="PackedScene" uid="uid://dykdi42h6m5d" path="res://Scene/GUI.tscn" id="1_2fi62"]
 [ext_resource type="PackedScene" uid="uid://dv0wgsgv2je6k" path="res://Scene/Game_manager.tscn" id="1_a31kq"]
 [ext_resource type="Texture2D" uid="uid://c5sr8gcsnk8l4" path="res://Assets/Environement/Forest/Tiles.png" id="1_kud3s"]
 [ext_resource type="PackedScene" uid="uid://d15ejon0j3a1n" path="res://Scene/Tree.tscn" id="2_vjkal"]
 [ext_resource type="PackedScene" uid="uid://plkrkvokn260" path="res://Scene/Rock.tscn" id="3_vi856"]
-[ext_resource type="PackedScene" uid="uid://df8by3vb3etda" path="res://Scene/LeftPanel.tscn" id="3_xhcuc"]
 [ext_resource type="PackedScene" uid="uid://ijos2ojmfmcj" path="res://Scene/Bush.tscn" id="4_b7bwc"]
 [ext_resource type="PackedScene" uid="uid://b08utre752g6f" path="res://Scene/Player.tscn" id="5_q1dlg"]
 [ext_resource type="PackedScene" uid="uid://7g4c3tvpoc7s" path="res://Scene/sheep.tscn" id="8_a7w63"]
@@ -426,10 +425,6 @@ sources/0 = SubResource("TileSetAtlasSource_1pqn8")
 [node name="GameManager" parent="." instance=ExtResource("1_a31kq")]
 
 [node name="GUI" parent="." instance=ExtResource("1_2fi62")]
-
-[node name="LeftPanel" parent="GUI" instance=ExtResource("3_xhcuc")]
-z_index = -1
-layout_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -2
