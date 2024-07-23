@@ -1,10 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxdkthk8453vs"]
 
-[ext_resource type="Texture2D" uid="uid://jd5bkfgeeuxr" path="res://Assets/Temporaire/temporaire_crafttable.png" id="1_hdmhm"]
+[ext_resource type="Texture2D" uid="uid://bneayrogf1b0q" path="res://Assets/Temporaire/workbench.png" id="1_0frx0"]
 [ext_resource type="Script" path="res://Script/GUI_CraftingButton.gd" id="2_s5i2x"]
 
 [node name="CraftButton" type="Button"]
-icon = ExtResource("1_hdmhm")
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_0frx0")
 flat = true
 script = ExtResource("2_s5i2x")
 

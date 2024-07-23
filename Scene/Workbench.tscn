@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://057q88wo4k0r"]
+[gd_scene load_steps=8 format=3 uid="uid://057q88wo4k0r"]
 
-[ext_resource type="Texture2D" uid="uid://bneayrogf1b0q" path="res://Assets/Temporaire/workbench.png" id="1_13dq2"]
+[ext_resource type="Texture2D" uid="uid://b6hppkaahtvke" path="res://Assets/Temporaire/workbench_top.png" id="1_t8bjx"]
+[ext_resource type="Texture2D" uid="uid://djy12qmcsbgf7" path="res://Assets/Temporaire/workbench_bottomt.png" id="2_rb7ot"]
 [ext_resource type="Texture2D" uid="uid://bwk1x1yhkl117" path="res://Assets/Player/Zone.png" id="2_uk441"]
 [ext_resource type="Script" path="res://Script/ZoneInteractionWorkbench.gd" id="2_x1qv1"]
 [ext_resource type="PackedScene" uid="uid://cc56cffelwn4v" path="res://Scene/workbench_interface.tscn" id="4_li2to"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plv3s"]
-size = Vector2(13, 9)
+size = Vector2(22, 13)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vj865"]
 radius = 31.0
@@ -15,12 +16,17 @@ radius = 31.0
 scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_t8bjx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_13dq2")
+texture = ExtResource("2_rb7ot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2.5)
+position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_plv3s")
 
 [node name="ZoneInteractionW" type="Area2D" parent="."]

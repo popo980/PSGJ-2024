@@ -6,7 +6,9 @@ func setCraftAttribute(newName:String):
 	craftName = newName
 	match newName:
 		"Workbench":
-			icon = load("res://Assets/Temporaire/temporaire_crafttable.png")
+			icon = load("res://Assets/Temporaire/workbench.png")
+			size.x = 10
+			size.y = 10
 		_:
 			print("ERREUR CRAFT INCONNU")
 
