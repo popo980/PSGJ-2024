@@ -6,7 +6,8 @@ var recipes = {
 	"Stone Axe": [1,2,0],
 	"Bow": [1,0,2],
 	"Magic Wand": [3,1,0],
-	"Knife": [0,2,1]
+	"Knife": [0,2,1],
+	"Enchantment table": [1,0,1]
 }
 
 #var Gui

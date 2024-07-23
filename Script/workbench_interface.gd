@@ -20,20 +20,24 @@ var player
 var current_selected 
 
 # ------------------- CRAFTS INFORMATIONS -----------------------------------------------------------------------------------------------
-var weapon_types = [ListWeapon.Weapons.WOOD_SWORD, ListWeapon.Weapons.STONE_AXE, ListWeapon.Weapons.BOW,
+var weapon_types = [ListWeapon.Weapons.NOT_A_WEAPON, ListWeapon.Weapons.WOOD_SWORD, ListWeapon.Weapons.STONE_AXE, ListWeapon.Weapons.BOW,
 					ListWeapon.Weapons.MAGIC_WAND, ListWeapon.Weapons.KNIFE]
-var names = ["Wood Sword", "Stone Axe", "Bow", "Magic Wand", "Knife"]
-var descriptions = ["A basic wooden sword, not very strong but better than fighting bare-handed",
+var names = ["Enchantment table", "Wood Sword", "Stone Axe", "Bow", "Magic Wand", "Knife"]
+var descriptions = ["Use shadows to enchant your weapons",
+					"A basic wooden sword, not very strong but better than fighting bare-handed",
 					"Who said an axe was only for chopping wood? With this stone axe, you can defend yourself with ease.",
 					"A bow, perfect for hitting targets from a distance! avoid hand-to-hand combat with this weapon.",
 					"magic wand description",
-					"knife description"]
-var icons = [preload("res://Assets/Weapons/wooden_sword.png"),
+					"knife description"
+					]
+var icons = [preload("res://Assets/Temporaire/table_denchantement.png"),
+			preload("res://Assets/Weapons/wooden_sword.png"),
 			preload("res://Assets/Weapons/stone_axe.png"),
 			preload("res://Assets/Weapons/bow.png"),
 			preload("res://Assets/Weapons/magic_wand.png"),
 			preload("res://Assets/Weapons/knife.png")]
-var recipes = [[1,0,0], [1, 2, 0], [1,0,2], [3,1,0], [0,2,1]]
+var recipes = [[1,0,1], [1,0,0], [1, 2, 0], [1,0,2], [3,1,0], [0,2,1]]
+var instances = [preload("res://Scene/enchantment_table.tscn"), null, null, null, null, null]
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -41,10 +45,10 @@ func _ready():
 	workbench_zone_interaction = get_parent().get_node("ZoneInteractionW")
 	player = get_parent().get_parent().get_parent().get_node("Player")
 	for i in range(names.size()):
-		add_craft(i, weapon_types[i], names[i], icons[i], descriptions[i], recipes[i])
+		add_craft(i, weapon_types[i], names[i], icons[i], descriptions[i], recipes[i], instances[i])
 	
 
-func add_craft(p_id: int, p_type : ListWeapon.Weapons, p_craft_name: String, p_icon: CompressedTexture2D, p_description: String, p_recipe: Array):
+func add_craft(p_id: int, p_type : ListWeapon.Weapons, p_craft_name: String, p_icon: CompressedTexture2D, p_description: String, p_recipe: Array, p_instance):
 	var slot = CRAFT_SLOT.instantiate()
 	slot.get_node("CraftSlot/Icon").texture = p_icon
 	slot.id = p_id
@@ -52,6 +56,7 @@ func add_craft(p_id: int, p_type : ListWeapon.Weapons, p_craft_name: String, p_i
 	slot.craft_name = p_craft_name
 	slot.description = p_description
 	slot.recipe = p_recipe
+	slot.instance = p_instance
 	slots.add_child(slot)
 	check_achievable(slot)
 
@@ -103,4 +108,9 @@ func check_achievable(slot):
 
 func _on_craft_button_pressed():
 	workbench_zone_interaction.useRessources(current_selected.craft_name)
-	player.get_node("WeaponMark/Weapon").SwitchWeapon(current_selected.type)
+	if not current_selected.type == ListWeapon.Weapons.NOT_A_WEAPON:
+		player.get_node("WeaponMark/Weapon").SwitchWeapon(current_selected.type)
+	else: # instancie l'objet qui n'est pas une arme et le place dans la main du joueur
+		var craft = current_selected.instance.instantiate()
+		player.add_child(craft)
+		player.craft_held = craft

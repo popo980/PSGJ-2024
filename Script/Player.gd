@@ -10,6 +10,7 @@ extends CharacterBody2D
 
 var is_holding : bool
 var item_held : Area2D
+var craft_held
 
 func _physics_process(_delta):
 	manageMov()
@@ -17,6 +18,11 @@ func _physics_process(_delta):
 	if Input.get_action_raw_strength("Hit") :
 		weapon.Hit()
 		#TODO (scene speciale pour les armes ?)
+	
+	# un objet vient d'etre craft et est dans la main du joueur, il doit donc le poser
+	if Input.is_action_just_pressed("Interact") && not craft_held == null:
+		craft_held.drop()
+		craft_held = null
 	
 	# ramasse un objet à terre si le joueur ne tient rien dans les mains et qu'il y a un objet à proximité
 	if Input.is_action_just_pressed("Interact") && not is_holding && zone_interaction.inZone.size() > 0:

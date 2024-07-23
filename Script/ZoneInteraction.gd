@@ -2,8 +2,7 @@ extends Area2D
 
 #[Tree,Rock,Bush
 var recipes = {
-	"Workbench": [2,0,0],
-	"EnchantTable": [0,1,1]
+	"Workbench": [2,0,0]
 }
 
 var Gui
@@ -65,7 +64,6 @@ func useRessources(craftName:String):
 	var neededRes = recipes[craftName]
 	for i in inZone:
 		if neededRes[i.get_item_id_type()]>0:
-			neededRes[i.get_item_id_type()]-=1
 			i.queue_free()
 
 func get_item_id_type():

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2mdxecnhha3e"]
+
+[ext_resource type="Texture2D" uid="uid://dt2m4ljidh0cq" path="res://Assets/Temporaire/table_denchantement.png" id="1_4gmlg"]
+[ext_resource type="Script" path="res://Script/enchantment_table.gd" id="1_wq70t"]
+[ext_resource type="Script" path="res://Script/ZoneInteractionE.gd" id="2_ihhfi"]
+[ext_resource type="Texture2D" uid="uid://bwk1x1yhkl117" path="res://Assets/Player/Zone.png" id="3_p5c0m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ox8u"]
+radius = 31.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usigr"]
+size = Vector2(24, 18)
+
+[node name="EnchantmentTable" type="StaticBody2D"]
+script = ExtResource("1_wq70t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_4gmlg")
+
+[node name="ZoneInteractionE" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("2_ihhfi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneInteractionE"]
+shape = SubResource("CircleShape2D_7ox8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="ZoneInteractionE"]
+z_index = -1
+texture = ExtResource("3_p5c0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_usigr")
+disabled = true
+
+[connection signal="area_entered" from="ZoneInteractionE" to="ZoneInteractionE" method="_on_area_entered"]
+[connection signal="area_exited" from="ZoneInteractionE" to="ZoneInteractionE" method="_on_area_exited"]
+[connection signal="body_entered" from="ZoneInteractionE" to="ZoneInteractionE" method="_on_body_entered"]
+[connection signal="body_exited" from="ZoneInteractionE" to="ZoneInteractionE" method="_on_body_exited"]
+[connection signal="body_shape_entered" from="ZoneInteractionE" to="ZoneInteractionE" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="ZoneInteractionE" to="ZoneInteractionE" method="_on_body_shape_exited"]

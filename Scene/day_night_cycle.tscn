@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx4c6q5xorv1c"]
+
+[ext_resource type="Script" path="res://Script/day_night_cycle.gd" id="1_mr7k5"]
+[ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="2_h86g6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp0s0"]
+bg_color = Color(0.126672, 0.659692, 0.823184, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgk8f"]
+bg_color = Color(0.0888639, 0.10196, 0.364722, 1)
+
+[node name="DayNightCycle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mr7k5")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 5.0
+offset_right = 500.0
+offset_bottom = 25.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hp0s0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qgk8f")
+step = 0.001
+show_percentage = false
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 570.0
+offset_top = 5.0
+offset_right = 695.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("2_h86g6")
+text = "Skip to night"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

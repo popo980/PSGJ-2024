@@ -1,8 +1,7 @@
 extends Node2D
 
 var Spawnable = {
-	"Workbench": preload("res://Scene/Workbench.tscn"),
-	"EnchantTable": preload("res://Scene/Workbench.tscn")
+	"Workbench": preload("res://Scene/Workbench.tscn")
 }
 
 @onready var player = get_parent().get_node(NodePath("Player"))

@@ -9,10 +9,6 @@ func setCraftAttribute(newName:String):
 			icon = load("res://Assets/Temporaire/workbench.png")
 			size.x = 10
 			size.y = 10
-		"EnchantTable":
-			icon = load("res://Assets/Temporaire/table_denchantement.png")
-			size.x = 10
-			size.y = 10
 		_:
 			print("ERREUR CRAFT INCONNU")
 

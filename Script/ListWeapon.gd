@@ -6,5 +6,6 @@ enum Weapons {
 	STONE_AXE, 
 	BOW, 
 	MAGIC_WAND, 
-	KNIFE
+	KNIFE,
+	NOT_A_WEAPON
 }

@@ -11,6 +11,7 @@ var description : String
 var recipe : Array
 var slots
 var is_disabled = true
+var instance 
 
 func _ready():
 	select_icon.visible = false

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dykdi42h6m5d"]
+[gd_scene load_steps=2 format=3 uid="uid://dykdi42h6m5d"]
 
 [ext_resource type="Script" path="res://Script/GUI.gd" id="1_ww34x"]
-[ext_resource type="PackedScene" uid="uid://df8by3vb3etda" path="res://Scene/LeftPanel.tscn" id="2_xbvxv"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -17,6 +16,3 @@ layout_mode = 0
 offset_right = 20.0
 offset_bottom = 40.0
 scale = Vector2(3.03, 3.03)
-
-[node name="LeftPanel" parent="." instance=ExtResource("2_xbvxv")]
-layout_mode = 1
