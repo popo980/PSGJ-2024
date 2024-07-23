@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://df8by3vb3etda"]
+
+[ext_resource type="Texture2D" uid="uid://dwjbgx805v6qu" path="res://Assets/UI/left_panel.png" id="1_08qpd"]
+[ext_resource type="Texture2D" uid="uid://dfmwv7gx2r4s8" path="res://Assets/UI/Workbench/craft_slot.png" id="2_gcgtp"]
+
+[node name="LeftPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(35, 185)
+texture = ExtResource("1_08qpd")
+
+[node name="craft_slot" type="Sprite2D" parent="."]
+position = Vector2(35, 35)
+texture = ExtResource("2_gcgtp")
+
+[node name="weapon_slot" type="Sprite2D" parent="."]
+position = Vector2(35, 335)
+texture = ExtResource("2_gcgtp")
+
+[node name="weapon_icon" type="Sprite2D" parent="weapon_slot"]

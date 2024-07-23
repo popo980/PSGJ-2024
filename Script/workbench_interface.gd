@@ -3,7 +3,6 @@ extends Control
 @onready var slots = $ScrollContainer/Slots
 const CRAFT_SLOT = preload("res://Scene/craft_slot.tscn")
 const EMPTY_ICON = preload("res://Assets/UI/Workbench/empty_icon.png")
-var i = 0
 
 @onready var craft_name = $BoxContainer/Name
 @onready var description = $BoxContainer/Description
@@ -17,8 +16,12 @@ var ressources_icons = [preload("res://Assets/Environement/Forest/wood.png"),
 const EMPTY = preload("res://Assets/UI/Workbench/empty.png")
 
 var workbench_zone_interaction
+var player
+var current_selected 
 
 # ------------------- CRAFTS INFORMATIONS -----------------------------------------------------------------------------------------------
+var weapon_types = [ListWeapon.Weapons.WOOD_SWORD, ListWeapon.Weapons.STONE_AXE, ListWeapon.Weapons.BOW,
+					ListWeapon.Weapons.MAGIC_WAND, ListWeapon.Weapons.KNIFE]
 var names = ["Wood Sword", "Stone Axe", "Bow", "Magic Wand", "Knife"]
 var descriptions = ["A basic wooden sword, not very strong but better than fighting bare-handed",
 					"Who said an axe was only for chopping wood? With this stone axe, you can defend yourself with ease.",
@@ -36,14 +39,16 @@ var recipes = [[1,0,0], [1, 2, 0], [1,0,2], [3,1,0], [0,2,1]]
 
 func _ready():
 	workbench_zone_interaction = get_parent().get_node("ZoneInteractionW")
+	player = get_parent().get_parent().get_parent().get_node("Player")
 	for i in range(names.size()):
-		add_craft(i, names[i], icons[i], descriptions[i], recipes[i])
+		add_craft(i, weapon_types[i], names[i], icons[i], descriptions[i], recipes[i])
 	
 
-func add_craft(p_id: int, p_craft_name: String, p_icon: CompressedTexture2D, p_description: String, p_recipe: Array):
+func add_craft(p_id: int, p_type : ListWeapon.Weapons, p_craft_name: String, p_icon: CompressedTexture2D, p_description: String, p_recipe: Array):
 	var slot = CRAFT_SLOT.instantiate()
 	slot.get_node("CraftSlot/Icon").texture = p_icon
 	slot.id = p_id
+	slot.type = p_type
 	slot.craft_name = p_craft_name
 	slot.description = p_description
 	slot.recipe = p_recipe
@@ -54,6 +59,8 @@ func _on_slots_craft_selected(id):
 	var craft_selected = slots.get_child(id)
 	craft_name.text = craft_selected.craft_name
 	description.text = craft_selected.description
+	
+	current_selected = craft_selected
 	
 	# remplis les slots selon le craft sélectionné
 	var number = 0
@@ -92,3 +99,8 @@ func check_achievable(slot):
 	# permet de dégriser le bouton
 	if slot == slots.selected:
 		craft_button.disabled = slot.is_disabled
+
+
+func _on_craft_button_pressed():
+	workbench_zone_interaction.useRessources(current_selected.craft_name)
+	player.get_node("WeaponMark/Weapon").SwitchWeapon(current_selected.type)

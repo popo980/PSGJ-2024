@@ -29,7 +29,7 @@ func change_animation(new_animation):
 func get_item_id_type():
 	return -1
 
-func interact(player):
+func interact(_player):
 	sprite.modulate = Color(0, 0, 0, 0)
 	print("ombre de ", mob_name[mob], " ajoutée à l'inventaire des ombres !")
 	# add shadow in player inventory

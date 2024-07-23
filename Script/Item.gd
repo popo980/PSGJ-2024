@@ -30,7 +30,6 @@ func hold(player):
 	player.item_held = self
 
 func drop():
-	print("DROP")
 	is_held = false
 	var item = player_holding.item_held
 	player_holding.is_holding = false
@@ -40,7 +39,6 @@ func drop():
 	item.global_position = player_holding.global_position
 	
 func get_item_id_type():
-	print("OK ITEM TYPE : ", item_type)
 	return int(item_type)
 
 func set_parent(p):

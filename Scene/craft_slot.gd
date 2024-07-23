@@ -4,6 +4,7 @@ extends Control
 @onready var icone_grisee = $CraftSlot/IconeGrisee
 
 var mouse = false
+var type : ListWeapon.Weapons
 var id : int
 var craft_name : String
 var description : String

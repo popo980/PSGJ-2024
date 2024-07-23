@@ -42,7 +42,6 @@ func sub_ressources(TypeId:int):
 
 func _on_area_entered(area):
 	inZone.append(area)
-	print(area.name)
 	add_ressources(area.get_item_id_type())
 	Gui.UpdateCrafts(recipes_available())
 	print(str(recipes_available()))

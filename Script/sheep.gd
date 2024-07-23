@@ -40,9 +40,8 @@ func _physics_process(delta):
 func manageMov(delta):
 	if time <= 0.0:
 		time = rand.randf_range(1.0, 6.0)
-		curState = rand.randi_range(0,1)
+		curState = rand.randi_range(0,1) as STATE
 		target = find_target()
-		print("state: ", curState)
 		
 	match curState:
 		STATE.WALK:
@@ -57,7 +56,6 @@ func manageMov(delta):
 
 func move(_target, delta):
 	if target.distance_to(global_position) <= threshold:
-		print("STOP")
 		curState = STATE.IDLE
 	var dir = (target - global_position).normalized()
 	velocity = (dir*speed - velocity) * delta * 10
@@ -68,7 +66,6 @@ func find_target():
 
 
 func _on_zone_contact_body_entered(_body):
-	print("CONTACT")
 	curState = STATE.WALK
 
 func get_item():
