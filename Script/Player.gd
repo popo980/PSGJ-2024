@@ -12,6 +12,9 @@ var is_holding : bool
 var item_held : Area2D
 var craft_held
 
+var workbench_open : bool
+var enchantment_table_open : bool
+
 func _physics_process(_delta):
 	manageMov()
 	

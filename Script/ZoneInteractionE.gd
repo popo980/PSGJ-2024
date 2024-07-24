@@ -1,5 +1,11 @@
 extends Area2D
-#
+
+
+var table_open : bool
+var dropped : bool
+@onready var enchantment_table_interface = $"../EnchantmentTableInterface"
+var player
+
 ##[Tree,Rock,Bush]
 #var recipes = {
 	#"Wood Sword": [1,0,0],
@@ -18,9 +24,9 @@ extends Area2D
 #var nbBush :int= 0
 #
 #@onready var workbench_interface = $"../WorkbenchInterface"
-#var workbench_open = false
 #
-#func _ready():
+func _ready():
+	player = get_parent().get_parent().get_parent().get_node("Player")
 	##Gui = get_parent().get_parent().get_parent().get_node(NodePath("GUI"))
 	#workbench_interface.global_position = Vector2.ZERO
 #
@@ -86,14 +92,22 @@ func interact(_player):pass
 	#workbench_open = not workbench_open
 	#workbench_interface.visible = workbench_open
 	#workbench_interface.global_position = Vector2.ZERO
-#
-#
-#func _on_body_entered(_body):
-	#workbench_open = true
-	#workbench_interface.visible = workbench_open
-	#workbench_interface.global_position = Vector2.ZERO
-#
-#
-#func _on_body_exited(_body):
-	#workbench_open = false
-	#workbench_interface.visible = workbench_open
+
+
+func _on_body_entered(_body):
+	table_open = true
+	enchantment_table_interface.visible = table_open && dropped
+	enchantment_table_interface.global_position = Vector2.ZERO
+	player.enchantment_table_open = true
+	if player.workbench_open:
+		print("workbench already open")
+		enchantment_table_interface.z_index = 11
+	else :
+		print("workbench not open")
+		enchantment_table_interface.z_index = 10
+
+
+func _on_body_exited(_body):
+	table_open = false
+	enchantment_table_interface.visible = table_open
+	player.enchantment_table_open = false

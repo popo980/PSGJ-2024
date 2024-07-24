@@ -16,3 +16,4 @@ func drop():
 	scale = Vector2(2,2)
 	zone_interaction.visible = true
 	collision_shape.disabled = false
+	zone_interaction.dropped = true

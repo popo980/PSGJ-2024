@@ -19,8 +19,10 @@ var nbBush :int= 0
 
 @onready var workbench_interface = $"../WorkbenchInterface"
 var workbench_open = false
+var player
 
 func _ready():
+	player = get_parent().get_parent().get_parent().get_node("Player")
 	#Gui = get_parent().get_parent().get_parent().get_node(NodePath("GUI"))
 	workbench_interface.global_position = Vector2.ZERO
 
@@ -92,8 +94,15 @@ func _on_body_entered(_body):
 	workbench_open = true
 	workbench_interface.visible = workbench_open
 	workbench_interface.global_position = Vector2.ZERO
-
+	player.workbench_open = true
+	if player.enchantment_table_open:
+		print("enchantment_table already open")
+		workbench_interface.z_index = 11
+	else :
+		print("enchantment_table not open")
+		workbench_interface.z_index = 10
 
 func _on_body_exited(_body):
 	workbench_open = false
 	workbench_interface.visible = workbench_open
+	player.workbench_open = false

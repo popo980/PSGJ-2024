@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl8q0k1yusm8j"]
+
+[ext_resource type="Texture2D" uid="uid://dpxhb51eks4ba" path="res://Assets/UI/EnchantmentTable/enchantment_table_background.png" id="1_5ed27"]
+[ext_resource type="Script" path="res://Script/enchantment_table_interface.gd" id="1_7wo5b"]
+[ext_resource type="Texture2D" uid="uid://dfmwv7gx2r4s8" path="res://Assets/UI/Workbench/craft_slot.png" id="2_edcd0"]
+[ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="3_ksdcy"]
+
+[node name="EnchantmentTableInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7wo5b")
+
+[node name="EnchantmentTableBackground" type="Sprite2D" parent="."]
+position = Vector2(584, 92)
+texture = ExtResource("1_5ed27")
+
+[node name="weaponSlot" type="Sprite2D" parent="."]
+position = Vector2(510, 40)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_edcd0")
+
+[node name="weaponIcon" type="Sprite2D" parent="weaponSlot"]
+
+[node name="resultSlot" type="Sprite2D" parent="."]
+position = Vector2(510, 144)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_edcd0")
+
+[node name="resultIcon" type="Sprite2D" parent="resultSlot"]
+
+[node name="CraftSlot" type="Sprite2D" parent="."]
+position = Vector2(610, 35)
+texture = ExtResource("2_edcd0")
+
+[node name="CraftSlot2" type="Sprite2D" parent="."]
+position = Vector2(665, 35)
+texture = ExtResource("2_edcd0")
+
+[node name="CraftSlot3" type="Sprite2D" parent="."]
+position = Vector2(610, 85)
+texture = ExtResource("2_edcd0")
+
+[node name="CraftSlot4" type="Sprite2D" parent="."]
+position = Vector2(665, 85)
+texture = ExtResource("2_edcd0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 116.0
+offset_right = 690.0
+offset_bottom = 178.0
+theme_override_fonts/font = ExtResource("3_ksdcy")
+theme_override_font_sizes/font_size = 10
+text = "description du résultat de l'enchantement"
+vertical_alignment = 1
+autowrap_mode = 3

@@ -443,7 +443,6 @@ layer_1/tile_data = PackedInt32Array(-524304, 327680, 5, -589840, 327680, 4, -65
 
 [node name="Player" parent="." instance=ExtResource("5_q1dlg")]
 position = Vector2(333, 177)
-speed = 200.0
 
 [node name="Trees" type="Node" parent="."]
 
