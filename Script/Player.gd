@@ -15,6 +15,9 @@ var craft_held
 var workbench_open : bool
 var enchantment_table_open : bool
 
+#			 [ nb_sheeps, nb_boars, nb_bees]
+var shadow_inventory = [0, 0, 0]
+
 func _physics_process(_delta):
 	manageMov()
 	
@@ -79,3 +82,8 @@ func useRessources(craftName:String):
 func change_animation(new_animation):
 	anim_sprite.animation = new_animation
 	shadow.change_animation(new_animation)
+
+func add_shadow_inventory(mob: int):
+	shadow_inventory[mob] += 1
+	print("mob:",mob)
+	print(shadow_inventory)

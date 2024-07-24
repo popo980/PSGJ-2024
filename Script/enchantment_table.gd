@@ -5,6 +5,11 @@ var player
 @onready var zone_interaction = $ZoneInteractionE
 @onready var collision_shape = $CollisionShape2D
 
+# shadows effect : 
+#	sheep increase critical hit
+#	boar increase damage
+#	bee increase speed
+
 func _ready():
 	player = get_parent()
 	main = get_parent().get_parent()
