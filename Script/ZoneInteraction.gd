@@ -63,8 +63,10 @@ func is_in_3arg(lst1,lst2):
 func useRessources(craftName:String):
 	var neededRes = recipes[craftName]
 	for i in inZone:
-		if neededRes[i.get_item_id_type()]>0:
+		var id_type = i.get_item_id_type()
+		if neededRes[id_type]>0:
 			i.queue_free()
+			#neededRes[id_type] -= 1
 
 func get_item_id_type():
 	return -1

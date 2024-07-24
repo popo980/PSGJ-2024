@@ -30,7 +30,7 @@ var hit_sounds = [preload("res://Assets/SFX/animal_punch_1.mp3")]
 func _ready():
 	time = 1.0
 	speed = SPEED
-	rand.set_seed(Time.get_ticks_msec())
+	#rand.set_seed(Time.get_ticks_msec())
 
 func _physics_process(delta):
 	if not dead:

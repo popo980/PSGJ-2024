@@ -456,6 +456,9 @@ position = Vector2(163, 242)
 [node name="Tree3" parent="Trees" instance=ExtResource("2_vjkal")]
 position = Vector2(210, 267)
 
+[node name="Tree4" parent="Trees" instance=ExtResource("2_vjkal")]
+position = Vector2(197, 211)
+
 [node name="Rocks" type="Node" parent="."]
 
 [node name="Rock" parent="Rocks" instance=ExtResource("3_vi856")]
@@ -470,7 +473,7 @@ position = Vector2(552, 300)
 [node name="Bushes" type="Node" parent="."]
 
 [node name="Bush" parent="Bushes" instance=ExtResource("4_b7bwc")]
-position = Vector2(190, 123)
+position = Vector2(227, 247)
 
 [node name="Bush2" parent="Bushes" instance=ExtResource("4_b7bwc")]
 position = Vector2(387, 287)

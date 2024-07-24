@@ -100,6 +100,7 @@ func _on_body_entered(_body):
 	enchantment_table_interface.global_position = Vector2.ZERO
 	player.enchantment_table_open = true
 	enchantment_table_interface.set_weapon(player.weapon)
+	player.can_select_shadows = true
 	if player.workbench_open:
 		print("workbench already open")
 		enchantment_table_interface.z_index = 11
@@ -109,6 +110,8 @@ func _on_body_entered(_body):
 
 
 func _on_body_exited(_body):
+	player.can_select_shadows = false
 	table_open = false
 	enchantment_table_interface.visible = table_open
 	player.enchantment_table_open = false
+	enchantment_table_interface.get_back_all()

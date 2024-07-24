@@ -20,7 +20,11 @@ var displays = {
 	"Fox": null
 }
 
+signal add_shadow_enchantment(mob_name)
 const SHADOW_DISPLAY = preload("res://Scene/shadow_display.tscn")
+
+func _ready():
+	connect("add_shadow_enchantment", Callable(self, "on_add_shadow_enchantment_signal"))
 
 func add_shadow(mob_name):
 	shadows[mob_name] += 1
@@ -29,6 +33,21 @@ func add_shadow(mob_name):
 		v_box_container.add_child(icon)
 		icon.get_node("Sprite2D").texture = icons[mob_name]
 		displays[mob_name] = icon
+		icon.connect("shadow_selected", Callable(self, "on_shadow_selected_signal"))
 	else:
-		displays[mob_name].get_node("Label").text = str(int(displays[mob_name].get_node("Label").text) + 1) 
+		update_display(mob_name)
 
+func on_shadow_selected_signal(display):
+	print("CLICK_RECU")
+	var mob_name = displays.find_key(display)
+	if shadows[mob_name] > 0:
+		shadows[mob_name] -= 1
+		update_display(mob_name)
+		emit_signal("add_shadow_enchantment", mob_name)
+
+func update_display(mob_name):
+	if shadows[mob_name]>0:
+		displays[mob_name].get_node("Label").text = str(shadows[mob_name])
+	else : 
+		displays[mob_name].get_parent().remove_child(displays[mob_name])
+		displays[mob_name].queue_free()

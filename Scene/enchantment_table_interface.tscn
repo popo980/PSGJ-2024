@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8q0k1yusm8j"]
+[gd_scene load_steps=6 format=3 uid="uid://dl8q0k1yusm8j"]
 
 [ext_resource type="Texture2D" uid="uid://dpxhb51eks4ba" path="res://Assets/UI/EnchantmentTable/enchantment_table_background.png" id="1_5ed27"]
 [ext_resource type="Script" path="res://Script/enchantment_table_interface.gd" id="1_7wo5b"]
 [ext_resource type="Texture2D" uid="uid://dfmwv7gx2r4s8" path="res://Assets/UI/Workbench/craft_slot.png" id="2_edcd0"]
 [ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="3_ksdcy"]
+[ext_resource type="Texture2D" uid="uid://cw0vdf6xxwyu6" path="res://Assets/UI/Workbench/empty.png" id="4_1fp17"]
 
 [node name="EnchantmentTableInterface" type="Control"]
 layout_mode = 3
@@ -36,9 +37,44 @@ texture = ExtResource("2_edcd0")
 position = Vector2(595, 42)
 texture = ExtResource("2_edcd0")
 
+[node name="Shadow1" type="Sprite2D" parent="CraftSlot"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_1fp17")
+
+[node name="Button1" type="Button" parent="CraftSlot/Shadow1"]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+flat = true
+
 [node name="CraftSlot2" type="Sprite2D" parent="."]
 position = Vector2(650, 42)
 texture = ExtResource("2_edcd0")
+
+[node name="Shadow2" type="Sprite2D" parent="CraftSlot2"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_1fp17")
+
+[node name="Button2" type="Button" parent="CraftSlot2/Shadow2"]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+flat = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -56,3 +92,8 @@ P V : xx
 crit : xx
 esq : xx"
 autowrap_mode = 3
+
+[connection signal="pressed" from="CraftSlot/Shadow1/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="CraftSlot/Shadow1/Button1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CraftSlot2/Shadow2/Button2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CraftSlot2/Shadow2/Button2" to="." method="_on_button_2_pressed"]

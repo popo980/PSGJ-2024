@@ -66,6 +66,7 @@ func _on_area_exited(area):
 	#Gui.UpdateCrafts(recipes_available())
 	print(str(inZone.size()))
 	workbench_interface.check_all_achievable()
+	
 
 func is_in_3arg(lst1,lst2):
 	for i in lst1.size():

@@ -18,6 +18,7 @@ var enchantment_table_open : bool
 #			 [ nb_sheep, nb_boar, nb_fox]
 #var shadow_inventory = [0, 0, 0]
 var shadow_inventory
+var can_select_shadows = false
 
 func _ready():
 	shadow_inventory = get_parent().get_node("GUI/LeftPanel/shadows_inventory")

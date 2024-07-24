@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwa264o1yin73"]
+[gd_scene load_steps=4 format=3 uid="uid://cwa264o1yin73"]
 
 [ext_resource type="Texture2D" uid="uid://d0xv78addssn1" path="res://Assets/Mob/Animals/shadow_icons/boar_shadow_icon.png" id="1_i3cjh"]
+[ext_resource type="Script" path="res://Script/shadow_display.gd" id="1_rbk57"]
 [ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="2_axv45"]
 
 [node name="shadow_display" type="Control"]
@@ -13,6 +14,7 @@ offset_right = -652.0
 offset_bottom = -322.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rbk57")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(30, 21)
@@ -20,6 +22,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_i3cjh")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 40.0
 offset_top = 27.0
 offset_right = 80.0
@@ -28,3 +31,7 @@ theme_override_fonts/font = ExtResource("2_axv45")
 theme_override_font_sizes/font_size = 15
 text = "1
 "
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="shadow_selected" from="." to="." method="_on_shadow_selected"]
