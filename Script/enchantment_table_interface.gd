@@ -16,12 +16,14 @@ var shadow_icons = {
 	"Fox" : null
 }
 var shadow_inventory
+var player
 const EMPTY = preload("res://Assets/UI/Workbench/empty.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	shadow_inventory = get_parent().get_parent().get_parent().get_node("GUI/LeftPanel/shadows_inventory")
 	shadow_inventory.connect("add_shadow_enchantment", Callable(self, "on_add_shadow_enchantment_signal"))
+	
 
 
 func set_weapon(weapon):
@@ -29,7 +31,6 @@ func set_weapon(weapon):
 	weapon_icon.texture = weapon_icons[current_weapon]
 
 func on_add_shadow_enchantment_signal(mob_name):
-	print("BHVEBVIHLBDHLVBQDUVBFDHIVBLIQBV  ", mob_name, nb)
 	for i in range(2):
 		if mob_names[i] == null:
 			shadows[i].texture = shadow_icons[mob_name]

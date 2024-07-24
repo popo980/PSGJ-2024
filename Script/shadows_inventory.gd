@@ -19,12 +19,13 @@ var displays = {
 	"Boar": null,
 	"Fox": null
 }
-
+var player
 signal add_shadow_enchantment(mob_name)
 const SHADOW_DISPLAY = preload("res://Scene/shadow_display.tscn")
 
 func _ready():
 	connect("add_shadow_enchantment", Callable(self, "on_add_shadow_enchantment_signal"))
+	player = get_parent().get_parent().get_parent().get_node("Player")
 
 func add_shadow(mob_name):
 	shadows[mob_name] += 1
@@ -38,6 +39,9 @@ func add_shadow(mob_name):
 		update_display(mob_name)
 
 func on_shadow_selected_signal(display):
+	print(player.can_select_shadows)
+	if not player.can_select_shadows:
+		return
 	print("CLICK_RECU")
 	var mob_name = displays.find_key(display)
 	if shadows[mob_name] > 0:
