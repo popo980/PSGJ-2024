@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://df8by3vb3etda"]
+[gd_scene load_steps=4 format=3 uid="uid://df8by3vb3etda"]
 
 [ext_resource type="Texture2D" uid="uid://dwjbgx805v6qu" path="res://Assets/UI/left_panel.png" id="1_08qpd"]
 [ext_resource type="Texture2D" uid="uid://dfmwv7gx2r4s8" path="res://Assets/UI/Workbench/craft_slot.png" id="2_gcgtp"]
+[ext_resource type="PackedScene" uid="uid://di0pdg8l8xh4t" path="res://Scene/shadows_inventory.tscn" id="3_qs4be"]
 
 [node name="LeftPanel" type="Control"]
 layout_mode = 3
@@ -24,3 +25,6 @@ position = Vector2(35, 335)
 texture = ExtResource("2_gcgtp")
 
 [node name="weapon_icon" type="Sprite2D" parent="weapon_slot"]
+
+[node name="shadows_inventory" parent="." instance=ExtResource("3_qs4be")]
+layout_mode = 1

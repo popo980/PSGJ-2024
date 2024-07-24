@@ -15,8 +15,12 @@ var craft_held
 var workbench_open : bool
 var enchantment_table_open : bool
 
-#			 [ nb_sheeps, nb_boars, nb_bees]
-var shadow_inventory = [0, 0, 0]
+#			 [ nb_sheep, nb_boar, nb_fox]
+#var shadow_inventory = [0, 0, 0]
+var shadow_inventory
+
+func _ready():
+	shadow_inventory = get_parent().get_node("GUI/LeftPanel/shadows_inventory")
 
 func _physics_process(_delta):
 	manageMov()
@@ -83,7 +87,8 @@ func change_animation(new_animation):
 	anim_sprite.animation = new_animation
 	shadow.change_animation(new_animation)
 
-func add_shadow_inventory(mob: int):
-	shadow_inventory[mob] += 1
-	print("mob:",mob)
-	print(shadow_inventory)
+func add_shadow_inventory(mob_name):
+	#shadow_inventory[mob] += 1
+	#print("mob:",mob)
+	#print(shadow_inventory)
+	shadow_inventory.add_shadow(mob_name)

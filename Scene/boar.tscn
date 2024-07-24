@@ -1,7 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvrt6hsrripl5"]
+[gd_scene load_steps=29 format=3 uid="uid://bvrt6hsrripl5"]
 
 [ext_resource type="Texture2D" uid="uid://47x6208r3vhy" path="res://Assets/Mob/Animals/boar-Sheet.png" id="1_1onf3"]
+[ext_resource type="Script" path="res://Script/boar.gd" id="1_i3o0v"]
 [ext_resource type="PackedScene" uid="uid://dkyhx4d2g2xt3" path="res://Scene/Shadow.tscn" id="2_l5pwx"]
+[ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="4_fimto"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifnns"]
 size = Vector2(28, 17)
@@ -155,7 +157,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnaeb"]
 radius = 19.0263
 
+[sub_resource type="Curve" id="Curve_cd4au"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_s1jl1"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.548781, 0.926829)
+colors = PackedColorArray(0.54902, 0.137255, 0.113725, 1, 1, 0.789848, 0.709185, 1, 0.875405, 0.889338, 0.894044, 1)
+
 [node name="Boar" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_i3o0v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0.5)
@@ -163,8 +177,8 @@ shape = SubResource("RectangleShape2D_ifnns")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q4mwn")
-animation = &"walk"
-autoplay = "walk"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Shadow" parent="." node_paths=PackedStringArray("mob_sprite") instance=ExtResource("2_l5pwx")]
 position = Vector2(0, 18)
@@ -177,3 +191,32 @@ collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneContact"]
 shape = SubResource("CircleShape2D_wnaeb")
+
+[node name="Ressources" parent="." instance=ExtResource("4_fimto")]
+ressource = 3
+pv_max = 80.0
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(-1, 5)
+emitting = false
+amount = 30
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.83
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 2500)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_cd4au")
+color_initial_ramp = SubResource("Gradient_s1jl1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="destroy_signal" from="Ressources" to="." method="_on_ressources_destroy_signal"]
+[connection signal="hit_signal" from="Ressources" to="." method="_on_ressources_hit_signal"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

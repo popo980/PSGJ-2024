@@ -3,10 +3,10 @@ extends Area2D
 enum Mob{
 	SHEEP,
 	BOAR,
-	BEE
+	FOX
 }
 
-var mob_name = ["Sheep", "Boar", "Bee"]
+var mob_name = ["Sheep", "Boar", "Fox"]
 
 @export var mob : Mob
 @export var mob_sprite : AnimatedSprite2D
@@ -33,6 +33,7 @@ func get_item_id_type():
 
 func interact(player):
 	sprite.modulate = Color(0, 0, 0, 0)
+	collision_shape_2d.queue_free()
 	print("ombre de ", mob_name[mob], " ajoutée à l'inventaire des ombres !")
 	# add shadow in player inventory
-	player.add_shadow_inventory(mob)
+	player.add_shadow_inventory(mob_name[mob])

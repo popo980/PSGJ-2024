@@ -99,6 +99,7 @@ func _on_body_entered(_body):
 	enchantment_table_interface.visible = table_open && dropped
 	enchantment_table_interface.global_position = Vector2.ZERO
 	player.enchantment_table_open = true
+	enchantment_table_interface.set_weapon(player.weapon)
 	if player.workbench_open:
 		print("workbench already open")
 		enchantment_table_interface.z_index = 11
