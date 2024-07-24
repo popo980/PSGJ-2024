@@ -52,6 +52,7 @@ func _on_area_exited(area):
 	inZone.remove_at(inZone.find(area))
 	sub_ressources(area.get_item_id_type())
 	Gui.UpdateCrafts(recipes_available())
+	print(str(recipes_available()))
 	print(str(inZone.size()))
 
 func is_in_3arg(lst1,lst2):
@@ -61,12 +62,15 @@ func is_in_3arg(lst1,lst2):
 	return true
 
 func useRessources(craftName:String):
-	var neededRes = recipes[craftName]
+	var neededRes = []
+	for i in recipes[craftName]:
+		neededRes.append(i)
 	for i in inZone:
 		var id_type = i.get_item_id_type()
 		if neededRes[id_type]>0:
 			i.queue_free()
-			#neededRes[id_type] -= 1
+			neededRes[id_type] -= 1
+			
 
 func get_item_id_type():
 	return -1

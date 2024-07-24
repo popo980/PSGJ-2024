@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://1hxrcyjwv3rh"]
+[gd_scene load_steps=10 format=3 uid="uid://1hxrcyjwv3rh"]
 
 [ext_resource type="Script" path="res://Script/Weapon.gd" id="1_0egnd"]
-[ext_resource type="Texture2D" uid="uid://dase6axlvl6jd" path="res://Assets/Weapons/Hands.png" id="1_5j1xx"]
+[ext_resource type="Texture2D" uid="uid://xyd17e7nnl5a" path="res://Assets/Weapons/Fist.png" id="2_eut8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejrjo"]
 size = Vector2(7.5, 8)
@@ -78,11 +78,19 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_mkt0m"]
+resource_name = "Wood_swordHit"
+
+[sub_resource type="Animation" id="Animation_81vqv"]
+resource_name = "Wood_swordIdle"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cubco"]
 _data = {
 "FistHit": SubResource("Animation_m1oom"),
 "FistIdle": SubResource("Animation_l5cq1"),
-"RESET": SubResource("Animation_2jt6l")
+"RESET": SubResource("Animation_2jt6l"),
+"Wood_swordHit": SubResource("Animation_mkt0m"),
+"Wood_swordIdle": SubResource("Animation_81vqv")
 }
 
 [node name="Weapon" type="Node2D"]
@@ -93,9 +101,9 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-texture = ExtResource("1_5j1xx")
-region_enabled = true
-region_rect = Rect2(3.89256, 4.70354, 7.43217, 7.56731)
+position = Vector2(0.5, 0)
+texture = ExtResource("2_eut8k")
+region_rect = Rect2(3.9, 4.7, 7.4, 7.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ejrjo")

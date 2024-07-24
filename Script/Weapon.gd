@@ -9,7 +9,7 @@ var currentWeapon = ListWeapon.Weapons.FIST
 var damages = 0
 var weapon_slot
 var weapon_icons = { 
-	ListWeapon.Weapons.FIST: preload("res://Assets/UI/Workbench/empty.png"),
+	ListWeapon.Weapons.FIST: preload("res://Assets/Weapons/Fist.png"),
 	ListWeapon.Weapons.WOOD_SWORD: preload("res://Assets/Weapons/wooden_sword.png"), 
 	ListWeapon.Weapons.STONE_AXE: preload("res://Assets/Weapons/stone_axe.png"), 
 	ListWeapon.Weapons.BOW: preload("res://Assets/Weapons/bow.png"), 
