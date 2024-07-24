@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var timer = $Timer
+@onready var cooldown = $Timer
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d = $Area2D/Sprite2D
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
@@ -26,28 +26,27 @@ func _process(_delta):
 	look_at(get_global_mouse_position())
 
 func Hit():
-	if timer.is_stopped():
+	if cooldown.is_stopped():
 		animation_player.play(getWeaponName()+"Hit")
-		timer.start()
+		cooldown.start()
 
 func SwitchWeapon(weapon:ListWeapon.Weapons):
 	if not currentWeapon == ListWeapon.Weapons.FIST:
 		DropWeapon()
-	set_weapon_icon(weapon)
 	currentWeapon = weapon
+	set_weapon_icon()
 	SetUpWeapon()
 	animation_player.play(getWeaponName()+"Idle")
 
 func SetUpWeapon():
+	sprite_2d.texture = weapon_icons[currentWeapon]
 	match currentWeapon:
 		ListWeapon.Weapons.FIST:
 			damages = 5
-			sprite_2d.set_region_rect(Rect2(3.9,4.7,7.4,7.5))
-			collision_shape_2d.set_position(Vector2(0,0))
-			collision_shape_2d.set_scale(Vector2(1,1))
+			cooldown.wait_time = 0.3
 		ListWeapon.Weapons.WOOD_SWORD:
 			damages = 10
-			#TODO : completer
+			cooldown.wait_time = 0.5
 		_:
 			print("Weapon is not existant")
 			
@@ -65,8 +64,8 @@ func DropWeapon():
 	# TODO: drop weapon
 	pass
 
-func set_weapon_icon(weapon):
-	weapon_slot.get_node("weapon_icon").texture = weapon_icons[weapon]
+func set_weapon_icon():
+	weapon_slot.get_node("weapon_icon").texture = weapon_icons[currentWeapon]
 
 func _on_timer_timeout():
 	animation_player.play(getWeaponName()+"Idle")
