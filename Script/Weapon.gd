@@ -56,6 +56,7 @@ func SwitchWeapon(weapon:ListWeapon.Weapons):
 	animation_player.play("FistIdle")
 
 func SetUpWeapon():
+	enchanted = false
 	sprite_2d.texture = weapon_icons[currentWeapon]
 	damages = weapon_stats[currentWeapon][0]
 	cooldown.wait_time = weapon_stats[currentWeapon][1]

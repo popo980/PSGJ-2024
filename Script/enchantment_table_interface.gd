@@ -31,6 +31,8 @@ const EMPTY = preload("res://Assets/UI/Workbench/empty.png")
 
 var description_text = " enchanted with "
 var stats_text = "Att: \nSpeed: \nP V:"
+@onready var enchant_button = $EnchantButton
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,18 +44,29 @@ func set_weapon(weapon):
 	if not player.weapon.enchanted:
 		current_weapon = weapon.currentWeapon
 		weapon_icon.texture = weapon_icons[current_weapon]
-		description.text = weapon.getWeaponName() + "\n\n" + stats_text
+		description.text = "You need shadows to enchant a weapon"+ "\n" + stats_text
 		stats_label.text = str(weapon.damages) + "\n" + str(weapon.speed) + "\n" + str(weapon.pv)
+		#enchant_button.disabled = false
+		if current_weapon == ListWeapon.Weapons.FIST:
+			description.text = "You're a great alchemist but you can't enchant your fist..."
+			stats_label.text = ""
+			enchant_button.disabled = true
 	else:
-		description.text = "Already enchanted weapons can't be enchanted once more"
+		description.text = "Already enchanted weapons can't be enchanted anymore"
 		stats_label.text = ""
+		enchant_button.disabled = true
 
 func on_add_shadow_enchantment_signal(mob_name):
+	if player.weapon.enchanted:
+		get_back_shadow(mob_name)
+		return
 	for i in range(2):
 		if mob_names[i] == null:
 			shadows[i].texture = shadow_icons[mob_name]
 			mob_names[i] = mob_name
 			calcul_enchant_effects()
+			description.text = "You want to enchant your "+ player.weapon.getWeaponName() + "\n" + stats_text
+			enchant_button.disabled = false
 			return
 	get_back_shadow(mob_name)
 
@@ -83,13 +96,15 @@ func _on_enchant_button_pressed():
 		var enchant_stats = calcul_enchant_effects()
 		weapon.change_stats(enchant_stats)
 		stats_label.text = str(weapon.damages) + "\n" + str(weapon.speed) + "\n" + str(weapon.pv)
+		description.text = "Already enchanted weapons can't be enchanted anymore"+ "\n" + stats_text
+		enchant_button.disabled = true
 		reset_slots()
 	elif mob_names == [null, null]:
-		description.text = "You need shadows to enchant a weapon"
+		description.text = "You need shadows to enchant a weapon"+ "\n" + stats_text
 	elif player.weapon.enchanted:
-		description.text = "Already enchanted weapons can't be enchanted once more"
+		description.text = "Already enchanted weapons can't be enchanted anymore"+ "\n" + stats_text
 	elif current_weapon == ListWeapon.Weapons.FIST:
-		description.text = "You're a great alchemist but you can't enchant your fist..."
+		description.text = "You're a great alchemist but you can't enchant your fist..."+ "\n" + stats_text
 
 func reset_slots():
 	for i in range(2):
@@ -113,6 +128,3 @@ func calcul_enchant_effects():
 		else:
 			enchant_stats_labels[i].text = ""
 	return enchant_stats
-				#enchant_stats_labels[j].text = "+ " + str(int(enchant_stats_labels[j]) + stats[mob_names[i]][j])
-				#if enchant_stats_labels[j].text == "+ 0":
-					#enchant_stats_labels[j].text = ""
