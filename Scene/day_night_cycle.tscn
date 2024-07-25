@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://dx4c6q5xorv1c"]
+[gd_scene load_steps=28 format=3 uid="uid://crdb343v7evdc"]
 
 [ext_resource type="Script" path="res://Script/day_night_cycle.gd" id="1_gk0sa"]
 [ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="2_h86g6"]
 [ext_resource type="Texture2D" uid="uid://dw23eewawavb4" path="res://Assets/UI/day_transition-Sheet.png" id="3_kfgxn"]
 [ext_resource type="Texture2D" uid="uid://c1yl4rn4we7kh" path="res://Assets/UI/night_transition-Sheet.png" id="4_00x60"]
+[ext_resource type="Texture2D" uid="uid://q5b07bq4rhy7" path="res://Assets/UI/night.png" id="5_p67l0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp0s0"]
 bg_color = Color(0.126672, 0.659692, 0.823184, 1)
@@ -83,6 +84,10 @@ region = Rect2(4900, 0, 700, 370)
 atlas = ExtResource("4_00x60")
 region = Rect2(5600, 0, 700, 370)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyujk"]
+atlas = ExtResource("5_p67l0")
+region = Rect2(0, 0, 700, 370)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_owd13"]
 animations = [{
 "frames": [{
@@ -142,8 +147,11 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8wubb")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_6ihvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyujk")
 }],
 "loop": false,
 "name": &"night_transition",
@@ -184,7 +192,7 @@ z_index = 15
 position = Vector2(356, 190)
 scale = Vector2(1.01714, 1.02703)
 sprite_frames = SubResource("SpriteFrames_owd13")
-animation = &"day_transition"
+animation = &"night_transition"
 autoplay = "day_transition"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

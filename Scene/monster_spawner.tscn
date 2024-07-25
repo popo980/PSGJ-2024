@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6g3dmiyypjxy"]
+[gd_scene load_steps=2 format=3 uid="uid://cd3m7h8tdt73o"]
 
 [ext_resource type="Script" path="res://Script/MonsterSpawner.gd" id="1_eqqi6"]
 

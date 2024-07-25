@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgsc3l2p05iih"]
+[gd_scene load_steps=5 format=3 uid="uid://dam6o8vytspmu"]
 
 [ext_resource type="Script" path="res://Script/Nightmorph.gd" id="1_o8hcc"]
 [ext_resource type="Texture2D" uid="uid://i1h4je7e343w" path="res://Assets/Temporaire/monstre1.png" id="2_dmygc"]
