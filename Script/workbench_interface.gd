@@ -7,7 +7,9 @@ const EMPTY_ICON = preload("res://Assets/UI/Workbench/empty_icon.png")
 @onready var craft_name = $BoxContainer/Name
 @onready var description = $BoxContainer/Description
 @onready var recipe = $BoxContainer/HBoxContainer/Recipe
-@onready var craft_button = $BoxContainer/HBoxContainer/CraftButton
+@onready var craft_button = $BoxContainer/HBoxContainer/VBoxContainer/CraftButton
+@onready var stats_label = $BoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Stats
+@onready var weapon_stats_label = $BoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/weapon_stats_label
 
 
 var ressources_icons = [preload("res://Assets/Environement/Forest/wood.png"),
@@ -66,6 +68,16 @@ func _on_slots_craft_selected(id):
 	description.text = craft_selected.description
 	
 	current_selected = craft_selected
+	
+	
+	
+	if id==0:
+		stats_label.text = "\n\n\n\n\n"
+		weapon_stats_label.text = "\n\n\n\n\n"
+	else:
+		var weapon_stats = player.weapon.weapon_stats
+		stats_label.text = str(weapon_stats[id][0]) + "\n" + str(10-weapon_stats[id][1]*10) + "\n" + str(weapon_stats[id][2]) + "\n\n\n"
+		weapon_stats_label.text = "Att:\nSpeed:\nPV:\n\n\n"
 	
 	# remplis les slots selon le craft sélectionné
 	var number = 0
