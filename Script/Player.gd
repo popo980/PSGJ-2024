@@ -19,9 +19,11 @@ var enchantment_table_open : bool
 #var shadow_inventory = [0, 0, 0]
 var shadow_inventory
 var can_select_shadows = false
+@onready var audio_stream_player = $AudioStreamPlayer
 
 func _ready():
 	shadow_inventory = get_parent().get_node("GUI/LeftPanel/shadows_inventory")
+	#audio_stream_player.playing = true
 
 func _physics_process(_delta):
 	manageMov()

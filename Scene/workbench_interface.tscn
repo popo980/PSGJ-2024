@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cc56cffelwn4v"]
+[gd_scene load_steps=10 format=3 uid="uid://cc56cffelwn4v"]
 
 [ext_resource type="Script" path="res://Script/workbench_interface.gd" id="1_1wtyk"]
 [ext_resource type="Texture2D" uid="uid://u7p24gsk2su3" path="res://Assets/UI/Workbench/craft_bg.png" id="1_5kl2y"]
 [ext_resource type="Texture2D" uid="uid://dfmwv7gx2r4s8" path="res://Assets/UI/Workbench/craft_slot.png" id="2_8r6p8"]
 [ext_resource type="Script" path="res://Script/CraftSlots.gd" id="3_vd1sy"]
 [ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="4_tugwu"]
+[ext_resource type="AudioStream" uid="uid://c12x1f367kofs" path="res://Assets/SFX/sawing.mp3" id="6_els4x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ed81f"]
 bg_color = Color(0.960784, 0.847059, 0.576471, 1)
@@ -160,6 +161,9 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_tugwu")
 theme_override_font_sizes/font_size = 20
 text = "CRAFT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_els4x")
 
 [connection signal="craft_selected" from="ScrollContainer/Slots" to="." method="_on_slots_craft_selected"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer/VBoxContainer/CraftButton" to="." method="_on_craft_button_pressed"]

@@ -1,12 +1,154 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx4c6q5xorv1c"]
+[gd_scene load_steps=26 format=3 uid="uid://crdb343v7evdc"]
 
+[ext_resource type="Script" path="res://Script/day_night_cycle.gd" id="1_gk0sa"]
 [ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="2_h86g6"]
+[ext_resource type="Texture2D" uid="uid://dw23eewawavb4" path="res://Assets/UI/day_transition-Sheet.png" id="3_kfgxn"]
+[ext_resource type="Texture2D" uid="uid://c1yl4rn4we7kh" path="res://Assets/UI/night_transition-Sheet.png" id="4_00x60"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp0s0"]
 bg_color = Color(0.126672, 0.659692, 0.823184, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgk8f"]
 bg_color = Color(0.0888639, 0.10196, 0.364722, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eyqq"]
+atlas = ExtResource("3_kfgxn")
+region = Rect2(0, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hcfm"]
+atlas = ExtResource("3_kfgxn")
+region = Rect2(700, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cprek"]
+atlas = ExtResource("3_kfgxn")
+region = Rect2(1400, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux0g0"]
+atlas = ExtResource("3_kfgxn")
+region = Rect2(2100, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h80r4"]
+atlas = ExtResource("3_kfgxn")
+region = Rect2(2800, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnt86"]
+atlas = ExtResource("3_kfgxn")
+region = Rect2(3500, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm4xw"]
+atlas = ExtResource("3_kfgxn")
+region = Rect2(4200, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a15dj"]
+atlas = ExtResource("3_kfgxn")
+region = Rect2(4900, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um7e4"]
+atlas = ExtResource("3_kfgxn")
+region = Rect2(5600, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op06n"]
+atlas = ExtResource("4_00x60")
+region = Rect2(0, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqyoy"]
+atlas = ExtResource("4_00x60")
+region = Rect2(700, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tk7r"]
+atlas = ExtResource("4_00x60")
+region = Rect2(1400, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74na8"]
+atlas = ExtResource("4_00x60")
+region = Rect2(2100, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uenbp"]
+atlas = ExtResource("4_00x60")
+region = Rect2(2800, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uisv0"]
+atlas = ExtResource("4_00x60")
+region = Rect2(3500, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugb6e"]
+atlas = ExtResource("4_00x60")
+region = Rect2(4200, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wubb"]
+atlas = ExtResource("4_00x60")
+region = Rect2(4900, 0, 700, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ihvs"]
+atlas = ExtResource("4_00x60")
+region = Rect2(5600, 0, 700, 370)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_owd13"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eyqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hcfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cprek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux0g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h80r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnt86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm4xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a15dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um7e4")
+}],
+"loop": false,
+"name": &"day_transition",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op06n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqyoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tk7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74na8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uenbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uisv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugb6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wubb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ihvs")
+}],
+"loop": false,
+"name": &"night_transition",
+"speed": 12.0
+}]
 
 [node name="DayNightCycle" type="Control"]
 layout_mode = 3
@@ -15,6 +157,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gk0sa")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
@@ -35,5 +178,13 @@ offset_right = 695.0
 offset_bottom = 29.0
 theme_override_fonts/font = ExtResource("2_h86g6")
 text = "Skip to night"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 15
+position = Vector2(356, 190)
+scale = Vector2(1.01714, 1.02703)
+sprite_frames = SubResource("SpriteFrames_owd13")
+animation = &"day_transition"
+autoplay = "day_transition"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

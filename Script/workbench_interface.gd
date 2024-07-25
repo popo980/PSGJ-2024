@@ -10,7 +10,7 @@ const EMPTY_ICON = preload("res://Assets/UI/Workbench/empty_icon.png")
 @onready var craft_button = $BoxContainer/HBoxContainer/VBoxContainer/CraftButton
 @onready var stats_label = $BoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Stats
 @onready var weapon_stats_label = $BoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/weapon_stats_label
-
+@onready var audio_stream_player = $AudioStreamPlayer
 
 var ressources_icons = [preload("res://Assets/Environement/Forest/wood.png"),
 			preload("res://Assets/Environement/Forest/rock.png"),
@@ -119,6 +119,7 @@ func check_achievable(slot):
 
 
 func _on_craft_button_pressed():
+	audio_stream_player.playing = true
 	workbench_zone_interaction.useRessources(current_selected.craft_name)
 	if not current_selected.type == ListWeapon.Weapons.NOT_A_WEAPON:
 		player.get_node("WeaponMark/Weapon").SwitchWeapon(current_selected.type)
