@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://635r7uxtfoix"]
+[gd_scene load_steps=14 format=3 uid="uid://635r7uxtfoix"]
 
 [ext_resource type="PackedScene" uid="uid://dykdi42h6m5d" path="res://Scene/GUI.tscn" id="1_2fi62"]
 [ext_resource type="PackedScene" uid="uid://dv0wgsgv2je6k" path="res://Scene/Game_manager.tscn" id="1_a31kq"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b08utre752g6f" path="res://Scene/Player.tscn" id="5_q1dlg"]
 [ext_resource type="PackedScene" uid="uid://7g4c3tvpoc7s" path="res://Scene/sheep.tscn" id="8_a7w63"]
 [ext_resource type="PackedScene" uid="uid://bvrt6hsrripl5" path="res://Scene/boar.tscn" id="10_titqm"]
-[ext_resource type="PackedScene" uid="uid://dx4c6q5xorv1c" path="res://Scene/day_night_cycle.tscn" id="11_k22xk"]
 [ext_resource type="PackedScene" uid="uid://b6g3dmiyypjxy" path="res://Scene/monster_spawner.tscn" id="11_um3nm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pqn8"]
@@ -434,9 +433,6 @@ sources/0 = SubResource("TileSetAtlasSource_1pqn8")
 z_index = -1
 layout_mode = 1
 
-[node name="DayNightCycle" parent="GUI" instance=ExtResource("11_k22xk")]
-layout_mode = 1
-
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -2
 position = Vector2(350, 200)
@@ -503,9 +499,7 @@ position = Vector2(130, 341)
 [node name="Boar2" parent="Animals" instance=ExtResource("10_titqm")]
 position = Vector2(621, 144)
 
-[node name="Monsters" type="Node" parent="."]
+[node name="Monstres" type="Node" parent="."]
 
-[node name="MonsterSpawner" parent="Monsters" instance=ExtResource("11_um3nm")]
-position = Vector2(389, 106)
-spawnCooldown = 2.0
-qttSpawned = 2
+[node name="MonsterSpawner" parent="Monstres" instance=ExtResource("11_um3nm")]
+position = Vector2(472, 113)
