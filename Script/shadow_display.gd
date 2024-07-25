@@ -2,6 +2,7 @@ extends Control
 
 signal shadow_selected(display)
 var mouse_in
+var stats
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,9 +13,11 @@ func _process(_delta):
 		print("CLICKCLICKCLICK")
 		emit_signal("shadow_selected", self)
 
-
 func _on_mouse_entered():
 	mouse_in = true
 
 func _on_mouse_exited():
 	mouse_in = false
+
+func get_stats():
+	return stats

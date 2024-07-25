@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl8q0k1yusm8j"]
+[gd_scene load_steps=6 format=3 uid="uid://caxujw0lwxqwv"]
 
 [ext_resource type="Texture2D" uid="uid://dpxhb51eks4ba" path="res://Assets/UI/EnchantmentTable/enchantment_table_background.png" id="1_5ed27"]
 [ext_resource type="Script" path="res://Script/enchantment_table_interface.gd" id="1_7wo5b"]
@@ -69,7 +69,7 @@ offset_right = 11.0
 offset_bottom = 11.0
 flat = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Description" type="Label" parent="."]
 layout_mode = 0
 offset_left = 484.0
 offset_top = 82.0
@@ -79,12 +79,58 @@ theme_override_fonts/font = ExtResource("3_ksdcy")
 theme_override_font_sizes/font_size = 12
 text = "*nom arme* enchanted with *ench1* and *ench2*
 
-Att : xx
-Vit : xx
-P V : xx"
+Att : 
+Speed : 
+P V : "
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="."]
+[node name="Stats" type="Label" parent="."]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 110.0
+offset_right = 592.0
+offset_bottom = 162.0
+theme_override_fonts/font = ExtResource("3_ksdcy")
+theme_override_font_sizes/font_size = 12
+text = "5
+5
+10"
+autowrap_mode = 3
+
+[node name="att" type="Label" parent="."]
+layout_mode = 0
+offset_left = 547.0
+offset_top = 110.0
+offset_right = 609.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_ksdcy")
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="Speed" type="Label" parent="."]
+layout_mode = 0
+offset_left = 547.0
+offset_top = 124.0
+offset_right = 609.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_ksdcy")
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="PV" type="Label" parent="."]
+layout_mode = 0
+offset_left = 547.0
+offset_top = 138.0
+offset_right = 609.0
+offset_bottom = 150.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_ksdcy")
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="EnchantButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 617.0
 offset_top = 145.0
@@ -93,7 +139,9 @@ offset_bottom = 176.0
 theme_override_fonts/font = ExtResource("3_ksdcy")
 text = "Enchant"
 
-[connection signal="pressed" from="CraftSlot/Shadow1/Button1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CraftSlot/Shadow1/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="CraftSlot/Shadow1/Button1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CraftSlot2/Shadow2/Button2" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CraftSlot2/Shadow2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="EnchantButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="EnchantButton" to="." method="_on_enchant_button_pressed"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dwjbgx805v6qu" path="res://Assets/UI/left_panel.png" id="1_08qpd"]
 [ext_resource type="Texture2D" uid="uid://dfmwv7gx2r4s8" path="res://Assets/UI/Workbench/craft_slot.png" id="2_gcgtp"]
-[ext_resource type="PackedScene" uid="uid://di0pdg8l8xh4t" path="res://Scene/shadows_inventory.tscn" id="3_qs4be"]
+[ext_resource type="PackedScene" uid="uid://cdwq6wskc5605" path="res://Scene/shadows_inventory.tscn" id="3_qs4be"]
 
 [node name="LeftPanel" type="Control"]
 layout_mode = 3

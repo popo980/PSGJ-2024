@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwa264o1yin73"]
+[gd_scene load_steps=4 format=3 uid="uid://d4asgtvu4vvmb"]
 
 [ext_resource type="Texture2D" uid="uid://d0xv78addssn1" path="res://Assets/Mob/Animals/shadow_icons/boar_shadow_icon.png" id="1_i3cjh"]
 [ext_resource type="Script" path="res://Script/shadow_display.gd" id="1_rbk57"]

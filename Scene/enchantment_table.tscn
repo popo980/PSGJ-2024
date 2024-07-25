@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2mdxecnhha3e"]
+[gd_scene load_steps=8 format=3 uid="uid://dlbf1herljb0y"]
 
 [ext_resource type="Texture2D" uid="uid://dt2m4ljidh0cq" path="res://Assets/Temporaire/table_denchantement.png" id="1_4gmlg"]
 [ext_resource type="Script" path="res://Script/enchantment_table.gd" id="1_wq70t"]
 [ext_resource type="Script" path="res://Script/ZoneInteractionE.gd" id="2_ihhfi"]
 [ext_resource type="Texture2D" uid="uid://bwk1x1yhkl117" path="res://Assets/Player/Zone.png" id="3_p5c0m"]
-[ext_resource type="PackedScene" uid="uid://dl8q0k1yusm8j" path="res://Scene/enchantment_table_interface.tscn" id="5_vohdu"]
+[ext_resource type="PackedScene" uid="uid://caxujw0lwxqwv" path="res://Scene/enchantment_table_interface.tscn" id="5_vohdu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ox8u"]
 radius = 31.0

@@ -19,6 +19,8 @@ var displays = {
 	"Boar": null,
 	"Fox": null
 }
+
+
 var player
 signal add_shadow_enchantment(mob_name)
 const SHADOW_DISPLAY = preload("res://Scene/shadow_display.tscn")
