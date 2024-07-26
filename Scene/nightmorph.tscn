@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dam6o8vytspmu"]
+[gd_scene load_steps=6 format=3 uid="uid://dam6o8vytspmu"]
 
 [ext_resource type="Script" path="res://Script/Nightmorph.gd" id="1_o8hcc"]
 [ext_resource type="Texture2D" uid="uid://i1h4je7e343w" path="res://Assets/Temporaire/monstre1.png" id="2_dmygc"]
@@ -10,7 +10,7 @@ animations = [{
 "texture": ExtResource("2_dmygc")
 }],
 "loop": true,
-"name": &"Death",
+"name": &"Damaged",
 "speed": 5.0
 }, {
 "frames": [{
@@ -41,6 +41,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1e7n"]
 size = Vector2(20, 27)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5408m"]
+size = Vector2(7.5, 19)
+
 [node name="Nightmorph" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 15
@@ -49,9 +52,27 @@ script = ExtResource("1_o8hcc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p71vj")
-animation = &"Idle"
+animation = &"Damaged"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_w1e7n")
+
+[node name="HitZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
+position = Vector2(-14, -2)
+shape = SubResource("RectangleShape2D_5408m")
+
+[node name="DamagedTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="body_entered" from="HitZone" to="." method="_on_hit_zone_body_entered"]
+[connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

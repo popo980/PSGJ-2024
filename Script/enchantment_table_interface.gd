@@ -45,7 +45,7 @@ func set_weapon(weapon):
 		current_weapon = weapon.currentWeapon
 		weapon_icon.texture = weapon_icons[current_weapon]
 		description.text = "You need shadows to enchant a weapon"+ "\n" + stats_text
-		stats_label.text = str(weapon.damages) + "\n" + str(weapon.speed) + "\n" + str(weapon.pv)
+		stats_label.text = str(weapon.damages) #+ "\n" + str(weapon.speed) + "\n" + str(weapon.pv)
 		#enchant_button.disabled = false
 		if current_weapon == ListWeapon.Weapons.FIST:
 			description.text = "You're a great alchemist but you can't enchant your fist..."
@@ -95,7 +95,7 @@ func _on_enchant_button_pressed():
 		var weapon = player.weapon
 		var enchant_stats = calcul_enchant_effects()
 		weapon.change_stats(enchant_stats)
-		stats_label.text = str(weapon.damages) + "\n" + str(weapon.speed) + "\n" + str(weapon.pv)
+		stats_label.text = str(weapon.damages)# + "\n" + str(weapon.speed) + "\n" + str(weapon.pv)
 		description.text = "Already enchanted weapons can't be enchanted anymore"+ "\n" + stats_text
 		enchant_button.disabled = true
 		reset_slots()

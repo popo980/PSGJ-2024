@@ -5,8 +5,9 @@ extends Node2D
 @onready var sprite_2d = $Area2D/Sprite2D
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
 
+var player
 var currentWeapon = ListWeapon.Weapons.FIST
-var damages = 0
+var damages :int= 0
 var weapon_slot
 var weapon_icons = { 
 	ListWeapon.Weapons.FIST: preload("res://Assets/Weapons/Fist.png"),
@@ -18,23 +19,22 @@ var weapon_icons = {
 	ListWeapon.Weapons.NOT_A_WEAPON: preload("res://Assets/UI/Workbench/empty.png")
 }
 
-var speed
-var pv
 
-# [damage, speed, pv]
+# [damage, speed, pv, cooldown]
 var weapon_stats = {
-	ListWeapon.Weapons.FIST: [5, 0.4, 10],
-	ListWeapon.Weapons.WOOD_SWORD: [10, 0.5, 10],
-	ListWeapon.Weapons.STONE_AXE: [15, 0.6, 10],
-	ListWeapon.Weapons.BOW: [10, 0.5, 10],
-	ListWeapon.Weapons.MAGIC_WAND: [8, 0.2, 15],
-	ListWeapon.Weapons.KNIFE: [10, 0.2, 10]
+	ListWeapon.Weapons.FIST: [5, 0, 0, 0.4],
+	ListWeapon.Weapons.WOOD_SWORD: [10, 0, 10, 0.5],
+	ListWeapon.Weapons.STONE_AXE: [15, -60, 20, 0.6],
+	ListWeapon.Weapons.BOW: [10, 50, 5, 0.5],
+	ListWeapon.Weapons.MAGIC_WAND: [8, 50, 5, 0.2],
+	ListWeapon.Weapons.KNIFE: [10, 80, 0, 0.3]
 }
 
 var enchanted = false
 
 func _ready():
 	weapon_slot = get_parent().get_parent().get_parent().get_node("GUI/LeftPanel/weapon_slot")
+	player = get_parent().get_parent()
 	SwitchWeapon(ListWeapon.Weapons.FIST)
 
 func _process(_delta):
@@ -57,9 +57,9 @@ func SetUpWeapon():
 	enchanted = false
 	sprite_2d.texture = weapon_icons[currentWeapon]
 	damages = weapon_stats[currentWeapon][0]
-	cooldown.wait_time = weapon_stats[currentWeapon][1]
-	speed = 10 - weapon_stats[currentWeapon][1] * 10
-	pv = weapon_stats[currentWeapon][2]
+	#cooldown.wait_time = weapon_stats[currentWeapon][1]
+	player.speed = player.max_speed + weapon_stats[currentWeapon][1]
+	player.max_hp = player.max_hp + weapon_stats[currentWeapon][2]
 	
 			
 func getWeaponName():
@@ -84,12 +84,15 @@ func _on_timer_timeout():
 	
 func _on_area_2d_body_entered(body):
 	if body != null:
-		body.get_node("Ressources").hit(damages)
+		if body.has_node("Ressources"):
+			body.get_node("Ressources").hit(damages)
+		else:
+			body.get_hit(damages)
 
 # [att, speed, pv]
 func change_stats(enchant_stats):
 	damages += enchant_stats[0]
-	speed += enchant_stats[1]
-	cooldown.wait_time = (10 - speed)/10
-	pv += enchant_stats[2]
+	player.speed += enchant_stats[1]
+	#cooldown.wait_time = (10 - speed)/10
+	player.hp += enchant_stats[2]
 	enchanted = true

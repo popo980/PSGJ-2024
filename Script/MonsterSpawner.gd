@@ -16,8 +16,6 @@ var Monsters = {
 func _ready():
 	spawn_timer.wait_time = spawnCooldown
 	
-	#A supprimer sinon spawner useless
-	#AtNight()
 
 func AtNight():
 	spawn_timer.start()

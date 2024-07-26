@@ -55,7 +55,7 @@ func manageMov(delta):
 			speed = HIT_SPEED
 			move(target, delta)
 
-func move(target, delta):
+func move(_target, delta):
 	if target.distance_to(global_position) <= threshold:
 		curState = STATE.IDLE
 	var dir = (target - global_position).normalized()
