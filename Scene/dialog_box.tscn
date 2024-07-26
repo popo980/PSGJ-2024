@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3ukre0gw26o6"]
+
+[ext_resource type="Script" path="res://Script/dialog_box.gd" id="1_5e3es"]
+[ext_resource type="AudioStream" uid="uid://bnp75owyitngt" path="res://Assets/SFX/beep_text.mp3" id="2_xuoud"]
+[ext_resource type="Texture2D" uid="uid://b3rbnyhm8s1cv" path="res://Assets/UI/Dialog_box.png" id="3_ms2kd"]
+[ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="4_da54s"]
+
+[node name="Dialog_box" type="Control"]
+z_index = 19
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5e3es")
+text = [null]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xuoud")
+volume_db = -10.0
+
+[node name="DialogBox" type="Sprite2D" parent="."]
+texture = ExtResource("3_ms2kd")
+
+[node name="Label" type="Label" parent="DialogBox"]
+offset_left = -159.0
+offset_top = -30.0
+offset_right = 160.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("4_da54s")
+theme_override_font_sizes/font_size = 15
+text = "Ceci est un texte de test"
+autowrap_mode = 3

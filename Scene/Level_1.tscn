@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://635r7uxtfoix"]
+[gd_scene load_steps=16 format=3 uid="uid://635r7uxtfoix"]
 
 [ext_resource type="PackedScene" uid="uid://dykdi42h6m5d" path="res://Scene/GUI.tscn" id="1_2fi62"]
 [ext_resource type="PackedScene" uid="uid://dv0wgsgv2je6k" path="res://Scene/Game_manager.tscn" id="1_a31kq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://plkrkvokn260" path="res://Scene/Rock.tscn" id="3_vi856"]
 [ext_resource type="PackedScene" uid="uid://df8by3vb3etda" path="res://Scene/LeftPanel.tscn" id="3_xhcuc"]
 [ext_resource type="PackedScene" uid="uid://ijos2ojmfmcj" path="res://Scene/Bush.tscn" id="4_b7bwc"]
+[ext_resource type="PackedScene" uid="uid://b3ukre0gw26o6" path="res://Scene/dialog_box.tscn" id="5_8ybw4"]
 [ext_resource type="PackedScene" uid="uid://b08utre752g6f" path="res://Scene/Player.tscn" id="5_q1dlg"]
 [ext_resource type="PackedScene" uid="uid://7g4c3tvpoc7s" path="res://Scene/sheep.tscn" id="8_a7w63"]
 [ext_resource type="PackedScene" path="res://Scene/boar.tscn" id="10_titqm"]
@@ -436,6 +437,14 @@ layout_mode = 1
 
 [node name="DayNightCycle" parent="GUI" instance=ExtResource("11_k22xk")]
 layout_mode = 1
+
+[node name="Dialog_box" parent="GUI" instance=ExtResource("5_8ybw4")]
+layout_mode = 1
+offset_left = 350.0
+offset_top = 325.0
+offset_right = 350.0
+offset_bottom = 325.0
+text = ["Welcome to the test of the shadows! Your goal is to survive 7 days and 7 nights in this arena!", "Each day you'll have resources at your disposal, and it's up to you to use them properly to equip yourself as best you can!", "Once night falls, you won't be able to recover resources or upgrade your equipment.", "That's when hordes of monsters will be unleashed on the arena! ", "You'll have to show that your equipment is fit for a king!", "If you survive, you'll become his official alchemist.", "Good luck..."]
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -2
