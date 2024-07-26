@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
-@export var speed :float = 200
+@export var max_hp:int = 100
+@export var max_speed :float = 200
 
 @onready var anim_sprite = $AnimatedSprite2D
 @onready var weapon = $WeaponMark/Weapon
 @onready var zone_interaction = $ZoneInteraction
 @onready var shadow = $Shadow
 
+var hp:int= max_hp
+var speed := max_speed
 
 var is_holding : bool
 var item_held : Area2D
@@ -19,7 +22,9 @@ var enchantment_table_open : bool
 #var shadow_inventory = [0, 0, 0]
 var shadow_inventory
 var can_select_shadows = false
-@onready var audio_stream_player = $AudioStreamPlayer
+
+#Pas d'audio stream player dans player je sais pas si cest normal
+#@onready var audio_stream_player = $AudioStreamPlayer
 
 func _ready():
 	shadow_inventory = get_parent().get_node("GUI/LeftPanel/shadows_inventory")
@@ -30,7 +35,6 @@ func _physics_process(_delta):
 	
 	if Input.get_action_raw_strength("Hit") :
 		weapon.Hit()
-		#TODO (scene speciale pour les armes ?)
 	
 	# un objet vient d'etre craft et est dans la main du joueur, il doit donc le poser
 	if Input.is_action_just_pressed("Interact") && not craft_held == null:
@@ -95,3 +99,11 @@ func add_shadow_inventory(mob_name):
 	#print("mob:",mob)
 	#print(shadow_inventory)
 	shadow_inventory.add_shadow(mob_name)
+
+func get_hit(damages:int):
+	hp-=damages
+	if hp<=0:
+		print("DEATH")
+		#TODO: death
+
+

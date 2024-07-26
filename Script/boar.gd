@@ -51,7 +51,7 @@ func manageMov(delta):
 		STATE.IDLE:
 			change_animation("idle")
 
-func move(target, delta):
+func move(_target, delta):
 	if target.distance_to(global_position) <= threshold:
 		curState = STATE.IDLE
 	var dir = (target - global_position).normalized()

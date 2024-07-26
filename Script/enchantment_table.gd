@@ -6,9 +6,9 @@ var player
 @onready var collision_shape = $CollisionShape2D
 
 # shadows effect : 
-#	sheep increase critical hit
+#	sheep increase health
 #	boar increase damage
-#	bee increase speed
+#	fow increase speed
 
 func _ready():
 	player = get_parent()

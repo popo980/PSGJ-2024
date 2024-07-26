@@ -518,5 +518,3 @@ position = Vector2(621, 144)
 position = Vector2(389, 106)
 spawnCooldown = 2.0
 qttSpawned = 2
-
-[connection signal="night_signal" from="GUI/DayNightCycle" to="Monsters/MonsterSpawner" method="_on_day_night_cycle_night_signal"]
