@@ -139,9 +139,9 @@ offset_bottom = 176.0
 theme_override_fonts/font = ExtResource("3_ksdcy")
 text = "Enchant"
 
-[connection signal="pressed" from="CraftSlot/Shadow1/Button1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CraftSlot/Shadow1/Button1" to="." method="_on_button_1_pressed"]
-[connection signal="pressed" from="CraftSlot2/Shadow2/Button2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CraftSlot/Shadow1/Button1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CraftSlot2/Shadow2/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="EnchantButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CraftSlot2/Shadow2/Button2" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="EnchantButton" to="." method="_on_enchant_button_pressed"]
+[connection signal="pressed" from="EnchantButton" to="." method="_on_button_pressed"]

@@ -17,9 +17,9 @@ var shadow_icons = {
 	"Fox" : null
 }
 var stats = {
-	"Sheep": [0, 0, 2],
-	"Boar": [2, 0, 0],
-	"Fox": [0, 2, 0]
+	"Sheep": [0, 0, 10],
+	"Boar": [5, 0, 0],
+	"Fox": [0, 10, 0]
 }
 var shadow_inventory
 var player

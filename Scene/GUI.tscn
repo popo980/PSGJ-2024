@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dykdi42h6m5d"]
+[gd_scene load_steps=4 format=3 uid="uid://dykdi42h6m5d"]
 
 [ext_resource type="Script" path="res://Script/GUI.gd" id="1_ww34x"]
+[ext_resource type="PackedScene" uid="uid://df8by3vb3etda" path="res://Scene/LeftPanel.tscn" id="2_wqftu"]
+[ext_resource type="PackedScene" uid="uid://crdb343v7evdc" path="res://Scene/day_night_cycle.tscn" id="3_wywx1"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -10,6 +12,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ww34x")
+
+[node name="LeftPanel" parent="." instance=ExtResource("2_wqftu")]
+layout_mode = 1
+
+[node name="DayNightCycle" parent="." instance=ExtResource("3_wywx1")]
+layout_mode = 1
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0

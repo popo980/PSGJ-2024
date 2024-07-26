@@ -1,5 +1,6 @@
 extends Control
 
+signal night_signal
 const GUI_CRAFTING_BUTTON = preload("res://Scene/GUI_CraftingButton.tscn")
 
 @onready var grid_container = $GridContainer
@@ -7,6 +8,10 @@ const GUI_CRAFTING_BUTTON = preload("res://Scene/GUI_CraftingButton.tscn")
 @onready var player = get_parent().get_node(NodePath("Player"))
 var craftAvailable = []
 
+func _ready():
+	connect("night_signal", Callable(self, "on_night_signal"))
+	
+	
 func UpdateCrafts(listCraft: Array):
 	for n in grid_container.get_children():
 		grid_container.remove_child(n)
@@ -23,3 +28,5 @@ func ButtonPressed(craftName: String):
 	game_manager.spawn(craftName)
 	player.useRessources(craftName)
 
+func Night():
+	emit_signal("night_signal")
