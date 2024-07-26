@@ -42,8 +42,7 @@ func _process(_delta):
 
 func Hit():
 	if cooldown.is_stopped():
-		#animation_player.play(getWeaponName()+"Hit")
-		animation_player.play("FistHit")
+		animation_player.play(getWeaponName()+"Hit")
 		cooldown.start()
 
 func SwitchWeapon(weapon:ListWeapon.Weapons):
@@ -52,8 +51,7 @@ func SwitchWeapon(weapon:ListWeapon.Weapons):
 	currentWeapon = weapon
 	set_weapon_icon()
 	SetUpWeapon()
-	#animation_player.play(getWeaponName()+"Idle")
-	animation_player.play("FistIdle")
+	animation_player.play(getWeaponName()+"Idle")
 
 func SetUpWeapon():
 	enchanted = false
@@ -63,15 +61,6 @@ func SetUpWeapon():
 	speed = 10 - weapon_stats[currentWeapon][1] * 10
 	pv = weapon_stats[currentWeapon][2]
 	
-	#match currentWeapon:
-		#ListWeapon.Weapons.FIST:
-			#damages = 5
-			#cooldown.wait_time = 0.3
-		#ListWeapon.Weapons.WOOD_SWORD:
-			#damages = 10
-			#cooldown.wait_time = 0.5
-		#_:
-			#print("Weapon is not existant")
 			
 func getWeaponName():
 	match currentWeapon:
@@ -91,8 +80,7 @@ func set_weapon_icon():
 	weapon_slot.get_node("weapon_icon").texture = weapon_icons[currentWeapon]
 
 func _on_timer_timeout():
-	#animation_player.play(getWeaponName()+"Idle")
-	animation_player.play("FistIdle")
+	animation_player.play(getWeaponName()+"Idle")
 	
 func _on_area_2d_body_entered(body):
 	if body != null:

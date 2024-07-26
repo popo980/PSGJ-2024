@@ -42,6 +42,9 @@ animations = [{
 size = Vector2(20, 27)
 
 [node name="Nightmorph" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 15
+platform_floor_layers = 0
 script = ExtResource("1_o8hcc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -52,5 +55,3 @@ autoplay = "Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_w1e7n")
-
-[node name="PlayerDetector" type="Area2D" parent="."]
