@@ -11,13 +11,12 @@ var text = [
 
 var char_speed = 0.08
 var sentence_wait = 1
-var char
 @onready var label = $Label
 var rand = RandomNumberGenerator.new()
 var min_pitch = 2
 var max_pitch = 2.5
 @onready var audio_stream_player = $AudioStreamPlayer
-var scene = preload("res://Scene/Level_1.tscn").instantiate()
+var scene = preload("res://Scene/levels/Level_1.tscn").instantiate()
 
 func _ready():
 	label.text = ""

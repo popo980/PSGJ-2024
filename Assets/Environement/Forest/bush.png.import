@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mqas6k5c1yf4"
-path="res://.godot/imported/Wood.png-00e39facf597933819669acf180e1171.ctex"
+uid="uid://cl08c6c0wk7vp"
+path="res://.godot/imported/bush.png-8037b6967be71410e1f99e8a989b543a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/Wood.png"
-dest_files=["res://.godot/imported/Wood.png-00e39facf597933819669acf180e1171.ctex"]
+source_file="res://Assets/Environement/Forest/bush.png"
+dest_files=["res://.godot/imported/bush.png-8037b6967be71410e1f99e8a989b543a.ctex"]
 
 [params]
 

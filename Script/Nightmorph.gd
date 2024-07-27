@@ -26,6 +26,7 @@ func get_hit(damages:int):
 	health -= damages
 	
 	if health<=0: #death
+		get_parent().mobDeath()
 		queue_free()
 	else:		#receive attack and survive
 		anim_sprite.play("Damaged")
@@ -49,3 +50,7 @@ func _on_attack_timer_timeout():
 	speed = max_speed
 	if playerInHit:
 		player.get_hit(damage)
+
+
+func _on_animated_sprite_2d_animation_finished():
+	anim_sprite.play("Walk")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ey514ivnf5i6"
-path="res://.godot/imported/Bone.png-09555334e71cd55923826afa740ee94a.ctex"
+uid="uid://cye2f25rqgpa0"
+path="res://.godot/imported/nightmorph_walk.png-157990c40a1be2e6b716fa80ba628081.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/Bone.png"
-dest_files=["res://.godot/imported/Bone.png-09555334e71cd55923826afa740ee94a.ctex"]
+source_file="res://Assets/Mob/Ennemies/nightmorph_walk.png"
+dest_files=["res://.godot/imported/nightmorph_walk.png-157990c40a1be2e6b716fa80ba628081.ctex"]
 
 [params]
 

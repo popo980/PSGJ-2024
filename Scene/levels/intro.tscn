@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccyjwbqdbo837"]
+[gd_scene load_steps=7 format=3 uid="uid://c34nie6h8xffr"]
 
-[ext_resource type="Script" path="res://Script/Intro.gd" id="1_wugpl"]
-[ext_resource type="Texture2D" uid="uid://c1yl4rn4we7kh" path="res://Assets/UI/night_transition-Sheet.png" id="2_h1g51"]
-[ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="3_m550e"]
-[ext_resource type="AudioStream" uid="uid://bnp75owyitngt" path="res://Assets/SFX/beep_text.mp3" id="4_jtdil"]
+[ext_resource type="Script" path="res://Script/Intro.gd" id="1_d0kbc"]
+[ext_resource type="Texture2D" uid="uid://c1yl4rn4we7kh" path="res://Assets/UI/night_transition-Sheet.png" id="2_n825b"]
+[ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="3_11cmt"]
+[ext_resource type="AudioStream" uid="uid://bnp75owyitngt" path="res://Assets/SFX/beep_text.mp3" id="4_g0oki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nulmq"]
-atlas = ExtResource("2_h1g51")
+atlas = ExtResource("2_n825b")
 region = Rect2(5600, 0, 700, 370)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n8mx8"]
@@ -27,7 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wugpl")
+script = ExtResource("1_d0kbc")
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 position = Vector2(350, 185)
@@ -39,7 +39,7 @@ offset_left = 86.0
 offset_top = 50.0
 offset_right = 610.0
 offset_bottom = 313.0
-theme_override_fonts/font = ExtResource("3_m550e")
+theme_override_fonts/font = ExtResource("3_11cmt")
 theme_override_font_sizes/font_size = 20
 text = "The King seeks an alchemist...
 
@@ -55,5 +55,5 @@ Yes! I'll try!"
 autowrap_mode = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_jtdil")
+stream = ExtResource("4_g0oki")
 volume_db = -10.0

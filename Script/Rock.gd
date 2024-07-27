@@ -1,8 +1,8 @@
 extends StaticBody2D
 
 const ROCK_ITEM = preload("res://Scene/RockItem.tscn")
-
-@onready var collision = $CollisionPolygon2D
+@onready var collision_shape_2d_2 = $CollisionShape2D2
+@onready var collision_shape_2d = $CollisionShape2D
 @onready var sprite = $Sprite
 @onready var particles = $Particles
 @onready var audio_stream_player = $AudioStreamPlayer
@@ -18,7 +18,8 @@ func _on_ressources_destroy_signal():
 	print("Rock destroyed")
 	audio_stream_player.stream = ROCK_BREAK
 	audio_stream_player.play()
-	collision.queue_free()
+	collision_shape_2d.queue_free()
+	collision_shape_2d_2.queue_free()
 	sprite.queue_free()
 	particles.emitting = true
 

@@ -16,10 +16,6 @@ grow_vertical = 2
 position = Vector2(35, 185)
 texture = ExtResource("1_08qpd")
 
-[node name="craft_slot" type="Sprite2D" parent="."]
-position = Vector2(35, 35)
-texture = ExtResource("2_gcgtp")
-
 [node name="weapon_slot" type="Sprite2D" parent="."]
 position = Vector2(35, 335)
 texture = ExtResource("2_gcgtp")

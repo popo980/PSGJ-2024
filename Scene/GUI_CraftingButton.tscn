@@ -6,7 +6,6 @@
 [node name="CraftButton" type="Button"]
 offset_right = 16.0
 offset_bottom = 16.0
-scale = Vector2(0.5, 0.5)
 icon = ExtResource("1_0frx0")
 flat = true
 script = ExtResource("2_s5i2x")

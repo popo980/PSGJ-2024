@@ -1,6 +1,6 @@
 extends Control
 
-var scene = preload("res://Scene/intro.tscn").instantiate()
+var scene = preload("res://Scene/levels/intro.tscn").instantiate()
 var play_pressed
 var started
 var opacity = 1.0

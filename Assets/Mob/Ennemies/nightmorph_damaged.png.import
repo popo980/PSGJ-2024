@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwdwj04n0m0st"
-path="res://.godot/imported/Trees.png-dc5586d9befcbf6151f4ff577561d2a5.ctex"
+uid="uid://cjdmqkb8ldno5"
+path="res://.godot/imported/nightmorph_damaged.png-dfb51c302cb73bcfafa511dbd013014b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environement/Forest/Trees.png"
-dest_files=["res://.godot/imported/Trees.png-dc5586d9befcbf6151f4ff577561d2a5.ctex"]
+source_file="res://Assets/Mob/Ennemies/nightmorph_damaged.png"
+dest_files=["res://.godot/imported/nightmorph_damaged.png-dfb51c302cb73bcfafa511dbd013014b.ctex"]
 
 [params]
 

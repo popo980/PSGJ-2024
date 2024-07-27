@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3ukre0gw26o6"]
+[gd_scene load_steps=5 format=3 uid="uid://pdluhv6rxwyc"]
 
 [ext_resource type="Script" path="res://Script/dialog_box.gd" id="1_5e3es"]
 [ext_resource type="AudioStream" uid="uid://bnp75owyitngt" path="res://Assets/SFX/beep_text.mp3" id="2_xuoud"]

@@ -1,21 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://635r7uxtfoix"]
+[gd_scene load_steps=11 format=3 uid="uid://635r7uxtfoix"]
 
-[ext_resource type="PackedScene" uid="uid://dykdi42h6m5d" path="res://Scene/GUI.tscn" id="1_2fi62"]
-[ext_resource type="PackedScene" uid="uid://dv0wgsgv2je6k" path="res://Scene/Game_manager.tscn" id="1_a31kq"]
-[ext_resource type="Texture2D" uid="uid://c5sr8gcsnk8l4" path="res://Assets/Environement/Forest/Tiles.png" id="1_kud3s"]
-[ext_resource type="PackedScene" uid="uid://d15ejon0j3a1n" path="res://Scene/Tree.tscn" id="2_vjkal"]
-[ext_resource type="PackedScene" uid="uid://plkrkvokn260" path="res://Scene/Rock.tscn" id="3_vi856"]
-[ext_resource type="PackedScene" uid="uid://df8by3vb3etda" path="res://Scene/LeftPanel.tscn" id="3_xhcuc"]
-[ext_resource type="PackedScene" uid="uid://ijos2ojmfmcj" path="res://Scene/Bush.tscn" id="4_b7bwc"]
-[ext_resource type="PackedScene" uid="uid://b3ukre0gw26o6" path="res://Scene/dialog_box.tscn" id="5_8ybw4"]
-[ext_resource type="PackedScene" uid="uid://b08utre752g6f" path="res://Scene/Player.tscn" id="5_q1dlg"]
-[ext_resource type="PackedScene" uid="uid://7g4c3tvpoc7s" path="res://Scene/sheep.tscn" id="8_a7w63"]
-[ext_resource type="PackedScene" path="res://Scene/boar.tscn" id="10_titqm"]
-[ext_resource type="PackedScene" uid="uid://crdb343v7evdc" path="res://Scene/day_night_cycle.tscn" id="11_k22xk"]
-[ext_resource type="PackedScene" uid="uid://cd3m7h8tdt73o" path="res://Scene/monster_spawner.tscn" id="11_um3nm"]
+[ext_resource type="PackedScene" uid="uid://dv0wgsgv2je6k" path="res://Scene/buildWorld/Game_manager.tscn" id="1_kskm3"]
+[ext_resource type="PackedScene" uid="uid://dykdi42h6m5d" path="res://Scene/buildWorld/GUI.tscn" id="2_dkqpw"]
+[ext_resource type="PackedScene" uid="uid://pdluhv6rxwyc" path="res://Scene/buildWorld/dialog_box.tscn" id="3_pblcf"]
+[ext_resource type="Texture2D" uid="uid://c5sr8gcsnk8l4" path="res://Assets/Environement/Forest/Tiles.png" id="4_t2t1w"]
+[ext_resource type="PackedScene" uid="uid://b08utre752g6f" path="res://Scene/buildWorld/Player.tscn" id="5_lek6j"]
+[ext_resource type="PackedScene" uid="uid://d15ejon0j3a1n" path="res://Scene/buildWorld/Tree.tscn" id="6_r4rc1"]
+[ext_resource type="PackedScene" uid="uid://7g4c3tvpoc7s" path="res://Scene/buildWorld/sheep.tscn" id="7_a7h57"]
+[ext_resource type="PackedScene" uid="uid://cd3m7h8tdt73o" path="res://Scene/buildWorld/monster_spawner.tscn" id="8_u6i5b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1pqn8"]
-texture = ExtResource("1_kud3s")
+texture = ExtResource("4_t2t1w")
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -427,24 +422,20 @@ sources/0 = SubResource("TileSetAtlasSource_1pqn8")
 
 [node name="Level1" type="Node2D"]
 
-[node name="GameManager" parent="." instance=ExtResource("1_a31kq")]
+[node name="GameManager" parent="." instance=ExtResource("1_kskm3")]
+nbMonsterSpawner = 2
+portalEmplacement = Vector2(350, 200)
 
-[node name="GUI" parent="." instance=ExtResource("1_2fi62")]
+[node name="GUI" parent="." instance=ExtResource("2_dkqpw")]
+timeDay = 50.0
 
-[node name="LeftPanel" parent="GUI" instance=ExtResource("3_xhcuc")]
-z_index = -1
-layout_mode = 1
-
-[node name="DayNightCycle" parent="GUI" instance=ExtResource("11_k22xk")]
-layout_mode = 1
-
-[node name="Dialog_box" parent="GUI" instance=ExtResource("5_8ybw4")]
+[node name="Dialog_box" parent="GUI" instance=ExtResource("3_pblcf")]
 layout_mode = 1
 offset_left = 350.0
 offset_top = 325.0
 offset_right = 350.0
 offset_bottom = 325.0
-text = ["Welcome to the test of the shadows! Your goal is to survive 7 days and 7 nights in this arena!", "Each day you'll have resources at your disposal, and it's up to you to use them properly to equip yourself as best you can!", "Once night falls, you won't be able to recover resources or upgrade your equipment.", "That's when hordes of monsters will be unleashed on the arena! ", "You'll have to show that your equipment is fit for a king!", "If you survive, you'll become his official alchemist.", "Good luck..."]
+text = ["So here is the famous shadow test… Let's start harvesting all those resources to survive this night !", "Let's show the king that I'm the one he want"]
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -2
@@ -456,65 +447,37 @@ layer_0/tile_data = PackedInt32Array(-655362, 131072, 5, -589826, 131072, 6, -52
 layer_1/name = "props"
 layer_1/tile_data = PackedInt32Array(-524304, 327680, 5, -589840, 327680, 4, -655341, 65536, 5, -589805, 65536, 6, 524308, 65536, 0, 589843, 65536, 0, 589807, 262144, 0, 655378, 196608, 0, 655377, 196608, 0, 655376, 196608, 0, 655375, 196608, 0, 655374, 196608, 0, 655373, 196608, 0, 655372, 196608, 0, 655371, 196608, 0, 655370, 196608, 0, 655369, 196608, 0, 655368, 196608, 0, 655367, 196608, 0, 655366, 196608, 0, 655365, 196608, 0, 655364, 196608, 0, 655363, 196608, 0, 655362, 196608, 0, 655361, 196608, 0, 655360, 196608, 0, 720895, 196608, 0, 720894, 196608, 0, 720893, 196608, 0, 720892, 196608, 0, 720891, 196608, 0, 720890, 196608, 0, 720889, 196608, 0, 720888, 196608, 0, 720887, 196608, 0, 720886, 196608, 0, 720885, 196608, 0, 720884, 196608, 0, 720883, 196608, 0, 720882, 196608, 0, 720881, 196608, 0, 655345, 458752, 1, 655344, 327680, 1, 720880, 262144, 1, 655343, 262144, 1, 589806, 262144, 1, 655379, 65536, 1, 589844, 65536, 1, 524309, 65536, 1, 458771, 589824, 805306371, 524306, 589824, 805306371, 589841, 589824, 805306370, 589842, 589824, 2, 655346, 589824, 2, 589809, 589824, 1610612739, 524272, 589824, 1610612739, 524271, 458752, 1, 458735, 393216, 6)
 
-[node name="Player" parent="." instance=ExtResource("5_q1dlg")]
+[node name="Player" parent="." instance=ExtResource("5_lek6j")]
 position = Vector2(333, 177)
 
 [node name="Trees" type="Node" parent="."]
 
-[node name="Tree" parent="Trees" instance=ExtResource("2_vjkal")]
-position = Vector2(544, 142)
+[node name="Tree" parent="Trees" instance=ExtResource("6_r4rc1")]
+position = Vector2(469, 150)
 
-[node name="Tree2" parent="Trees" instance=ExtResource("2_vjkal")]
-position = Vector2(163, 242)
+[node name="Tree2" parent="Trees" instance=ExtResource("6_r4rc1")]
+position = Vector2(207, 114)
 
-[node name="Tree3" parent="Trees" instance=ExtResource("2_vjkal")]
-position = Vector2(210, 267)
-
-[node name="Tree4" parent="Trees" instance=ExtResource("2_vjkal")]
-position = Vector2(197, 211)
+[node name="Tree3" parent="Trees" instance=ExtResource("6_r4rc1")]
+position = Vector2(167, 153)
 
 [node name="Rocks" type="Node" parent="."]
 
-[node name="Rock" parent="Rocks" instance=ExtResource("3_vi856")]
-position = Vector2(494, 266)
-
-[node name="Rock2" parent="Rocks" instance=ExtResource("3_vi856")]
-position = Vector2(576, 255)
-
-[node name="Rock3" parent="Rocks" instance=ExtResource("3_vi856")]
-position = Vector2(552, 300)
-
 [node name="Bushes" type="Node" parent="."]
-
-[node name="Bush" parent="Bushes" instance=ExtResource("4_b7bwc")]
-position = Vector2(227, 247)
-
-[node name="Bush2" parent="Bushes" instance=ExtResource("4_b7bwc")]
-position = Vector2(387, 287)
 
 [node name="Animals" type="Node" parent="."]
 
-[node name="Sheep" parent="Animals" instance=ExtResource("8_a7w63")]
-position = Vector2(549, 215)
-scale = Vector2(1.5, 1.5)
-
-[node name="Sheep2" parent="Animals" instance=ExtResource("8_a7w63")]
-position = Vector2(379, 230)
-scale = Vector2(1.5, 1.5)
-
-[node name="Sheep3" parent="Animals" instance=ExtResource("8_a7w63")]
-position = Vector2(617, 283)
-scale = Vector2(1.5, 1.5)
-
-[node name="Boar" parent="Animals" instance=ExtResource("10_titqm")]
-position = Vector2(130, 341)
-
-[node name="Boar2" parent="Animals" instance=ExtResource("10_titqm")]
-position = Vector2(621, 144)
+[node name="Sheep" parent="Animals" instance=ExtResource("7_a7h57")]
+position = Vector2(561, 298)
 
 [node name="Monsters" type="Node" parent="."]
 
-[node name="MonsterSpawner" parent="Monsters" instance=ExtResource("11_um3nm")]
-position = Vector2(389, 106)
+[node name="MonsterSpawner" parent="Monsters" instance=ExtResource("8_u6i5b")]
+position = Vector2(101, 340)
+
+[node name="MonsterSpawner2" parent="Monsters" instance=ExtResource("8_u6i5b")]
+position = Vector2(654, 86)
 spawnCooldown = 2.0
-qttSpawned = 2
+
+[connection signal="night_signal" from="GUI" to="Monsters/MonsterSpawner" method="_on_gui_night_signal"]
+[connection signal="night_signal" from="GUI" to="Monsters/MonsterSpawner2" method="_on_gui_night_signal"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jd5bkfgeeuxr"
-path="res://.godot/imported/temporaire_crafttable.png-ca3d6c3b3145a86cb3603a8f18fd0a00.ctex"
+uid="uid://6mjuuvs4fq16"
+path="res://.godot/imported/bigRock.png-3d883bb71c054bcdf0fc9deb53ef50b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Temporaire/temporaire_crafttable.png"
-dest_files=["res://.godot/imported/temporaire_crafttable.png-ca3d6c3b3145a86cb3603a8f18fd0a00.ctex"]
+source_file="res://Assets/Environement/Forest/bigRock.png"
+dest_files=["res://.godot/imported/bigRock.png-3d883bb71c054bcdf0fc9deb53ef50b7.ctex"]
 
 [params]
 

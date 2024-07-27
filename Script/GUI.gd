@@ -3,6 +3,9 @@ extends Control
 signal night_signal
 const GUI_CRAFTING_BUTTON = preload("res://Scene/GUI_CraftingButton.tscn")
 
+@export var timeDay :float= 30
+
+@onready var day_night_cycle = $DayNightCycle
 @onready var grid_container = $GridContainer
 @onready var game_manager = get_parent().get_node(NodePath("GameManager"))
 @onready var player = get_parent().get_node(NodePath("Player"))
@@ -10,6 +13,7 @@ var craftAvailable = []
 
 func _ready():
 	connect("night_signal", Callable(self, "on_night_signal"))
+	day_night_cycle.timeEnd = timeDay
 	
 	
 func UpdateCrafts(listCraft: Array):

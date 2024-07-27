@@ -1,22 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://drqo5r2woa5be"]
+[gd_scene load_steps=4 format=3 uid="uid://drqo5r2woa5be"]
 
 [ext_resource type="Script" path="res://Script/Item.gd" id="1_8e0at"]
-[ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_cw01g"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3vict"]
-atlas = ExtResource("1_cw01g")
-region = Rect2(48, 32, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_la6ou"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3vict")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://diq8tfvyf16lt" path="res://Assets/Environement/Forest/rock.png" id="2_vysb1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tyhje"]
 radius = 8.06226
@@ -27,8 +12,8 @@ collision_mask = 0
 script = ExtResource("1_8e0at")
 item_type = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_la6ou")
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vysb1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tyhje")

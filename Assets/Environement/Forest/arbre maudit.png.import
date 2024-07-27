@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg6k48q8ccbnf"
-path="res://.godot/imported/Idle-Sheet.png-be62ecf6851fe216e00420cf38a00a92.ctex"
+uid="uid://t4ae5pvirac6"
+path="res://.godot/imported/arbre maudit.png-94387351773dccf581e925770f1fe0c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Mob/Ennemies/Skeletton/Idle-Sheet.png"
-dest_files=["res://.godot/imported/Idle-Sheet.png-be62ecf6851fe216e00420cf38a00a92.ctex"]
+source_file="res://Assets/Environement/Forest/arbre maudit.png"
+dest_files=["res://.godot/imported/arbre maudit.png-94387351773dccf581e925770f1fe0c8.ctex"]
 
 [params]
 

@@ -1,24 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://plkrkvokn260"]
 
-[ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_f8njo"]
 [ext_resource type="Script" path="res://Script/Rock.gd" id="1_jpusv"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_bffn4"]
+[ext_resource type="Texture2D" uid="uid://6mjuuvs4fq16" path="res://Assets/Environement/Forest/bigRock.png" id="3_c4et0"]
 [ext_resource type="AudioStream" uid="uid://dy6y845qqfmhf" path="res://Assets/SFX/rock_hit.mp3" id="4_2k4q7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qrrwp"]
-atlas = ExtResource("1_f8njo")
-region = Rect2(82, 1, 30, 30)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aobah"]
+size = Vector2(30, 12)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qgnhu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qrrwp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxp4d"]
+radius = 11.0
 
 [sub_resource type="Curve" id="Curve_kbu3r"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -28,9 +19,13 @@ point_count = 2
 collision_layer = 9
 script = ExtResource("1_jpusv")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, 1)
-polygon = PackedVector2Array(11.73, 10.385, -2.01, 12.99, -15.585, 8.055, -12.35, -4.605, -4.05, -13.88, 3.38, -14.9, 12.645, -3.085)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 8)
+shape = SubResource("RectangleShape2D_aobah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.905)
+shape = SubResource("CircleShape2D_yxp4d")
 
 [node name="Ressources" parent="." instance=ExtResource("2_bffn4")]
 ressource = 1
@@ -38,8 +33,8 @@ pv_max = 15.0
 
 [node name="Sprite" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-sprite_frames = SubResource("SpriteFrames_qgnhu")
+[node name="AnimatedSprite2D" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("3_c4et0")
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 position = Vector2(0, 7)

@@ -1,27 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://ijos2ojmfmcj"]
+[gd_scene load_steps=7 format=3 uid="uid://ijos2ojmfmcj"]
 
 [ext_resource type="Script" path="res://Script/Bush.gd" id="1_angtn"]
-[ext_resource type="Texture2D" uid="uid://p0caoar34gsj" path="res://Assets/Environement/Forest/Props.png" id="1_rmw26"]
 [ext_resource type="PackedScene" uid="uid://u1c5f46h7bjw" path="res://Scene/Ressources.tscn" id="2_gl2sm"]
+[ext_resource type="Texture2D" uid="uid://cl08c6c0wk7vp" path="res://Assets/Environement/Forest/bush.png" id="3_noile"]
 [ext_resource type="AudioStream" uid="uid://b2kbpnyfss7pr" path="res://Assets/SFX/bush_hit.mp3" id="4_rpdva"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1vfl"]
 radius = 22.2036
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rl73o"]
-atlas = ExtResource("1_rmw26")
-region = Rect2(0, 98, 50, 49)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wbauh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rl73o")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="Curve" id="Curve_kck4p"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -41,8 +26,8 @@ area_radius = 50.0
 
 [node name="Sprite" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite"]
-sprite_frames = SubResource("SpriteFrames_wbauh")
+[node name="AnimatedSprite2D" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("3_noile")
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 position = Vector2(0, 11)

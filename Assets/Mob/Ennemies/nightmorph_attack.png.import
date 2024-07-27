@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dase6axlvl6jd"
-path="res://.godot/imported/Hands.png-c25258fca410f74ce32eff3dd6800f62.ctex"
+uid="uid://dvj4be1sxtocl"
+path="res://.godot/imported/nightmorph_attack.png-e0fd4b834b6095f28a9ad632730a7946.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/Hands.png"
-dest_files=["res://.godot/imported/Hands.png-c25258fca410f74ce32eff3dd6800f62.ctex"]
+source_file="res://Assets/Mob/Ennemies/nightmorph_attack.png"
+dest_files=["res://.godot/imported/nightmorph_attack.png-e0fd4b834b6095f28a9ad632730a7946.ctex"]
 
 [params]
 

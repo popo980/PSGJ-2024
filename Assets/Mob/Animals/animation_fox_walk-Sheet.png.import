@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o5wfmf88ltq4"
-path="res://.godot/imported/Death-Sheet.png-4c1f01e0b7d42b4920738cd8ab1e2cbb.ctex"
+uid="uid://btxr133pgtnfu"
+path="res://.godot/imported/animation_fox_walk-Sheet.png-2748a9e6f05cacf612ec25e65b20f4bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Mob/Ennemies/Skeletton/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-4c1f01e0b7d42b4920738cd8ab1e2cbb.ctex"]
+source_file="res://Assets/Mob/Animals/animation_fox_walk-Sheet.png"
+dest_files=["res://.godot/imported/animation_fox_walk-Sheet.png-2748a9e6f05cacf612ec25e65b20f4bd.ctex"]
 
 [params]
 
