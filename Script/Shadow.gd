@@ -34,6 +34,8 @@ func get_item_id_type():
 func interact(player):
 	sprite.modulate = Color(0, 0, 0, 0)
 	collision_shape_2d.queue_free()
-	print("ombre de ", mob_name[mob], " ajoutée à l'inventaire des ombres !")
 	# add shadow in player inventory
 	player.add_shadow_inventory(mob_name[mob])
+
+func changeSide(isFlipped:bool):
+	sprite.flip_h = isFlipped

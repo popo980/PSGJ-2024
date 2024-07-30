@@ -4,6 +4,8 @@ extends Area2D
 var recipes = {
 	"Workbench": [2,0,0]
 }
+@onready var collision_shape_2d = $CollisionShape2D
+@onready var sprite_2d = $Sprite2D
 
 var Gui
 
@@ -44,16 +46,12 @@ func _on_area_entered(area):
 	inZone.append(area)
 	add_ressources(area.get_item_id_type())
 	Gui.UpdateCrafts(recipes_available())
-	print(str(recipes_available()))
-	print(str(nbTree)+" "+str(nbRock)+" "+str(nbBush))
 
 
 func _on_area_exited(area):
 	inZone.remove_at(inZone.find(area))
 	sub_ressources(area.get_item_id_type())
 	Gui.UpdateCrafts(recipes_available())
-	print(str(recipes_available()))
-	print(str(inZone.size()))
 
 func is_in_3arg(lst1,lst2):
 	for i in lst1.size():
@@ -74,3 +72,10 @@ func useRessources(craftName:String):
 
 func get_item_id_type():
 	return -1
+
+func disappear():
+	collision_shape_2d.disabled = true
+	sprite_2d.queue_free()
+
+func reappear():
+	collision_shape_2d.disabled = false

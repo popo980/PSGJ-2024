@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxdkthk8453vs"]
+[gd_scene load_steps=4 format=3 uid="uid://bxdkthk8453vs"]
 
 [ext_resource type="Texture2D" uid="uid://d3sowrij3lrl1" path="res://Assets/Temporaire/workbench.png" id="1_0frx0"]
 [ext_resource type="Script" path="res://Script/GUI_CraftingButton.gd" id="2_s5i2x"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bfwy"]
+
 [node name="CraftButton" type="Button"]
 offset_right = 16.0
 offset_bottom = 16.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2bfwy")
 icon = ExtResource("1_0frx0")
 flat = true
 script = ExtResource("2_s5i2x")

@@ -14,12 +14,12 @@ var nb = 0
 var shadow_icons = {
 	"Sheep" : preload("res://Assets/Mob/Animals/shadow_icons/sheep_shadow_icon.png"),
 	"Boar" : preload("res://Assets/Mob/Animals/shadow_icons/boar_shadow_icon.png"),
-	"Fox" : null
+	"Fox" : preload("res://Assets/Mob/Animals/shadow_icons/fox_shadow.png")
 }
 var stats = {
-	"Sheep": [0, 0, 10],
+	"Sheep": [0, 0, 15],
 	"Boar": [5, 0, 0],
-	"Fox": [0, 10, 0]
+	"Fox": [0, 20, 0]
 }
 var shadow_inventory
 var player

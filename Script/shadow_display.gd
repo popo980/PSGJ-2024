@@ -10,7 +10,6 @@ func _ready():
 
 func _process(_delta):
 	if mouse_in && Input.is_action_just_pressed("Hit"):
-		print("CLICKCLICKCLICK")
 		emit_signal("shadow_selected", self)
 
 func _on_mouse_entered():

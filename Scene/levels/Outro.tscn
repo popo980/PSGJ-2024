@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckbv5h6xfajck"]
+
+[ext_resource type="Script" path="res://Script/Outro.gd" id="1_qn0cr"]
+[ext_resource type="Texture2D" uid="uid://c1yl4rn4we7kh" path="res://Assets/UI/night_transition-Sheet.png" id="2_4vfmc"]
+[ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="3_c2w0e"]
+[ext_resource type="AudioStream" uid="uid://bnp75owyitngt" path="res://Assets/SFX/beep_text.mp3" id="4_xvtd5"]
+[ext_resource type="AudioStream" uid="uid://htw55pvabl34" path="res://Assets/Musics/Copie Sans titre (Main Menu).mp3" id="5_i8mpi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nulmq"]
+atlas = ExtResource("2_4vfmc")
+region = Rect2(5600, 0, 700, 370)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8mx8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nulmq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Outro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qn0cr")
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+position = Vector2(350, 185)
+sprite_frames = SubResource("SpriteFrames_n8mx8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 50.0
+offset_right = 610.0
+offset_bottom = 313.0
+theme_override_fonts/font = ExtResource("3_c2w0e")
+theme_override_font_sizes/font_size = 20
+text = "The King seeks an alchemist...
+
+This could be my chance...
+
+After all, what have I got to lose?
+
+I have to pass a series of tests, and if I'm still alive after 7 days in the arena, I become the King's official alchemist...
+
+...
+
+Yes! I'll try!"
+autowrap_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xvtd5")
+volume_db = -10.0
+bus = &"SoundEffect"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(351, 185)
+zoom = Vector2(2, 2)
+
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_i8mpi")
+autoplay = true
+bus = &"Music"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

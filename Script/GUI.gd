@@ -7,13 +7,20 @@ const GUI_CRAFTING_BUTTON = preload("res://Scene/GUI_CraftingButton.tscn")
 
 @onready var day_night_cycle = $DayNightCycle
 @onready var grid_container = $GridContainer
+@onready var texture_progress_bar = $TextureProgressBar
+@onready var label = $TextureProgressBar/Label
+@onready var death_screen = $DeathScreen
+
 @onready var game_manager = get_parent().get_node(NodePath("GameManager"))
 @onready var player = get_parent().get_node(NodePath("Player"))
+
 var craftAvailable = []
+var titleScreen = "res://Scene/levels/title_screen.tscn"
 
 func _ready():
 	connect("night_signal", Callable(self, "on_night_signal"))
 	day_night_cycle.timeEnd = timeDay
+	death_screen.visible = false
 	
 	
 func UpdateCrafts(listCraft: Array):
@@ -34,3 +41,20 @@ func ButtonPressed(craftName: String):
 
 func Night():
 	emit_signal("night_signal")
+
+func UpdateHealth(max_hp:int,hp:int):
+	texture_progress_bar.max_value = max_hp
+	texture_progress_bar.value = hp
+	label.text = str(hp)
+
+func OnPlayerDeath():
+	death_screen.visible = true
+
+func _on_play_button_pressed():
+	game_manager.restart()
+
+
+func _on_quit_button_pressed():
+	get_tree().root.add_child(load(titleScreen).instantiate())
+	queue_free()
+

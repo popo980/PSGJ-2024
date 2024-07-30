@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctv2wuwuf3ah7"]
+
+[ext_resource type="Texture2D" uid="uid://c1yl4rn4we7kh" path="res://Assets/UI/night_transition-Sheet.png" id="1_uf0vr"]
+[ext_resource type="Script" path="res://Script/credits.gd" id="1_x5x5a"]
+[ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="2_jbtqh"]
+[ext_resource type="Texture2D" uid="uid://53rapj4ayubk" path="res://Assets/UI/Button.png" id="4_ol1b2"]
+[ext_resource type="AudioStream" uid="uid://htw55pvabl34" path="res://Assets/Musics/Copie Sans titre (Main Menu).mp3" id="5_apd8r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nulmq"]
+atlas = ExtResource("1_uf0vr")
+region = Rect2(5600, 0, 700, 370)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tsisg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nulmq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r67hn"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x5x5a")
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+position = Vector2(350, 185)
+sprite_frames = SubResource("SpriteFrames_tsisg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 350.0
+offset_bottom = 186.0
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_jbtqh")
+theme_override_font_sizes/font_size = 20
+text = "A GAME MADE BY	
+DROCOLAS
+AND 
+POPOULPE
+
+MUSIC BY 
+BEA MURRAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 45.0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r67hn")
+icon = ExtResource("4_ol1b2")
+flat = true
+
+[node name="Label" type="Label" parent="PlayButton"]
+layout_mode = 0
+offset_left = 15.3333
+offset_top = 11.3333
+offset_right = 64.3333
+offset_bottom = 34.3333
+theme_override_colors/font_color = Color(0.929412, 0.901961, 0.796078, 1)
+theme_override_fonts/font = ExtResource("2_jbtqh")
+theme_override_font_sizes/font_size = 20
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(351, 185)
+zoom = Vector2(2, 2)
+
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_apd8r")
+volume_db = 5.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

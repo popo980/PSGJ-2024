@@ -1,9 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://crdb343v7evdc"]
+[gd_scene load_steps=32 format=3 uid="uid://crdb343v7evdc"]
 
 [ext_resource type="Script" path="res://Script/day_night_cycle.gd" id="1_gk0sa"]
 [ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="2_h86g6"]
+[ext_resource type="Texture2D" uid="uid://c70asm5mgqwfm" path="res://Assets/UI/cycle_empty_bar.png" id="2_yq5ji"]
+[ext_resource type="Texture2D" uid="uid://bl5dj5k10hsxn" path="res://Assets/UI/cycle_day_bar.png" id="3_74q2y"]
 [ext_resource type="Texture2D" uid="uid://dw23eewawavb4" path="res://Assets/UI/day_transition-Sheet.png" id="3_kfgxn"]
 [ext_resource type="Texture2D" uid="uid://c1yl4rn4we7kh" path="res://Assets/UI/night_transition-Sheet.png" id="4_00x60"]
+[ext_resource type="Texture2D" uid="uid://bukcprsqgq0h" path="res://Assets/UI/cycle_night_bar.png" id="4_3rkga"]
 [ext_resource type="Texture2D" uid="uid://q5b07bq4rhy7" path="res://Assets/UI/night.png" id="5_p67l0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp0s0"]
@@ -11,6 +14,8 @@ bg_color = Color(0.126672, 0.659692, 0.823184, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgk8f"]
 bg_color = Color(0.0888639, 0.10196, 0.364722, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bspi4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0eyqq"]
 atlas = ExtResource("3_kfgxn")
@@ -167,7 +172,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gk0sa")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 5.0
+offset_right = 500.0
+offset_bottom = 25.0
+scale = Vector2(1.825, 1.825)
+max_value = 200.0
+texture_under = ExtResource("3_74q2y")
+texture_over = ExtResource("2_yq5ji")
+texture_progress = ExtResource("4_3rkga")
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 200.0
 offset_top = 5.0
@@ -185,6 +203,7 @@ offset_top = 5.0
 offset_right = 695.0
 offset_bottom = 29.0
 theme_override_fonts/font = ExtResource("2_h86g6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bspi4")
 text = "Skip to night"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -194,5 +213,9 @@ scale = Vector2(1.01714, 1.02703)
 sprite_frames = SubResource("SpriteFrames_owd13")
 animation = &"night_transition"
 autoplay = "day_transition"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 15.0
+bus = &"Music"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

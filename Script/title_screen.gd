@@ -1,6 +1,7 @@
 extends Control
 
-var scene = preload("res://Scene/levels/intro.tscn").instantiate()
+var credits = "res://Scene/levels/credits.tscn"
+var scene = "res://Scene/levels/intro.tscn"
 var play_pressed
 var started
 var opacity = 1.0
@@ -24,5 +25,12 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	get_tree().root.add_child(scene)
-	queue_free()
+	get_tree().change_scene_to_file(scene)
+
+
+func _on_credits_button_pressed():
+	get_tree().change_scene_to_file(credits)
+
+
+func _on_credits_button_2_pressed():
+	get_tree().quit()

@@ -38,7 +38,14 @@ var icons = [preload("res://Assets/Temporaire/table_denchantement.png"),
 			preload("res://Assets/Weapons/bow.png"),
 			preload("res://Assets/Weapons/magic_wand.png"),
 			preload("res://Assets/Weapons/knife.png")]
-var recipes = [[1,0,1], [1,0,0], [1, 2, 0], [1,0,2], [3,1,0], [0,2,1]]
+			
+var recipes = [[1,0,1],
+ [1,0,0],
+ [1, 2, 0],
+ [1,0,2],
+ [2,1,1],
+ [0,1,1]]
+
 var instances = [preload("res://Scene/enchantment_table.tscn"), null, null, null, null, null]
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -110,8 +117,7 @@ func check_all_achievable():
 		check_achievable(slots.get_child(i))
 
 func check_achievable(slot):
-	var achievable = (workbench_zone_interaction.nbTree >= slot.recipe[0]) && (workbench_zone_interaction.nbRock >= slot.recipe[1]) && (workbench_zone_interaction.nbBush >= slot.recipe[2]) 
-	print(slot.craft_name, " is achievable : ", achievable)
+	var achievable = (workbench_zone_interaction.nbTree >= slot.recipe[0]) && (workbench_zone_interaction.nbRock >= slot.recipe[1]) && (workbench_zone_interaction.nbBush >= slot.recipe[2])
 	slot.griser_slot(not achievable)
 	# permet de dégriser le bouton
 	if slot == slots.selected:

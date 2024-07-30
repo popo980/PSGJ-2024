@@ -55,8 +55,6 @@ func _on_area_entered(area):
 	inZone.append(area)
 	add_ressources(area.get_item_id_type())
 	#Gui.UpdateCrafts(recipes_available())
-	print(str(recipes_available()))
-	print(str(nbTree)+" "+str(nbRock)+" "+str(nbBush))
 	workbench_interface.check_all_achievable()
 
 
@@ -64,7 +62,6 @@ func _on_area_exited(area):
 	inZone.remove_at(inZone.find(area))
 	sub_ressources(area.get_item_id_type())
 	#Gui.UpdateCrafts(recipes_available())
-	print(str(inZone.size()))
 	workbench_interface.check_all_achievable()
 	
 
@@ -97,10 +94,8 @@ func _on_body_entered(_body):
 	workbench_interface.global_position = Vector2.ZERO
 	player.workbench_open = true
 	if player.enchantment_table_open:
-		print("enchantment_table already open")
-		workbench_interface.z_index = 11
+		workbench_interface.z_index = 20
 	else :
-		print("enchantment_table not open")
 		workbench_interface.z_index = 10
 
 func _on_body_exited(_body):

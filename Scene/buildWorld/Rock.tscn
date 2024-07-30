@@ -54,6 +54,7 @@ color = Color(0.792157, 0.792157, 0.792157, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_2k4q7")
+bus = &"SoundEffect"
 
 [connection signal="destroy_signal" from="Ressources" to="." method="_on_ressources_destroy_signal"]
 [connection signal="hit_signal" from="Ressources" to="." method="_on_ressources_hit_signal"]

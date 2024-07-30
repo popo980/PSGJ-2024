@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c34nie6h8xffr"]
+[gd_scene load_steps=8 format=3 uid="uid://c34nie6h8xffr"]
 
 [ext_resource type="Script" path="res://Script/Intro.gd" id="1_d0kbc"]
 [ext_resource type="Texture2D" uid="uid://c1yl4rn4we7kh" path="res://Assets/UI/night_transition-Sheet.png" id="2_n825b"]
 [ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="3_11cmt"]
 [ext_resource type="AudioStream" uid="uid://bnp75owyitngt" path="res://Assets/SFX/beep_text.mp3" id="4_g0oki"]
+[ext_resource type="AudioStream" uid="uid://htw55pvabl34" path="res://Assets/Musics/Copie Sans titre (Main Menu).mp3" id="5_vbe62"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nulmq"]
 atlas = ExtResource("2_n825b")
@@ -57,3 +58,18 @@ autowrap_mode = 3
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_g0oki")
 volume_db = -10.0
+bus = &"SoundEffect"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(351, 185)
+zoom = Vector2(2, 2)
+
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vbe62")
+autoplay = true
+bus = &"Music"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

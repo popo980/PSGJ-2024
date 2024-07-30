@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cc56cffelwn4v"]
+[gd_scene load_steps=11 format=3 uid="uid://cc56cffelwn4v"]
 
 [ext_resource type="Script" path="res://Script/workbench_interface.gd" id="1_1wtyk"]
 [ext_resource type="Texture2D" uid="uid://u7p24gsk2su3" path="res://Assets/UI/Workbench/craft_bg.png" id="1_5kl2y"]
@@ -18,6 +18,8 @@ expand_margin_left = 2.0
 [sub_resource type="Theme" id="Theme_h0dp2"]
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_ed81f")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_8wyys")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_joqqc"]
 
 [node name="WorkbenchInterface" type="Control"]
 z_index = 10
@@ -160,10 +162,12 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_tugwu")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_joqqc")
 text = "CRAFT"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_els4x")
+bus = &"SoundEffect"
 
 [connection signal="craft_selected" from="ScrollContainer/Slots" to="." method="_on_slots_craft_selected"]
 [connection signal="pressed" from="BoxContainer/HBoxContainer/VBoxContainer/CraftButton" to="." method="_on_craft_button_pressed"]

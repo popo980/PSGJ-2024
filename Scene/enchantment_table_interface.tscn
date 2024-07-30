@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://caxujw0lwxqwv"]
+[gd_scene load_steps=9 format=3 uid="uid://caxujw0lwxqwv"]
 
 [ext_resource type="Texture2D" uid="uid://dpxhb51eks4ba" path="res://Assets/UI/EnchantmentTable/enchantment_table_background.png" id="1_5ed27"]
 [ext_resource type="Script" path="res://Script/enchantment_table_interface.gd" id="1_7wo5b"]
 [ext_resource type="Texture2D" uid="uid://dfmwv7gx2r4s8" path="res://Assets/UI/Workbench/craft_slot.png" id="2_edcd0"]
 [ext_resource type="FontFile" uid="uid://bfktqx2wduhb4" path="res://Assets/Fonts/upheavtt.ttf" id="3_ksdcy"]
 [ext_resource type="Texture2D" uid="uid://cw0vdf6xxwyu6" path="res://Assets/UI/Workbench/empty.png" id="4_1fp17"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cl2fb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xx80o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v27x3"]
 
 [node name="EnchantmentTableInterface" type="Control"]
 layout_mode = 3
@@ -52,6 +58,7 @@ theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cl2fb")
 flat = true
 
 [node name="CraftSlot2" type="Sprite2D" parent="."]
@@ -67,6 +74,7 @@ offset_left = -11.0
 offset_top = -11.0
 offset_right = 11.0
 offset_bottom = 11.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xx80o")
 flat = true
 
 [node name="Description" type="Label" parent="."]
@@ -137,6 +145,7 @@ offset_top = 145.0
 offset_right = 692.0
 offset_bottom = 176.0
 theme_override_fonts/font = ExtResource("3_ksdcy")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v27x3")
 text = "Enchant"
 
 [connection signal="pressed" from="CraftSlot/Shadow1/Button1" to="." method="_on_button_1_pressed"]

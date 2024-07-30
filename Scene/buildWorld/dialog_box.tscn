@@ -19,6 +19,7 @@ text = [null]
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_xuoud")
 volume_db = -10.0
+bus = &"SoundEffect"
 
 [node name="DialogBox" type="Sprite2D" parent="."]
 texture = ExtResource("3_ms2kd")

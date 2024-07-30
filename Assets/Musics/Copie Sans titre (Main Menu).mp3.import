@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://htw55pvabl34"
+path="res://.godot/imported/Copie Sans titre (Main Menu).mp3-cdea9d9192bc76f2ab4f9cc3f19ad54f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Musics/Copie Sans titre (Main Menu).mp3"
+dest_files=["res://.godot/imported/Copie Sans titre (Main Menu).mp3-cdea9d9192bc76f2ab4f9cc3f19ad54f.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=5.0
+bpm=0.0
+beat_count=0
+bar_beats=4

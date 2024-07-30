@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://t248hqa2fud7"
+path="res://.godot/imported/are you someone (Day).mp3-7506cb5edb135973aceb89e346275c12.mp3str"
+
+[deps]
+
+source_file="res://Assets/Musics/are you someone (Day).mp3"
+dest_files=["res://.godot/imported/are you someone (Day).mp3-7506cb5edb135973aceb89e346275c12.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

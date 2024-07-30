@@ -1,6 +1,6 @@
 extends Node2D
 
-enum Ressource {TREE, ROCK, BUSH, SHEEP}
+enum Ressource {TREE, ROCK, BUSH, ANIMALS}
 @onready var obj = $".."
 
 @export var ressource : Ressource
@@ -26,8 +26,6 @@ func hit(damage):
 		emit_signal("destroy_signal")
 		summon_item()
 		destroyed = true
-	else:
-		print("pv: ", pv)
 
 
 func summon_item():

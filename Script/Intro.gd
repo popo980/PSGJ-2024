@@ -3,10 +3,10 @@ extends Control
 var text = [
 	"The King seeks an alchemist...\n\n",
 	"This could be my chance...\n\n",
-	"After all, what have I got to lose?\n\n",
-	"I have to pass a series of tests, and if I'm still alive after 7 days in the arena, I become the King's official alchemist...\n\n",
+	"After all, what can I lose?\n\n",
+	"I have to pass a serie of tests, and if I'm still alive after 7 days, I become the King's official alchemist...\n\n",
 	".",".",".\n\n",
-	"Yes! I'll try!\n\n"
+	"Yes! Let's do it!\n\n"
 ]
 
 var char_speed = 0.08
@@ -16,7 +16,8 @@ var rand = RandomNumberGenerator.new()
 var min_pitch = 2
 var max_pitch = 2.5
 @onready var audio_stream_player = $AudioStreamPlayer
-var scene = preload("res://Scene/levels/Level_1.tscn").instantiate()
+var scene = "res://Scene/levels/Level_1.tscn"
+@onready var timer = $Timer
 
 func _ready():
 	label.text = ""
@@ -32,5 +33,8 @@ func read_text():
 			label.text += j
 			await get_tree().create_timer(char_speed).timeout
 		await get_tree().create_timer(sentence_wait).timeout
-	get_tree().root.add_child(scene)
-	queue_free()
+	timer.start()
+
+
+func _on_timer_timeout():
+	get_tree().change_scene_to_file(scene)

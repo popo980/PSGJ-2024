@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dam6o8vytspmu"]
+[gd_scene load_steps=33 format=3 uid="uid://dam6o8vytspmu"]
 
 [ext_resource type="Script" path="res://Script/Nightmorph.gd" id="1_o8hcc"]
 [ext_resource type="Texture2D" uid="uid://cjdmqkb8ldno5" path="res://Assets/Mob/Ennemies/nightmorph_damaged.png" id="2_32ls1"]
@@ -147,7 +147,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5fnu1")
 }],
-"loop": false,
+"loop": true,
 "name": &"Hit",
 "speed": 8.0
 }, {
@@ -184,7 +184,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pmyta")
 }],
-"loop": false,
+"loop": true,
 "name": &"Walk",
 "speed": 10.0
 }]
@@ -195,7 +195,16 @@ size = Vector2(20, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5408m"]
 size = Vector2(7.5, 19)
 
+[sub_resource type="Curve" id="Curve_a2472"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_058s8"]
+offsets = PackedFloat32Array(0.146667)
+colors = PackedColorArray(0.176471, 0.0862745, 0.172549, 1)
+
 [node name="Nightmorph" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
 collision_layer = 8
 collision_mask = 15
 platform_floor_layers = 0
@@ -203,8 +212,9 @@ script = ExtResource("1_o8hcc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p71vj")
-animation = &"Walk"
+animation = &"Damaged"
 autoplay = "Idle"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
@@ -215,7 +225,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
-position = Vector2(-14, -2)
+position = Vector2(14, -1.5)
 shape = SubResource("RectangleShape2D_5408m")
 
 [node name="DamagedTimer" type="Timer" parent="."]
@@ -224,7 +234,32 @@ wait_time = 0.5
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.3
 
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(-1, 5)
+emitting = false
+amount = 30
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.83
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 2500)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_a2472")
+color_initial_ramp = SubResource("Gradient_058s8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SoundEffect"
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HitZone" to="." method="_on_hit_zone_body_entered"]
+[connection signal="body_exited" from="HitZone" to="." method="_on_hit_zone_body_exited"]
 [connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

@@ -1,0 +1,181 @@
+[gd_scene load_steps=21 format=3 uid="uid://dxbv87vwxpucq"]
+
+[ext_resource type="Script" path="res://Script/nightsquid.gd" id="1_6pdn4"]
+[ext_resource type="Texture2D" uid="uid://cnn0sxd1air3r" path="res://Assets/Mob/Ennemies/nightsquid_hit.png" id="2_c2r3b"]
+[ext_resource type="Texture2D" uid="uid://bcytnh4ub7xha" path="res://Assets/Mob/Ennemies/nightsquid_walk.png" id="3_1w5i6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afwco"]
+atlas = ExtResource("2_c2r3b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0f78"]
+atlas = ExtResource("2_c2r3b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qopjq"]
+atlas = ExtResource("2_c2r3b")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddhm6"]
+atlas = ExtResource("2_c2r3b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y0jd"]
+atlas = ExtResource("2_c2r3b")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5r2p"]
+atlas = ExtResource("2_c2r3b")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pexxr"]
+atlas = ExtResource("3_1w5i6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yge36"]
+atlas = ExtResource("3_1w5i6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft43f"]
+atlas = ExtResource("3_1w5i6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ardq8"]
+atlas = ExtResource("3_1w5i6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q72ix"]
+atlas = ExtResource("3_1w5i6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljcah"]
+atlas = ExtResource("3_1w5i6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p71vj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afwco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0f78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qopjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddhm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8y0jd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5r2p")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pexxr")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yge36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft43f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ardq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q72ix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljcah")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyhpt"]
+radius = 6.75633
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5408m"]
+size = Vector2(12.2083, 19)
+
+[sub_resource type="Curve" id="Curve_a2472"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_058s8"]
+offsets = PackedFloat32Array(0.146667)
+colors = PackedColorArray(0.176471, 0.0862745, 0.172549, 1)
+
+[node name="Nightsquid" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+collision_layer = 8
+collision_mask = 15
+platform_floor_layers = 0
+script = ExtResource("1_6pdn4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p71vj")
+animation = &"Hit"
+autoplay = "Idle"
+frame = 5
+frame_progress = 1.0
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 6.577)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kyhpt")
+
+[node name="HitZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
+position = Vector2(9.22917, -2)
+shape = SubResource("RectangleShape2D_5408m")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(-1, 5)
+emitting = false
+amount = 30
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.83
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 2500)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_a2472")
+color_initial_ramp = SubResource("Gradient_058s8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SoundEffect"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="HitZone" to="." method="_on_hit_zone_body_entered"]
+[connection signal="body_exited" from="HitZone" to="." method="_on_hit_zone_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

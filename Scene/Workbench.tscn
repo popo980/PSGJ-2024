@@ -48,6 +48,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_nyvuh")
+bus = &"SoundEffect"
 
 [connection signal="area_entered" from="ZoneInteractionW" to="ZoneInteractionW" method="_on_area_entered"]
 [connection signal="area_exited" from="ZoneInteractionW" to="ZoneInteractionW" method="_on_area_exited"]

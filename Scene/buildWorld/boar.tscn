@@ -214,6 +214,7 @@ scale_amount_curve = SubResource("Curve_cd4au")
 color_initial_ramp = SubResource("Gradient_s1jl1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SoundEffect"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25

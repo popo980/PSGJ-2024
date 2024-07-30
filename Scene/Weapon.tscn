@@ -1,10 +1,69 @@
-[gd_scene load_steps=10 format=3 uid="uid://1hxrcyjwv3rh"]
+[gd_scene load_steps=18 format=3 uid="uid://1hxrcyjwv3rh"]
 
 [ext_resource type="Script" path="res://Script/Weapon.gd" id="1_0egnd"]
-[ext_resource type="Texture2D" uid="uid://cbtx46yes481j" path="res://Assets/Weapons/wooden_sword.png" id="2_fch3h"]
+[ext_resource type="Texture2D" uid="uid://xyd17e7nnl5a" path="res://Assets/Weapons/Fist.png" id="2_jm1rg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejrjo"]
 size = Vector2(7.5, 8)
+
+[sub_resource type="Animation" id="Animation_nfvax"]
+resource_name = "Wood_swordHit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(-5, -3), Vector2(0, -3)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"BowShoot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_id0cf"]
+resource_name = "Wood_swordIdle"
+length = 1.23
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -6), Vector2(0, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_m1oom"]
 resource_name = "Hit"
@@ -28,7 +87,7 @@ tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -51,6 +110,122 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_3j1nu"]
+resource_name = "Wood_swordHit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(30, -9), Vector2(30, 1), Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_1hfeu"]
+resource_name = "Wood_swordIdle"
+length = 1.23
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -6), Vector2(0, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_etcw2"]
+resource_name = "Wood_swordHit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(-3, -4), Vector2(0, -3)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Magic_wandShoot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0qpl2"]
+resource_name = "Wood_swordIdle"
+length = 1.23
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -6), Vector2(0, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_2jt6l"]
 length = 0.001
 tracks/0/type = "value"
@@ -64,6 +239,63 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kqy41"]
+resource_name = "Wood_swordHit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(30, -9), Vector2(30, 1), Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_dlv8t"]
+resource_name = "Wood_swordIdle"
+length = 1.23
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -6), Vector2(0, -3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -137,9 +369,17 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cubco"]
 _data = {
+"BowHit": SubResource("Animation_nfvax"),
+"BowIdle": SubResource("Animation_id0cf"),
 "FistHit": SubResource("Animation_m1oom"),
 "FistIdle": SubResource("Animation_l5cq1"),
+"KnifeHit": SubResource("Animation_3j1nu"),
+"KnifeIdle": SubResource("Animation_1hfeu"),
+"Magic_wandHit": SubResource("Animation_etcw2"),
+"Magic_wandIdle": SubResource("Animation_0qpl2"),
 "RESET": SubResource("Animation_2jt6l"),
+"Stone_axeHit": SubResource("Animation_kqy41"),
+"Stone_axeIdle": SubResource("Animation_dlv8t"),
 "Wood_swordHit": SubResource("Animation_ntbee"),
 "Wood_swordIdle": SubResource("Animation_1x3xv")
 }
@@ -153,7 +393,7 @@ collision_mask = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 position = Vector2(0.5, 0)
-texture = ExtResource("2_fch3h")
+texture = ExtResource("2_jm1rg")
 region_rect = Rect2(3.9, 4.7, 7.4, 7.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -164,6 +404,7 @@ disabled = true
 libraries = {
 "": SubResource("AnimationLibrary_cubco")
 }
+autoplay = "FistIdle"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3

@@ -11,7 +11,7 @@ var shadows = {
 var icons = {
 	"Sheep": preload("res://Assets/Mob/Animals/shadow_icons/sheep_shadow_icon.png"),
 	"Boar": preload("res://Assets/Mob/Animals/shadow_icons/boar_shadow_icon.png"),
-	"Fox": null
+	"Fox": preload("res://Assets/Mob/Animals/shadow_icons/fox_shadow.png")
 }
 
 var displays = {
@@ -41,10 +41,8 @@ func add_shadow(mob_name):
 		update_display(mob_name)
 
 func on_shadow_selected_signal(display):
-	print(player.can_select_shadows)
 	if not player.can_select_shadows:
 		return
-	print("CLICK_RECU")
 	var mob_name = displays.find_key(display)
 	if shadows[mob_name] > 0:
 		shadows[mob_name] -= 1
