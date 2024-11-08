@@ -88,7 +88,7 @@ offset_left = 350.0
 offset_top = 325.0
 offset_right = 350.0
 offset_bottom = 325.0
-text = ["So here is the famous shadow test… Let's start harvesting all those resources to survive this night !", "Let's show the king that I'm the one he want"]
+text = ["So this is the famous Shadow Test… Let's start gathering all these resources to survive the night!", "Let's show the king that I'm the one he wants."]
 
 [node name="GameManager" parent="." instance=ExtResource("4_neoxf")]
 curLvl = 1

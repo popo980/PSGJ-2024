@@ -90,7 +90,7 @@ offset_left = 350.0
 offset_top = 325.0
 offset_right = 350.0
 offset_bottom = 325.0
-text = ["Ho I see, this is when it finally really start ! Let's take those shadows and have some deserved fun !", "This is still pretty nice that we dont need to kill any innocent sheep to make magic happen !"]
+text = ["Oh, I see. This is when it finally really starts! Let’s take on those shadows and have some well-deserved fun!", "It's still pretty nice that we don't need to kill any innocent sheep to make magic happen!"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_icfgg")]
 curLvl = 2

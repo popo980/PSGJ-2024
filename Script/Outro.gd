@@ -1,12 +1,12 @@
 extends Control
 
 var text = [
-	"You get out of the last portal.\n\n",
-	"The king is in front of you, you can see the respect in his eyes\n\n",
-	"After all those test you are the only one that survived...\n\n",
-	"You are now the best shadow alchemist of the kingdom !\n\n",
-	"Wait no...\n\n",
-	"THE BEST ALCHEMIST OF THE WORLD !!!\n\n"
+	"You step out of the final portal.\n\n
+	 The king stands before you, and you can see the respect in his eyes.\n\n
+	 After all those trials, you are the only one who survived...\n\n
+	 You are now the greatest shadow alchemist in the kingdom!\n\n
+	 Wait—no...\n\n
+	 THE GREATEST ALCHEMIST IN THE WORLD!!!\n\n"
 ]
 
 var char_speed = 0.08

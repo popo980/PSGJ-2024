@@ -80,7 +80,7 @@ position = Vector2(351, 185)
 zoom = Vector2(2, 2)
 
 [node name="GUI" parent="." instance=ExtResource("2_8u2g2")]
-timeDay = 60.0
+timeDay = 200000.0
 
 [node name="Dialog_box" parent="GUI" instance=ExtResource("3_6uq8i")]
 layout_mode = 1

@@ -13,4 +13,3 @@ func setCraftAttribute(newName:String):
 func _on_pressed():
 	var gui = get_parent().get_parent()
 	gui.ButtonPressed(craftName)
-

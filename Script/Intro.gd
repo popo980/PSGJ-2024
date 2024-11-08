@@ -1,12 +1,12 @@
 extends Control
 
 var text = [
-	"The King seeks an alchemist...\n\n",
-	"This could be my chance...\n\n",
-	"After all, what can I lose?\n\n",
-	"I have to pass a serie of tests, and if I'm still alive after 7 days, I become the King's official alchemist...\n\n",
-	".",".",".\n\n",
-	"Yes! Let's do it!\n\n"
+	"The King seeks an alchemist...\n\n 
+	This could be my chance...\n\n 
+	After all, what do I have to lose?\n\n 
+	I have to pass a series of tests, and if I’m still alive after 7 days, I’ll become the King's official alchemist...\n\n 
+	... \n\n 
+	Yes! Let’s do it!\n\n"
 ]
 
 var char_speed = 0.08

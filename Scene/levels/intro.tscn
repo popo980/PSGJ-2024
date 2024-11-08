@@ -42,17 +42,17 @@ offset_right = 610.0
 offset_bottom = 313.0
 theme_override_fonts/font = ExtResource("3_11cmt")
 theme_override_font_sizes/font_size = 20
-text = "The King seeks an alchemist...
+text = "The King is looking for an alchemist...
 
-This could be my chance...
+This could be my chance.
 
-After all, what have I got to lose?
+After all, what do I have to lose?
 
-I have to pass a series of tests, and if I'm still alive after 7 days in the arena, I become the King's official alchemist...
+I just need to pass a series of tests, and if I survive 7 days in the arena, I'll become the King's official alchemist.
 
 ...
 
-Yes! I'll try!"
+Yes! I'll do it!"
 autowrap_mode = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
