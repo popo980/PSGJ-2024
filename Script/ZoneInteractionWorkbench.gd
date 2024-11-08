@@ -89,6 +89,8 @@ func interact(_player):
 
 
 func _on_body_entered(_body):
+	if player.at_night:
+		return
 	workbench_open = true
 	workbench_interface.visible = workbench_open
 	workbench_interface.global_position = Vector2.ZERO

@@ -30,7 +30,6 @@ func hold(player):
 	player.item_held = self
 
 func drop():
-	is_held = false
 	var item = player_holding.item_held
 	player_holding.is_holding = false
 	player_holding.item_held = null

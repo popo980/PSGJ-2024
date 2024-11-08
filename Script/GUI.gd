@@ -57,4 +57,3 @@ func _on_play_button_pressed():
 func _on_quit_button_pressed():
 	get_tree().root.add_child(load(titleScreen).instantiate())
 	queue_free()
-

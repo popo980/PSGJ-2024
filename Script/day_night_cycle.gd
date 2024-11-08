@@ -7,6 +7,7 @@ var emited = false
 @onready var progress_bar = $TextureProgressBar
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var audio_stream_player = $AudioStreamPlayer
+@onready var button = $Button
 
 var timeEnd
 var timeStart = 0
@@ -38,4 +39,5 @@ func setNight():
 		progress_bar.value=200
 		animated_sprite_2d.animation = "night_transition"
 		animated_sprite_2d.play()
+		button.hide()
 		emited = true

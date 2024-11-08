@@ -25,6 +25,7 @@ var craft_held
 
 var workbench_open : bool
 var enchantment_table_open : bool
+var at_night:bool=false
 
 var gui
 var shadow_inventory
@@ -52,9 +53,10 @@ func _physics_process(_delta):
 		var nearest_obj  = find_nearest(zone_interaction.inZone)
 		nearest_obj.interact(self)
 	# pose un objet à terre si le joueur tient un objet dans les mains
-	elif Input.is_action_just_pressed("Interact") && is_holding && item_held != null:
-		item_held.drop()
-		
+	elif Input.is_action_just_pressed("Interact") && is_holding:
+		is_holding = false
+		if item_held != null:
+			item_held.drop()
 	move_and_slide()
 
 func manageMov():
@@ -136,6 +138,7 @@ func SetMaxHealth(newMax:int):
 
 func _on_gui_night_signal():
 	zone_interaction.disappear()
+	at_night = true
 
 func zone_active():
 	zone_interaction.call_deferred("reappear")

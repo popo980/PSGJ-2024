@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var spawned_things = %SpawnedThings
+
 const PORTAL = preload("res://Scene/portal.tscn")
 
 var Spawnable = {
@@ -26,7 +28,7 @@ func _process(_delta):
 		
 func spawn(spawnName:String):
 	var spawned = Spawnable[spawnName].instantiate()
-	add_child(spawned)
+	spawned_things.add_child(spawned)
 	spawned.position = player.position
 
 func endSpawner():
@@ -36,10 +38,12 @@ func endSpawner():
 
 func endLvl():
 	var port = PORTAL.instantiate()
-	call_deferred("add_child", port)
-	port.nextLvl = nxtLvlPath
+	spawned_things.call_deferred("add_child", port)
 	port.position = portalEmplacement
 	player.zone_active()
+	GlobalScript.curLvl = get_parent()
+	GlobalScript.nextLvl = nxtLvlPath
+	GlobalScript.prochNum = str(curLvl+1)
 	
 func restart():
 	get_tree().root.call_deferred("add_child",load(curLvlPath).instantiate())
@@ -58,4 +62,3 @@ func nxtLvlCalcul():
 	if curLvl == 7:
 		return "res://Scene/levels/Outro.tscn"
 	return "res://Scene/levels/Level_"+str(curLvl+1)+".tscn"
-
